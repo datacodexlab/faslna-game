@@ -15,3 +15,6 @@ Known limits: no physical Android/iOS or Safari testing; no public Cloudflare de
 Home navigation: verified the persistent header button, cancellation preserving the current screen, confirmation returning to welcome, and retained saved round/progress. At 320x568 the header fits and document width/height equal the viewport.
 
 Release 1.2.3 greeting: approved names and wording verified in the browser. Welcome screen fits 320x568 and 640x360 without scrolling or controls outside the viewport.
+
+## 1.3.0 — Mobile installation
+Added localized standalone web app manifest, 192/512 PNG icons with safe maskable artwork, and 180px Apple touch icon. Welcome installation invitation appears once per mobile browser session and hides in standalone mode. Supporting browsers use the native prompt after a user click; others receive localized menu instructions. No service worker or offline promise is introduced, avoiding stale cached releases. Existing local progress is unchanged. Browser UI checked at 320x568 and 640x360; actual device installation after HTTPS deployment remains untested.

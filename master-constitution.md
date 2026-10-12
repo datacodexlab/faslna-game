@@ -1,6 +1,6 @@
 # Faslna Project Constitution
 
-Version: 1.2.2 | Approved scope: 2026-10-11 | Mobile renewal amendment: 2026-10-12
+Version: 1.3.0 | Approved scope: 2026-10-11 | Mobile renewal amendment: 2026-10-12
 
 ## Purpose
 A cheerful Egyptian Arabic educational mobile web game for ages 6–14. Learning, cooperation and reciprocal respect are the goals. This is general learning, not a curriculum certification or treatment.

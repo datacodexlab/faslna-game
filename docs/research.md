@@ -34,3 +34,5 @@ https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Best_practices
 
 Dynamic viewport units track available mobile viewport space. They do not make arbitrary content fit: actual content is split into explicit screens/pages rather than clipped or reduced to tiny text. Verify the final visible DOM bounds at the documented minimum sizes and preserve accessibility fallback for zoom/exceptional constraints.
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length
+
+Install guidance: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable and https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Trigger_install_prompt (checked 2026-10-12).

@@ -1,7 +1,7 @@
 # Project Context
 
-Status: release 1.2.2 packaged and tested; local preview available for user review before deployment.
-Target release: 1.2.2 (2026-10-12). Previous verified release: outputs/faslna-v1-1-0.
+Status: release 1.3.0 packaged and tested; local preview available for user review before deployment.
+Target release: 1.3.0 (2026-10-12). Previous verified release: outputs/faslna-v1-1-0.
 
 ## Decisions
 - Name: Adventures of Our Classroom (Egyptian Arabic display copy in localization).
@@ -35,3 +35,6 @@ Added the approved localized greeting for Maryam, Marwa and Doaa to the welcome 
 
 ## GitHub publication preparation
 User approved a public repository named faslna-game under the DataCodex account they will select in Git. Local Git repository initialized on main. Published to the public repository https://github.com/datacodexlab/faslna-game on main after the user supplied its URL. Source, documentation and tests are uploaded; Cloudflare deployment remains separate.
+
+## 1.3.0 — Mobile installation
+Added localized standalone web app manifest, 192/512 PNG icons with safe maskable artwork, and 180px Apple touch icon. Welcome installation invitation appears once per mobile browser session and hides in standalone mode. Supporting browsers use the native prompt after a user click; others receive localized menu instructions. No service worker or offline promise is introduced, avoiding stale cached releases. Existing local progress is unchanged. Browser UI checked at 320x568 and 640x360; actual device installation after HTTPS deployment remains untested.

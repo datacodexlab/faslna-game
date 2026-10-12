@@ -31,3 +31,7 @@
 - README.md: Egyptian Arabic instructions and deployment guide.
 
 The final delivery archive contains only site contents. Source documentation and tests are supplied separately in the complete project folder and full-project ZIP. Sibling output files faslna-cloudflare.zip and faslna-project.zip are deployment and source deliverables. Preview JPEGs and faslna-release.json provide verification evidence and release hashes.
+
+- site/locales/ar-manifest.json: localized install manifest.
+- site/assets/icon-180.png, icon-192.png, icon-512.png: home screen icons.
+- tests/install.test.mjs: resolved install scope and actual icon dimensions.

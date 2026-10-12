@@ -32,3 +32,6 @@ A header button is available on every screen. Returning home requires confirmati
 
 ## 1.2.3 — Creator greeting
 Added the approved localized greeting for Maryam, Marwa and Doaa to the welcome screen, with compact responsive styling. No saved data changes.
+
+## 1.3.0 — Mobile installation
+Added localized standalone web app manifest, 192/512 PNG icons with safe maskable artwork, and 180px Apple touch icon. Welcome installation invitation appears once per mobile browser session and hides in standalone mode. Supporting browsers use the native prompt after a user click; others receive localized menu instructions. No service worker or offline promise is introduced, avoiding stale cached releases. Existing local progress is unchanged. Browser UI checked at 320x568 and 640x360; actual device installation after HTTPS deployment remains untested.

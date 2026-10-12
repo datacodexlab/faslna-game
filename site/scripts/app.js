@@ -7,6 +7,14 @@ const notice = document.querySelector("#storage-notice");
 const recoveryNotice = document.querySelector("#recovery-notice");
 const live = document.querySelector("#live-region");
 let ui;
+let deferredInstall = null;
+let installInviteShown = false;
+const isInstalled = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();deferredInstall=event;
+  if (ui && screen === "welcome" && !isInstalled()) showInstallInvite();
+});
+window.addEventListener("appinstalled",()=>{deferredInstall=null;document.querySelector("#install-button")?.remove();document.querySelector("#install-dialog")?.close();});
 let cards;
 let store;
 let screen = "welcome";
@@ -134,6 +142,29 @@ function renderRestartConfirm() {
     },"primary"))));
 }
 
+function showInstallInvite(manual = false) {
+  if (isInstalled() || document.querySelector("#install-dialog")) return;
+  if (!manual && installInviteShown) return;
+  if (!manual) {
+    try {if (sessionStorage.getItem("faslna-install-invite")) return;sessionStorage.setItem("faslna-install-invite","1");} catch {}
+    installInviteShown=true;
+  }
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+  const install = async () => {
+    const prompt=deferredInstall;
+    dialog.close();
+    if (!prompt) return;
+    deferredInstall=null;
+    try {await prompt.prompt();await prompt.userChoice;} catch {}
+  };
+  const dialog=node("dialog", {id:"install-dialog","aria-labelledby":"install-title"},
+    node("h2", {id:"install-title",text:t("installTitle")}),
+    node("p", {text:t(deferredInstall?"installInvite":ios?"installIos":"installOther")}),
+    actionRow(button(t(deferredInstall?"installLater":"installClose"),()=>dialog.close()),deferredInstall?button(t("installGame"),install,"primary"):null));
+  dialog.addEventListener("close",()=>dialog.remove(),{once:true});
+  document.body.append(dialog);dialog.showModal();
+}
+
 function renderWelcome() {
   const hero = node("section", {class:"hero screen"},
     node("div", {class:"eyebrow",text:t("brand")}),
@@ -146,6 +177,7 @@ function renderWelcome() {
       button(activeProfile() ? t("resume") : t("start"), () => navigate(activeProfile() ? (activeTeacher() ? "map" : "teachers") : "players"), "primary"),
       button(t("howToPlay"), () => navigate("help"))),
     node("div", {class:"actions center"},button(t("restartAdventure"),restartAdventure,"accent"),soundButton()));
+  if (!isInstalled()) hero.append(button(t("installGame"),()=>showInstallInvite(true),"secondary",{id:"install-button"}));
   app.append(hero);
 }
 
@@ -451,6 +483,7 @@ async function boot() {
     recoveredRound=recovered.recovered;
     if (recoveredRound) store.save(recovered.state);
     render();
+    if (!isInstalled() && (deferredInstall || /iPhone|iPad|iPod|Android/.test(navigator.userAgent))) showInstallInvite();
   } catch {
     app.replaceChildren(node("section", {class:"screen empty error"},node("h1", {text:ui?.loadErrorTitle||"Game could not load"}),node("p", {text:ui?.loadErrorBody||"Check your connection and try again."}),button(ui?.retry||"Retry",()=>boot(),"primary")));
   }
