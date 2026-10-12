@@ -34,4 +34,4 @@ A header button is available on every screen. Returning home requires confirmati
 Added the approved localized greeting for Maryam, Marwa and Doaa to the welcome screen, with compact responsive styling. No saved data changes.
 
 ## GitHub publication preparation
-User approved a public repository named faslna-game under the DataCodex account they will select in Git. Local Git repository initialized on main. Remote creation and upload are pending account selection; no remote repository is claimed.
+User approved a public repository named faslna-game under the DataCodex account they will select in Git. Local Git repository initialized on main. Published to the public repository https://github.com/datacodexlab/faslna-game on main after the user supplied its URL. Source, documentation and tests are uploaded; Cloudflare deployment remains separate.
