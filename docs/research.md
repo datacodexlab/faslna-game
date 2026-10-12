@@ -36,3 +36,12 @@ Dynamic viewport units track available mobile viewport space. They do not make a
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length
 
 Install guidance: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable and https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Trigger_install_prompt (checked 2026-10-12).
+
+## Preschool picture design — 2026-10-12
+NAEYC supports playful shape exploration, matching, sorting, counting and simple patterns. CDC lists naming a few colors among four-year milestones. These inform design rather than assess an individual child.
+- https://www.naeyc.org/resources/pubs/tyc/oct2014/backpack/preschoolers-natural-mathematicians
+- https://www.naeyc.org/node/658
+- https://www.naeyc.org/node/4685
+- https://www.cdc.gov/act-early/milestones/4-years.html
+
+Design inference: ten identical-picture matches, followed by four color matches, three quantity matches (1–3), three shape matches across color changes, then two quantity tasks (4–5), four alternating AB patterns, two size matches and two simultaneous shape/color matches. This is a product sequence, not a standardized curriculum. A helper can demonstrate the first task because this prototype deliberately has no narration. Every question includes a visual model; labels and numeric symbols are not the only cues. No timer, life loss or developmental grading is introduced.

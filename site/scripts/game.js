@@ -2,22 +2,23 @@ export const BANDS = ["young", "middle", "older"];
 export const SUBJECTS = ["math", "arabic", "science"];
 export const ROUND_LIVES = 3;
 export const ROUND_HINTS = 2;
-export const BAND_BUDGETS = Object.freeze({young: {maxLives: 5, maxHints: 3}, middle: {maxLives: 3, maxHints: 2}, older: {maxLives: 2, maxHints: 1}});
+export const BAND_BUDGETS = Object.freeze({preschool: {maxLives: 5, maxHints: 3}, young: {maxLives: 5, maxHints: 3}, middle: {maxLives: 3, maxHints: 2}, older: {maxLives: 2, maxHints: 1}});
 export function budgetForBand(band) { if (!BAND_BUDGETS[band]) throw new Error("Invalid band"); return {...BAND_BUDGETS[band]}; }
 
 export function ageBand(age) {
-  if (!Number.isInteger(age) || age < 6 || age > 14) throw new Error("Invalid age");
-  return age <= 8 ? "young" : age <= 11 ? "middle" : "older";
+  if (!Number.isInteger(age) || age < 4 || age > 14) throw new Error("Invalid age");
+  return age <= 5 ? "preschool" : age <= 8 ? "young" : age <= 11 ? "middle" : "older";
 }
 
 export function effectiveBand(age, difficulty = "auto") {
+  if (ageBand(age) === "preschool") return "preschool";
   const index = BANDS.indexOf(ageBand(age));
   const shift = difficulty === "easier" ? -1 : difficulty === "harder" ? 1 : 0;
   return BANDS[Math.max(0, Math.min(2, index + shift))];
 }
 
 export function progressKey(subject, band, stage) {
-  if (!SUBJECTS.includes(subject) || !BANDS.includes(band) || ![1, 2, 3].includes(stage)) throw new Error("Invalid progress key");
+  if (!SUBJECTS.includes(subject) || ![...BANDS,"preschool"].includes(band) || ![1, 2, 3].includes(stage)) throw new Error("Invalid progress key");
   return `${subject}:${band}:${stage}`;
 }
 
@@ -38,6 +39,11 @@ function sampleCards(pool, count, excluded, random) {
 }
 
 export function roundCards(cards, subject, band, stage, recent = {}, random = Math.random) {
+  if (band === "preschool") {
+    const pool=cards.filter(card=>card.band===band && card.stage===stage && card.kind==="picture");
+    if (pool.length<6) throw new Error("Incomplete picture content");
+    return sampleCards(pool,6,recent.academic || [],random);
+  }
   const academic = cards.filter(card => card.kind === "academic" && card.subject === subject && card.band === band && card.stage === stage);
   const social = cards.filter(card => card.kind === "social" && card.subject === "social" && card.band === band && card.stage === stage);
   if (academic.length < 4 || social.length < 2) throw new Error("Incomplete round content");
@@ -51,7 +57,7 @@ export function newRound(cards, subject, band, stage, recent = {}, random = Math
   return {subject, band, stage, cardIds: roundCards(cards, subject, band, stage, recent, random).map(card => card.id), index: 0, score: 0, wrongIds: [], hintUsed: false, hintsLeft: budget.maxHints, livesLeft: budget.maxLives, ...budget, resolved: false, selectedId: null};
 }
 
-export function selectionHistory(round) { return {academic: [round.cardIds[0],round.cardIds[1],round.cardIds[3],round.cardIds[4]], social: [round.cardIds[2],round.cardIds[5]]}; }
+export function selectionHistory(round) { if(round.band === "preschool") return {academic:[...round.cardIds],social:[]}; return {academic: [round.cardIds[0],round.cardIds[1],round.cardIds[3],round.cardIds[4]], social: [round.cardIds[2],round.cardIds[5]]}; }
 
 export function revealHint(round) {
   return round.resolved || round.hintUsed || round.hintsLeft <= 0 || round.livesLeft <= 0 ? round : {...round, hintUsed: true, hintsLeft: round.hintsLeft - 1};
@@ -61,6 +67,11 @@ export function answerRound(round, card, optionId) {
   if (round.resolved || round.livesLeft <= 0 || round.wrongIds.includes(optionId) || !card.options.some(option => option.id === optionId)) return round;
   if (card.answerId === optionId) {
     return {...round, resolved: true, selectedId: optionId, score: round.score + (round.hintUsed || round.wrongIds.length ? 1 : 2)};
+  }
+  if (round.band === "preschool") {
+    const wrongIds=[...round.wrongIds,optionId];
+    if (wrongIds.length>=2) return {...round,wrongIds,resolved:true,selectedId:card.answerId,score:round.score+1};
+    return {...round,wrongIds,selectedId:optionId};
   }
   return {...round, selectedId: optionId, livesLeft: round.livesLeft - 1, wrongIds: [...round.wrongIds, optionId]};
 }
@@ -87,16 +98,16 @@ export function savedRoundMatchesContent(round, cards) {
   const actual = budgetForBand(round.band);
   if (!((round.maxLives === actual.maxLives && round.maxHints === actual.maxHints) || (round.maxLives === ROUND_LIVES && round.maxHints === ROUND_HINTS))) return false;
   if (!Number.isInteger(round.livesLeft) || round.livesLeft < 0 || round.livesLeft > round.maxLives || !Number.isInteger(round.hintsLeft) || round.hintsLeft < 0 || round.hintsLeft > round.maxHints || (round.hintUsed && round.hintsLeft === round.maxHints)) return false;
-  const pool = cards.filter(card => card.band === round.band && card.stage === round.stage && ((card.kind === "academic" && card.subject === round.subject) || (card.kind === "social" && card.subject === "social")));
+  const pool = cards.filter(card => card.band === round.band && card.stage === round.stage && ((round.band === "preschool" && card.kind === "picture") || (card.kind === "academic" && card.subject === round.subject) || (card.kind === "social" && card.subject === "social")));
   if (!Array.isArray(round.cardIds) || round.cardIds.length !== 6 || new Set(round.cardIds).size !== 6) return false;
   const expected = round.cardIds.map(id => pool.find(card => card.id === id));
-  if (expected.some(card => !card) || expected.filter(card => card.kind === "academic").length !== 4 || expected.filter(card => card.kind === "social").length !== 2) return false;
+  if (expected.some(card => !card) || (round.band === "preschool" ? expected.some(card=>card.kind!=="picture") : expected.filter(card => card.kind === "academic").length !== 4 || expected.filter(card => card.kind === "social").length !== 2)) return false;
   if (!Number.isInteger(round.index) || round.index < 0 || round.index > 6 || !Number.isInteger(round.score) || round.score < 0 || round.score > round.index * 2 + (round.resolved ? 2 : 0)) return false;
   if (round.index === 6) return !round.resolved && round.wrongIds.length === 0 && round.selectedId === null && !round.hintUsed;
   const card = expected[round.index];
   const optionIds = card.options.map(option => option.id);
   if (!Array.isArray(round.wrongIds) || new Set(round.wrongIds).size !== round.wrongIds.length || !round.wrongIds.every(id => optionIds.includes(id) && id !== card.answerId)) return false;
-  if (round.wrongIds.length > round.maxLives - round.livesLeft || (round.livesLeft === 0 && round.resolved)) return false;
+  if ((round.band !== "preschool" && round.wrongIds.length > round.maxLives - round.livesLeft) || (round.livesLeft === 0 && round.resolved)) return false;
   if (round.resolved) return round.selectedId === card.answerId;
   return round.selectedId === null || round.wrongIds.includes(round.selectedId);
 }

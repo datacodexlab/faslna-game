@@ -2,7 +2,7 @@ export const STORAGE_KEY = "faslna-state-v1";
 export const AVATARS = ["sun", "leaf", "star", "moon"];
 export const DIFFICULTIES = ["auto", "easier", "harder"];
 const SUBJECTS = ["math", "arabic", "science"];
-const BANDS = ["young", "middle", "older"];
+const BANDS = ["preschool", "young", "middle", "older"];
 const PRESET_TEACHER_IDS = ["teacher-math", "teacher-arabic", "teacher-science", "teacher-ragab"];
 
 export function freshState() {
@@ -10,7 +10,7 @@ export function freshState() {
 }
 
 function validHistory(history) {
-  return history === undefined || (history && typeof history === "object" && !Array.isArray(history) && Object.entries(history).every(([key, value]) => /^(math|arabic|science):(young|middle|older):[123]$/.test(key) && value && [value.academic,value.social].every(list => Array.isArray(list) && list.every(id => typeof id === "string"))));
+  return history === undefined || (history && typeof history === "object" && !Array.isArray(history) && Object.entries(history).every(([key, value]) => /^(math|arabic|science):(preschool|young|middle|older):[123]$/.test(key) && value && [value.academic,value.social].every(list => Array.isArray(list) && list.every(id => typeof id === "string"))));
 }
 
 function validRound(round) {
@@ -19,13 +19,13 @@ function validRound(round) {
 }
 
 function validProgress(progress) {
-  return progress && typeof progress === "object" && !Array.isArray(progress) && Object.entries(progress).every(([key, value]) => /^(math|arabic|science):(young|middle|older):[123]$/.test(key) && value && typeof value.completed === "boolean" && Number.isInteger(value.best) && value.best >= 0 && value.best <= 12);
+  return progress && typeof progress === "object" && !Array.isArray(progress) && Object.entries(progress).every(([key, value]) => /^(math|arabic|science):(preschool|young|middle|older):[123]$/.test(key) && value && typeof value.completed === "boolean" && Number.isInteger(value.best) && value.best >= 0 && value.best <= 12);
 }
 
 export function validateState(state) {
   if (!state || state.schemaVersion !== 1 || !Array.isArray(state.profiles) || !Array.isArray(state.teachers) || !state.settings || typeof state.settings.reducedMotion !== "boolean" || typeof state.settings.soundEnabled !== "boolean") return false;
   if (state.profiles.length > 50 || state.teachers.length > 50) return false;
-  if (!state.profiles.every(p => p && typeof p.id === "string" && typeof p.name === "string" && p.name.length > 0 && p.name.length <= 30 && Number.isInteger(p.age) && p.age >= 6 && p.age <= 14 && AVATARS.includes(p.avatar) && DIFFICULTIES.includes(p.difficulty) && validProgress(p.progress) && validHistory(p.history) && validRound(p.round ?? null))) return false;
+  if (!state.profiles.every(p => p && typeof p.id === "string" && typeof p.name === "string" && p.name.length > 0 && p.name.length <= 30 && Number.isInteger(p.age) && p.age >= 4 && p.age <= 14 && AVATARS.includes(p.avatar) && DIFFICULTIES.includes(p.difficulty) && validProgress(p.progress) && validHistory(p.history) && validRound(p.round ?? null))) return false;
   if (!state.teachers.every(t => t && typeof t.id === "string" && typeof t.name === "string" && t.name.length > 0 && t.name.length <= 30 && SUBJECTS.includes(t.subject))) return false;
   if (state.activeProfileId !== null && !state.profiles.some(p => p.id === state.activeProfileId)) return false;
   if (state.activeTeacherId !== null && !PRESET_TEACHER_IDS.includes(state.activeTeacherId) && !state.teachers.some(t => t.id === state.activeTeacherId)) return false;

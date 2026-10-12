@@ -1,0 +1,885 @@
+{
+  "schemaVersion": 1,
+  "cards": [
+    {
+      "id": "preschool-1-01",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه تفاحة؟",
+      "referenceImage": "assets/preschool/apple-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه تفاحة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "سمكة",
+          "image": "assets/preschool/fish-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "تفاحة",
+          "image": "assets/preschool/apple-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-02",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه سمكة؟",
+      "referenceImage": "assets/preschool/fish-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه سمكة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "سمكة",
+          "image": "assets/preschool/fish-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "عربية",
+          "image": "assets/preschool/car-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-03",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه عربية؟",
+      "referenceImage": "assets/preschool/car-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه عربية؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "وردة",
+          "image": "assets/preschool/flower-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "عربية",
+          "image": "assets/preschool/car-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-04",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه وردة؟",
+      "referenceImage": "assets/preschool/flower-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه وردة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "وردة",
+          "image": "assets/preschool/flower-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "قلب",
+          "image": "assets/preschool/heart-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-05",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه قلب؟",
+      "referenceImage": "assets/preschool/heart-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه قلب؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "شمس",
+          "image": "assets/preschool/sun-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "قلب",
+          "image": "assets/preschool/heart-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-06",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه شمس؟",
+      "referenceImage": "assets/preschool/sun-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه شمس؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "شمس",
+          "image": "assets/preschool/sun-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-07",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه دايرة؟",
+      "referenceImage": "assets/preschool/circle-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه دايرة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مربع",
+          "image": "assets/preschool/square-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-08",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه مربع؟",
+      "referenceImage": "assets/preschool/square-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه مربع؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مربع",
+          "image": "assets/preschool/square-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-09",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه مثلث؟",
+      "referenceImage": "assets/preschool/triangle-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه مثلث؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "نجمة",
+          "image": "assets/preschool/star-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-1-10",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 1,
+      "skill": "identical-match",
+      "prompt": "فين الصورة اللي شبه نجمة؟",
+      "referenceImage": "assets/preschool/star-blue.svg",
+      "referenceAlt": "فين الصورة اللي شبه نجمة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "نجمة",
+          "image": "assets/preschool/star-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "تفاحة",
+          "image": "assets/preschool/apple-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على شكل الصورة فوق، واختار اللي شبهها.",
+      "explanation": "شاطر! الصورتين نفس الشكل."
+    },
+    {
+      "id": "preschool-2-11",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "color-match",
+      "prompt": "اختار الكورة الـحمرا.",
+      "referenceImage": "assets/preschool/circle-red.svg",
+      "referenceAlt": "اختار الكورة الـحمرا.",
+      "options": [
+        {
+          "id": "a",
+          "text": "صفرا",
+          "image": "assets/preschool/circle-yellow.svg"
+        },
+        {
+          "id": "b",
+          "text": "حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على لون الكورة فوق، مش مكانها.",
+      "explanation": "حلو! الكورتين نفس اللون."
+    },
+    {
+      "id": "preschool-2-12",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "color-match",
+      "prompt": "اختار الكورة الـزرقا.",
+      "referenceImage": "assets/preschool/circle-blue.svg",
+      "referenceAlt": "اختار الكورة الـزرقا.",
+      "options": [
+        {
+          "id": "a",
+          "text": "زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "صفرا",
+          "image": "assets/preschool/circle-yellow.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على لون الكورة فوق، مش مكانها.",
+      "explanation": "حلو! الكورتين نفس اللون."
+    },
+    {
+      "id": "preschool-2-13",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "color-match",
+      "prompt": "اختار الكورة الـصفرا.",
+      "referenceImage": "assets/preschool/circle-yellow.svg",
+      "referenceAlt": "اختار الكورة الـصفرا.",
+      "options": [
+        {
+          "id": "a",
+          "text": "حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "صفرا",
+          "image": "assets/preschool/circle-yellow.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "بص على لون الكورة فوق، مش مكانها.",
+      "explanation": "حلو! الكورتين نفس اللون."
+    },
+    {
+      "id": "preschool-2-14",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "color-match",
+      "prompt": "اختار الكورة الـخضرا.",
+      "referenceImage": "assets/preschool/circle-green.svg",
+      "referenceAlt": "اختار الكورة الـخضرا.",
+      "options": [
+        {
+          "id": "a",
+          "text": "زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "خضرا",
+          "image": "assets/preschool/circle-green.svg"
+        },
+        {
+          "id": "c",
+          "text": "حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على لون الكورة فوق، مش مكانها.",
+      "explanation": "حلو! الكورتين نفس اللون."
+    },
+    {
+      "id": "preschool-2-15",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "quantity-match",
+      "prompt": "اختار نفس عدد التفاح: 1.",
+      "referenceImage": "assets/preschool/group-apple-1.svg",
+      "referenceAlt": "اختار نفس عدد التفاح: 1.",
+      "options": [
+        {
+          "id": "a",
+          "text": "1 تفاحات",
+          "image": "assets/preschool/group-apple-1.svg"
+        },
+        {
+          "id": "b",
+          "text": "2 تفاحات",
+          "image": "assets/preschool/group-apple-2.svg"
+        },
+        {
+          "id": "c",
+          "text": "3 تفاحات",
+          "image": "assets/preschool/group-apple-3.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "عدّ التفاحات فوق، وبعدين عدّ الصور اللي تحت.",
+      "explanation": "برافو! المجموعتين فيهم نفس العدد."
+    },
+    {
+      "id": "preschool-2-16",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "quantity-match",
+      "prompt": "اختار نفس عدد التفاح: 2.",
+      "referenceImage": "assets/preschool/group-apple-2.svg",
+      "referenceAlt": "اختار نفس عدد التفاح: 2.",
+      "options": [
+        {
+          "id": "a",
+          "text": "1 تفاحات",
+          "image": "assets/preschool/group-apple-1.svg"
+        },
+        {
+          "id": "b",
+          "text": "3 تفاحات",
+          "image": "assets/preschool/group-apple-3.svg"
+        },
+        {
+          "id": "c",
+          "text": "2 تفاحات",
+          "image": "assets/preschool/group-apple-2.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "عدّ التفاحات فوق، وبعدين عدّ الصور اللي تحت.",
+      "explanation": "برافو! المجموعتين فيهم نفس العدد."
+    },
+    {
+      "id": "preschool-2-17",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "quantity-match",
+      "prompt": "اختار نفس عدد التفاح: 3.",
+      "referenceImage": "assets/preschool/group-apple-3.svg",
+      "referenceAlt": "اختار نفس عدد التفاح: 3.",
+      "options": [
+        {
+          "id": "a",
+          "text": "2 تفاحات",
+          "image": "assets/preschool/group-apple-2.svg"
+        },
+        {
+          "id": "b",
+          "text": "3 تفاحات",
+          "image": "assets/preschool/group-apple-3.svg"
+        },
+        {
+          "id": "c",
+          "text": "1 تفاحات",
+          "image": "assets/preschool/group-apple-1.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "عدّ التفاحات فوق، وبعدين عدّ الصور اللي تحت.",
+      "explanation": "برافو! المجموعتين فيهم نفس العدد."
+    },
+    {
+      "id": "preschool-2-18",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "shape-generalization",
+      "prompt": "اختار شكل دايرة بلون تاني.",
+      "referenceImage": "assets/preschool/circle-blue.svg",
+      "referenceAlt": "اختار شكل دايرة بلون تاني.",
+      "options": [
+        {
+          "id": "a",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "مربع",
+          "image": "assets/preschool/square-green.svg"
+        },
+        {
+          "id": "c",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-green.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "اللون اتغيّر، بس إحنا بندور على نفس الشكل.",
+      "explanation": "تمام! نفس الشكل حتى لما اللون اتغيّر."
+    },
+    {
+      "id": "preschool-2-19",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "shape-generalization",
+      "prompt": "اختار شكل مربع بلون تاني.",
+      "referenceImage": "assets/preschool/square-blue.svg",
+      "referenceAlt": "اختار شكل مربع بلون تاني.",
+      "options": [
+        {
+          "id": "a",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-green.svg"
+        },
+        {
+          "id": "c",
+          "text": "مربع",
+          "image": "assets/preschool/square-green.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "اللون اتغيّر، بس إحنا بندور على نفس الشكل.",
+      "explanation": "تمام! نفس الشكل حتى لما اللون اتغيّر."
+    },
+    {
+      "id": "preschool-2-20",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 2,
+      "skill": "shape-generalization",
+      "prompt": "اختار شكل مثلث بلون تاني.",
+      "referenceImage": "assets/preschool/triangle-blue.svg",
+      "referenceAlt": "اختار شكل مثلث بلون تاني.",
+      "options": [
+        {
+          "id": "a",
+          "text": "مربع",
+          "image": "assets/preschool/square-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-green.svg"
+        },
+        {
+          "id": "c",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-green.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "اللون اتغيّر، بس إحنا بندور على نفس الشكل.",
+      "explanation": "تمام! نفس الشكل حتى لما اللون اتغيّر."
+    },
+    {
+      "id": "preschool-3-21",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "cross-object-quantity",
+      "prompt": "اختار نجوم قد عدد التفاح: 4.",
+      "referenceImage": "assets/preschool/group-apple-4.svg",
+      "referenceAlt": "اختار نجوم قد عدد التفاح: 4.",
+      "options": [
+        {
+          "id": "a",
+          "text": "4 نجوم",
+          "image": "assets/preschool/group-star-4.svg"
+        },
+        {
+          "id": "b",
+          "text": "3 نجوم",
+          "image": "assets/preschool/group-star-3.svg"
+        },
+        {
+          "id": "c",
+          "text": "2 نجوم",
+          "image": "assets/preschool/group-star-2.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "عدّ كل تفاحة مرة، وبعدين دور على نفس عدد النجوم.",
+      "explanation": "ممتاز! عدد التفاح قد عدد النجوم."
+    },
+    {
+      "id": "preschool-3-22",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "cross-object-quantity",
+      "prompt": "اختار نجوم قد عدد التفاح: 5.",
+      "referenceImage": "assets/preschool/group-apple-5.svg",
+      "referenceAlt": "اختار نجوم قد عدد التفاح: 5.",
+      "options": [
+        {
+          "id": "a",
+          "text": "4 نجوم",
+          "image": "assets/preschool/group-star-4.svg"
+        },
+        {
+          "id": "b",
+          "text": "3 نجوم",
+          "image": "assets/preschool/group-star-3.svg"
+        },
+        {
+          "id": "c",
+          "text": "5 نجوم",
+          "image": "assets/preschool/group-star-5.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "عدّ كل تفاحة مرة، وبعدين دور على نفس عدد النجوم.",
+      "explanation": "ممتاز! عدد التفاح قد عدد النجوم."
+    },
+    {
+      "id": "preschool-3-23",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "ab-pattern",
+      "prompt": "كمّل ترتيب دايرة ودايرة.",
+      "referenceImage": "assets/preschool/pattern-circle-red-circle-blue.svg",
+      "referenceAlt": "كمّل ترتيب دايرة ودايرة.",
+      "options": [
+        {
+          "id": "a",
+          "text": "وردة بنفسجي",
+          "image": "assets/preschool/flower-purple.svg"
+        },
+        {
+          "id": "b",
+          "text": "دايرة زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "دايرة حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "الصور ماشية: الأولى، التانية، الأولى… مين ييجي بعدها؟",
+      "explanation": "شاطر! الصورة التانية بتيجي بعد الأولى في الترتيب."
+    },
+    {
+      "id": "preschool-3-24",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "ab-pattern",
+      "prompt": "كمّل ترتيب مربع ومثلث.",
+      "referenceImage": "assets/preschool/pattern-square-yellow-triangle-green.svg",
+      "referenceAlt": "كمّل ترتيب مربع ومثلث.",
+      "options": [
+        {
+          "id": "a",
+          "text": "مثلث خضرا",
+          "image": "assets/preschool/triangle-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "مربع صفرا",
+          "image": "assets/preschool/square-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "وردة بنفسجي",
+          "image": "assets/preschool/flower-purple.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "الصور ماشية: الأولى، التانية، الأولى… مين ييجي بعدها؟",
+      "explanation": "شاطر! الصورة التانية بتيجي بعد الأولى في الترتيب."
+    },
+    {
+      "id": "preschool-3-25",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "ab-pattern",
+      "prompt": "كمّل ترتيب نجمة وقلب.",
+      "referenceImage": "assets/preschool/pattern-star-yellow-heart-red.svg",
+      "referenceAlt": "كمّل ترتيب نجمة وقلب.",
+      "options": [
+        {
+          "id": "a",
+          "text": "نجمة صفرا",
+          "image": "assets/preschool/star-yellow.svg"
+        },
+        {
+          "id": "b",
+          "text": "وردة بنفسجي",
+          "image": "assets/preschool/flower-purple.svg"
+        },
+        {
+          "id": "c",
+          "text": "قلب حمرا",
+          "image": "assets/preschool/heart-red.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "الصور ماشية: الأولى، التانية، الأولى… مين ييجي بعدها؟",
+      "explanation": "شاطر! الصورة التانية بتيجي بعد الأولى في الترتيب."
+    },
+    {
+      "id": "preschool-3-26",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "ab-pattern",
+      "prompt": "كمّل ترتيب تفاحة وسمكة.",
+      "referenceImage": "assets/preschool/pattern-apple-red-fish-blue.svg",
+      "referenceAlt": "كمّل ترتيب تفاحة وسمكة.",
+      "options": [
+        {
+          "id": "a",
+          "text": "وردة بنفسجي",
+          "image": "assets/preschool/flower-purple.svg"
+        },
+        {
+          "id": "b",
+          "text": "سمكة زرقا",
+          "image": "assets/preschool/fish-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "تفاحة حمرا",
+          "image": "assets/preschool/apple-red.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "الصور ماشية: الأولى، التانية، الأولى… مين ييجي بعدها؟",
+      "explanation": "شاطر! الصورة التانية بتيجي بعد الأولى في الترتيب."
+    },
+    {
+      "id": "preschool-3-27",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "size-match",
+      "prompt": "اختار الكورة الكبيرة زي الصورة.",
+      "referenceImage": "assets/preschool/circle-blue.svg",
+      "referenceAlt": "اختار الكورة الكبيرة زي الصورة.",
+      "options": [
+        {
+          "id": "a",
+          "text": "الكبيرة",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "حجم تاني",
+          "image": "assets/preschool/circle-blue-small.svg"
+        },
+        {
+          "id": "c",
+          "text": "مربع",
+          "image": "assets/preschool/square-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على حجم الكورة وكمان شكلها.",
+      "explanation": "حلو! نفس الشكل ونفس الحجم."
+    },
+    {
+      "id": "preschool-3-28",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "size-match",
+      "prompt": "اختار الكورة الصغيرة زي الصورة.",
+      "referenceImage": "assets/preschool/circle-blue-small.svg",
+      "referenceAlt": "اختار الكورة الصغيرة زي الصورة.",
+      "options": [
+        {
+          "id": "a",
+          "text": "حجم تاني",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "مربع",
+          "image": "assets/preschool/square-blue-small.svg"
+        },
+        {
+          "id": "c",
+          "text": "الصغيرة",
+          "image": "assets/preschool/circle-blue-small.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "بص على حجم الكورة وكمان شكلها.",
+      "explanation": "حلو! نفس الشكل ونفس الحجم."
+    },
+    {
+      "id": "preschool-3-29",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "two-attributes",
+      "prompt": "اختار مثلث بنفس الشكل واللون.",
+      "referenceImage": "assets/preschool/triangle-red.svg",
+      "referenceAlt": "اختار مثلث بنفس الشكل واللون.",
+      "options": [
+        {
+          "id": "a",
+          "text": "شكل تاني",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "لون تاني",
+          "image": "assets/preschool/triangle-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "طابق حاجتين سوا: الشكل واللون.",
+      "explanation": "برافو! الشكل واللون الاتنين زي الصورة."
+    },
+    {
+      "id": "preschool-3-30",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 3,
+      "skill": "two-attributes",
+      "prompt": "اختار مربع بنفس الشكل واللون.",
+      "referenceImage": "assets/preschool/square-green.svg",
+      "referenceAlt": "اختار مربع بنفس الشكل واللون.",
+      "options": [
+        {
+          "id": "a",
+          "text": "مربع",
+          "image": "assets/preschool/square-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "لون تاني",
+          "image": "assets/preschool/square-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "شكل تاني",
+          "image": "assets/preschool/circle-green.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "طابق حاجتين سوا: الشكل واللون.",
+      "explanation": "برافو! الشكل واللون الاتنين زي الصورة."
+    }
+  ]
+}

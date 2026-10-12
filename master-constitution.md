@@ -1,9 +1,9 @@
 # Faslna Project Constitution
 
-Version: 1.3.0 | Approved scope: 2026-10-11 | Mobile renewal amendment: 2026-10-12
+Version: 1.4.0 | Approved scope: 2026-10-11 | Mobile renewal amendment: 2026-10-12
 
 ## Purpose
-A cheerful Egyptian Arabic educational mobile web game for ages 6–14. Learning, cooperation and reciprocal respect are the goals. This is general learning, not a curriculum certification or treatment.
+A cheerful Egyptian Arabic educational mobile web game for ages 4–14. Learning, cooperation and reciprocal respect are the goals. This is general learning, not a curriculum certification or treatment.
 
 ## Architecture
 Buildless HTML, CSS, browser JavaScript modules and local JSON. No third-party application dependencies, accounts, server, tracking, paid API or remote asset dependency. Cloudflare Pages serves the site directory unchanged.
@@ -28,3 +28,10 @@ Use paginated steps to fit normal mobile viewports without page or inner scrolli
 
 ## Authorization and review
 The user explicitly approved project files, documentation, tests and deployment package on 2026-10-11, including more than five files. The primary agent reviews delegated research, content and code and may request corrections autonomously. Return to the user for scope changes or essential missing information. No Cloudflare account action is required for this ZIP handoff.
+
+## Release 1.4.0 — Preschool pictures and fresh start
+Ages four and five now use 30 picture tasks in three progressive stages. The existing 315 cards remain, for 345 total. Stage one uses two picture options; later stages use three. Preschool answers do not play audio or lose lives; after two different mistakes the correct picture is shown and the round can continue. Six-card rounds, teacher selection, stage unlocks, saved progress and results share the existing game flow. Difficulty overrides do not move preschool players into reading questions.
+
+Fresh start now clears the active player and teacher and opens a fresh player form with no selected name. Previous profiles and results are preserved. Empty names are rejected before advancing.
+
+Validation: 32 automated checks pass, including all existing tests and new picture asset, age routing, nine teacher/stage round combinations, guided correction and storage checks. Browser flows completed all three preschool stages, age-four and age-five onboarding, picture help, two-error correction, fresh-start name entry and saved-card reload. Picture rounds fit 320x568 and 640x360 without scrolling. Physical mobile hardware remains untested.

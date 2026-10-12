@@ -128,7 +128,7 @@ function render() {
 }
 
 function restartAdventure() {
-  if (!activeProfile()) {playerStep=0;navigate("new-player");return;}
+  if (!activeProfile()) {playerStep=0;playerDraft={namePreset:"",customName:"",age:4,avatar:AVATARS[0]};navigate("new-player");return;}
   navigate("restart-confirm");
 }
 
@@ -137,8 +137,9 @@ function renderRestartConfirm() {
   if (!profile) {navigate("new-player");return;}
   app.append(node("section", {class:"screen panel"},heading(t("restartConfirmTitle")),node("p", {class:"lead",text:t("restartConfirmBody",{name:profile.name})}),
     actionRow(button(t("cancel"),()=>navigate("welcome")),button(t("confirmRestart"),()=>{
-      if (!activeTeacher()) {updateProfile({round:null});navigate("teachers");return;}
-      startRound(activeTeacher().subject,effectiveBand(profile.age,profile.difficulty),1);
+      save({...state(),activeProfileId:null,activeTeacherId:null});
+      playerStep=0;playerDraft={namePreset:"",customName:"",age:4,avatar:AVATARS[0]};
+      navigate("new-player");
     },"primary"))));
 }
 
@@ -202,7 +203,7 @@ function renderPlayers() {
 }
 
 function renderNewPlayer() {
-  let chosenName = playerDraft.namePreset || ui.presetPlayers[0];
+  let chosenName = playerDraft.namePreset || "";
   let chosenAvatar = playerDraft.avatar;
   const error = node("p", {class:"muted",role:"alert"});
   const nameInput = node("input", {id:"player-name",type:"text",maxlength:"20",autocomplete:"nickname",placeholder:t("namePlaceholder"),value:playerDraft.customName});
@@ -213,7 +214,7 @@ function renderNewPlayer() {
   }}, name)));
   nameInput.addEventListener("input", () => {playerDraft.customName=nameInput.value;if (nameInput.value.trim()) {chosenName = ""; nameChips.querySelectorAll("button").forEach(item => item.setAttribute("aria-pressed","false"));}});
   const ageInput = node("select", {id:"player-age"});
-  for (let age=6;age<=14;age++) ageInput.append(node("option", {value:age,text:String(age)}));
+  for (let age=4;age<=14;age++) ageInput.append(node("option", {value:age,text:String(age)}));
   ageInput.value=String(playerDraft.age);
   ageInput.addEventListener("change",()=>{playerDraft.age=Number(ageInput.value);});
   const avatarGrid = node("div", {class:"grid profile-grid"});
@@ -233,14 +234,14 @@ function renderNewPlayer() {
     node("div", {class:"section-title",text:t("presetNames")}),nameChips,
     node("div", {class:"field"},node("label", {for:"player-name",text:t("customName")}),nameInput),
     node("div", {class:"field"},node("label", {for:"player-age",text:t("ageLabel")}),ageInput),
-    actionRow(button(t("next"),()=>{playerDraft.age=Number(ageInput.value);playerStep=1;render();},"primary"))));
+    actionRow(button(t("next"),()=>{if (!(playerDraft.customName.trim() || chosenName)) {error.textContent=t("nameRequired");first.querySelector(".panel").append(error);return;}playerDraft.age=Number(ageInput.value);playerStep=1;render();},"primary"))));
   const second = node("div", {class:"screen"},node("div", {class:"back-row"},button(t("back"),()=>{playerStep=0;render();})),heading(t("avatarLabel")),panel(avatarGrid,error,
     actionRow(button(t("previous"),()=>{playerStep=0;render();}),button(t("createPlayer"),create,"primary"))));
   app.append(playerStep===0?first:second);
 }
 
 function renderTeachers() {
-  const section = node("div", {class:"screen"},back(activeProfile() && activeTeacher() ? "map" : "players"),heading(t("chooseTeacher")),node("p", {class:"lead",text:t("teacherLead")}));
+  const section = node("div", {class:"screen"},back(activeProfile() && activeTeacher() ? "map" : "players"),heading(t("chooseTeacher")),node("p", {class:"lead",text:t(activeProfile()?.age<=5?"preschoolTeacherLead":"teacherLead")}));
   const grid = node("div", {class:"grid teacher-grid"});
   const teachers=allTeachers(), maxPage=Math.max(0,Math.ceil(teachers.length/2)-1);
   teacherPage=Math.min(teacherPage,maxPage);
@@ -279,7 +280,7 @@ function renderMap() {
   root.append(node("div", {class:"summary-strip"},
     node("span", {class:"pill player-pill"},avatarImage(profile.avatar),node("span", {text:profile.name})),
     node("span", {class:"pill",text:t("teacherSummary",{name:teacher.name})}),
-    node("span", {class:"pill",text:t(teacher.subject)}),
+    node("span", {class:"pill",text:t(band==="preschool"?"preschoolLevel":teacher.subject)}),
     node("span", {class:"pill",text:t("starCount",{count:totalStars(profile.progress)})})));
   root.append(actionRow(button(t("difficulty"),()=>navigate("difficulty"))));
   if (profile.round) {
@@ -310,6 +311,7 @@ function renderMapOptions() {
 function renderDifficulty() {
   const profile=activeProfile();
   if (!profile) {navigate("players");return;}
+  if (profile.age<=5) {app.append(node("div", {class:"screen"},back("map"),heading(t("preschoolLevel")),panel(node("p", {text:t("preschoolIntro")}))));return;}
   const diff=node("div", {class:"chip-row"});
   for (const value of ["auto","easier","harder"]) diff.append(node("button", {type:"button",class:"chip","aria-pressed":profile.difficulty===value,onclick:() => {updateProfile({difficulty:value});render();}},t(`difficulty${value[0].toUpperCase()}${value.slice(1)}`)));
   const band=effectiveBand(profile.age,profile.difficulty);
@@ -343,17 +345,21 @@ function renderRound() {
   question.append(node("div", {class:"question-meta"},node("span", {class:"pill",text:t("cardProgress",{current:round.index+1})}),node("span", {class:"pill",text:t("scoreNow",{score:round.score})})),
     node("div", {class:"summary-strip",role:"status"},node("span", {class:"pill",text:t("livesLeft",{count:round.livesLeft,max:round.maxLives})}),node("span", {class:"pill",text:t("hintsLeft",{count:round.hintsLeft,max:round.maxHints})})),
     node("div", {class:`progress-line step-${round.index}`,role:"progressbar","aria-valuemin":"0","aria-valuemax":"6","aria-valuenow":String(round.index),"aria-label":t("cardProgress",{current:round.index+1})},node("span")),
-    node("div", {class:"eyebrow",text:t(card.kind==="social"?"social":round.subject)}),
+    node("div", {class:"eyebrow",text:t(round.band==="preschool"?"preschoolLevel":card.kind==="social"?"social":round.subject)}),
     node("h1", {class:"question-prompt",text:card.prompt}),
     node("h2", {class:"section-title",text:t("chooseAnswer")}));
+  if (round.band === "preschool") {
+    root.classList.add("preschool-round");
+    question.append(node("img", {class:"picture-reference",src:card.referenceImage,alt:card.referenceAlt,width:"200",height:"130"}));
+  }
   const choices=node("div", {class:"choices"});
-  card.options.forEach((option,index)=>choices.append(node("button", {type:"button",class:`choice ${round.resolved&&option.id===card.answerId?"correct":""} ${!round.resolved&&round.wrongIds.includes(option.id)?"wrong":""}`,disabled:round.resolved||round.wrongIds.includes(option.id)?"":null,onclick:()=>{
+  card.options.forEach((option,index)=>choices.append(node("button", {type:"button",class:`choice ${(round.resolved || (round.band==="preschool" && round.hintUsed))&&option.id===card.answerId?"correct":""} ${!round.resolved&&round.wrongIds.includes(option.id)?"wrong":""}`,disabled:round.resolved||round.wrongIds.includes(option.id)?"":null,onclick:()=>{
     const next=answerRound(activeProfile().round,card,option.id);
-    updateProfile({round:next});if(next.resolved) void playEncouragement(state().settings.soundEnabled);render();
+    updateProfile({round:next});if(next.resolved && round.band!=="preschool") void playEncouragement(state().settings.soundEnabled);render();
     say(next.livesLeft === 0 ? t("gameOverTitle") : next.resolved?t("correct"):t("tryAgain"));
     if (next.livesLeft === 0) app.focus({preventScroll:true});
     document.querySelector(".feedback")?.focus({preventScroll:true});
-  }},node("span", {class:"choice-marker","aria-hidden":"true",text:String(index+1)}),node("span", {text:option.text}))));
+  }},...(round.band==="preschool"?[node("img", {src:option.image,alt:option.text,width:"200",height:"130"})]:[node("span", {class:"choice-marker","aria-hidden":"true",text:String(index+1)}),node("span", {text:option.text})]))));
   question.append(choices);
   if (!round.resolved && !round.hintUsed) question.append(actionRow(button(t("askHint"),()=>{
     updateProfile({round:revealHint(activeProfile().round)});render();
@@ -363,7 +369,7 @@ function renderRound() {
     const advanced=advanceRound(activeProfile().round);updateProfile({round:advanced});
     if (advanced.index===6) finishRound(); else navigate("round");
   },"primary")));
-  else if (round.hintUsed || round.wrongIds.length) question.append(node("div", {class:"feedback try-again",tabindex:"-1"},node("strong", {text:round.wrongIds.length?t("tryAgain"):t("hintTitle")}),round.hintUsed ? node("p", {text:card.hint}) : null));
+  else if (round.hintUsed || round.wrongIds.length) question.append(node("div", {class:"feedback try-again",tabindex:"-1"},node("strong", {text:round.wrongIds.length?t(round.band==="preschool"?"pictureTryAgain":"tryAgain"):t("hintTitle")}),round.hintUsed ? node("p", {text:card.hint}) : null));
   root.append(question);app.append(root);
 }
 
@@ -472,12 +478,14 @@ function renderHelp() {
 
 async function boot() {
   try {
-    const [uiResponse,contentResponse]=await Promise.all([fetch(new URL("../locales/ar-ui.json",import.meta.url)),fetch(new URL("../locales/ar-content.json",import.meta.url))]);
-    if (!uiResponse.ok || !contentResponse.ok) throw new Error("Load failed");
+    const [uiResponse,contentResponse,pictureResponse]=await Promise.all([fetch(new URL("../locales/ar-ui.json",import.meta.url)),fetch(new URL("../locales/ar-content.json",import.meta.url)),fetch(new URL("../locales/ar-preschool.json",import.meta.url))]);
+    if (!uiResponse.ok || !contentResponse.ok || !pictureResponse.ok) throw new Error("Load failed");
     ui=await uiResponse.json();
     const content=await contentResponse.json();
     if (content.schemaVersion!==1 || !Array.isArray(content.cards)) throw new Error("Invalid content");
-    cards=content.cards;
+    const pictures=await pictureResponse.json();
+    if(pictures.schemaVersion!==1 || !Array.isArray(pictures.cards)) throw new Error("Invalid picture content");
+    cards=[...content.cards,...pictures.cards];
     store=createStore();
     const recovered=recoverSavedRounds(store.get(),cards);
     recoveredRound=recovered.recovered;

@@ -35,3 +35,8 @@ The final delivery archive contains only site contents. Source documentation and
 - site/locales/ar-manifest.json: localized install manifest.
 - site/assets/icon-180.png, icon-192.png, icon-512.png: home screen icons.
 - tests/install.test.mjs: resolved install scope and actual icon dimensions.
+
+- site/locales/ar-preschool.json: 30 picture tasks and accessible option labels.
+- site/assets/preschool/*.svg: local shapes, objects, quantities and AB patterns.
+- tests/preschool.test.mjs: assets, age routing, guided correction and persistence.
+- plans/03-plan-preschool.md: approved preschool feature and restart repair.

@@ -1,7 +1,7 @@
 # Project Context
 
-Status: release 1.3.0 packaged and tested; local preview available for user review before deployment.
-Target release: 1.3.0 (2026-10-12). Previous verified release: outputs/faslna-v1-1-0.
+Status: release 1.4.0 packaged and tested; local preview available for user review before deployment.
+Target release: 1.4.0 (2026-10-12). Previous verified release: outputs/faslna-v1-1-0.
 
 ## Decisions
 - Name: Adventures of Our Classroom (Egyptian Arabic display copy in localization).
@@ -38,3 +38,10 @@ User approved a public repository named faslna-game under the DataCodex account 
 
 ## 1.3.0 — Mobile installation
 Added localized standalone web app manifest, 192/512 PNG icons with safe maskable artwork, and 180px Apple touch icon. Welcome installation invitation appears once per mobile browser session and hides in standalone mode. Supporting browsers use the native prompt after a user click; others receive localized menu instructions. No service worker or offline promise is introduced, avoiding stale cached releases. Existing local progress is unchanged. Browser UI checked at 320x568 and 640x360; actual device installation after HTTPS deployment remains untested.
+
+## Release 1.4.0 — Preschool pictures and fresh start
+Ages four and five now use 30 picture tasks in three progressive stages. The existing 315 cards remain, for 345 total. Stage one uses two picture options; later stages use three. Preschool answers do not play audio or lose lives; after two different mistakes the correct picture is shown and the round can continue. Six-card rounds, teacher selection, stage unlocks, saved progress and results share the existing game flow. Difficulty overrides do not move preschool players into reading questions.
+
+Fresh start now clears the active player and teacher and opens a fresh player form with no selected name. Previous profiles and results are preserved. Empty names are rejected before advancing.
+
+Validation: 32 automated checks pass, including all existing tests and new picture asset, age routing, nine teacher/stage round combinations, guided correction and storage checks. Browser flows completed all three preschool stages, age-four and age-five onboarding, picture help, two-error correction, fresh-start name entry and saved-card reload. Picture rounds fit 320x568 and 640x360 without scrolling. Physical mobile hardware remains untested.
