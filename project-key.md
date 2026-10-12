@@ -40,3 +40,6 @@ The final delivery archive contains only site contents. Source documentation and
 - site/assets/preschool/*.svg: local shapes, objects, quantities and AB patterns.
 - tests/preschool.test.mjs: assets, age routing, guided correction and persistence.
 - plans/03-plan-preschool.md: approved preschool feature and restart repair.
+
+- site/assets/preschool/relation-*.svg and scene-*.svg: relational choice illustrations and question scenes.
+- plans/04-plan-relational-pictures.md: approved redesign and random replay review.

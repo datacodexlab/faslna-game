@@ -29,11 +29,27 @@ export function stageUnlocked(progress, subject, band, stage) {
 
 function sampleCards(pool, count, excluded, random) {
   const available = pool.filter(card => !excluded.includes(card.id));
-  const preferred = available.length >= count ? available : pool;
+  const preferred = available;
   const shuffled = [...preferred];
   for (let index = shuffled.length - 1; index > 0; index--) {
     const draw = Math.min(index, Math.max(0, Math.floor(random() * (index + 1))));
     [shuffled[index], shuffled[draw]] = [shuffled[draw], shuffled[index]];
+  }
+  if (shuffled.length < count) {
+    const repeats=pool.filter(card=>excluded.includes(card.id));
+    for (let index=repeats.length-1;index>0;index--) {
+      const draw=Math.min(index,Math.max(0,Math.floor(random()*(index+1))));
+      [repeats[index],repeats[draw]]=[repeats[draw],repeats[index]];
+    }
+    shuffled.push(...repeats.slice(0,count-shuffled.length));
+    for (let index=shuffled.length-1;index>0;index--) {
+      const draw=Math.min(index,Math.max(0,Math.floor(random()*(index+1))));
+      [shuffled[index],shuffled[draw]]=[shuffled[draw],shuffled[index]];
+    }
+  }
+  if (shuffled.length && excluded.includes(shuffled[0].id)) {
+    const freshIndex=shuffled.findIndex(card=>!excluded.includes(card.id));
+    if (freshIndex>0) [shuffled[0],shuffled[freshIndex]]=[shuffled[freshIndex],shuffled[0]];
   }
   return shuffled.slice(0, count);
 }

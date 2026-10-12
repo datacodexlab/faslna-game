@@ -45,3 +45,5 @@ NAEYC supports playful shape exploration, matching, sorting, counting and simple
 - https://www.cdc.gov/act-early/milestones/4-years.html
 
 Design inference: ten identical-picture matches, followed by four color matches, three quantity matches (1–3), three shape matches across color changes, then two quantity tasks (4–5), four alternating AB patterns, two size matches and two simultaneous shape/color matches. This is a product sequence, not a standardized curriculum. A helper can demonstrate the first task because this prototype deliberately has no narration. Every question includes a visual model; labels and numeric symbols are not the only cues. No timer, life loss or developmental grading is introduced.
+
+Relational redesign: the earlier NAEYC sources guide patterning, concrete one-to-one correspondence and attribute reasoning. Animal/food, habitat, missing-part and before/after scenes are editorial extensions using familiar everyday concepts, not a claim those exact tasks were experimentally validated. No time pressure or developmental diagnosis is added.

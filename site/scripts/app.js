@@ -323,7 +323,7 @@ function startRound(subject,band,stage,teacherId=activeTeacher()?.id) {
     const profile=activeProfile(), key=progressKey(subject,band,stage);
     const round={...newRound(cards,subject,band,stage,profile.history?.[key]),teacherId};
     updateProfile({round,history:{...profile.history,[key]:selectionHistory(round)}});
-    roundView="prompt";choiceIndex=0;roundError=false;navigate("round");
+    recoveredRound=false;roundView="prompt";choiceIndex=0;roundError=false;navigate("round");
   }
   catch {roundError=true;render();say(t("contentError"));}
 }

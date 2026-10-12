@@ -12,12 +12,28 @@ test('thirty local picture tasks progress from two to three choices with complet
   for(const card of cards){
     assert.equal(card.options.length,card.stage===1?2:3);
     assert.equal(new Set(card.options.map(o=>o.image)).size,card.options.length);
+    assert.ok(card.options.every(o=>o.image!==card.referenceImage));
     assert.ok(card.options.some(o=>o.id===card.answerId));
     assert.ok(card.prompt.length<65);
     for(const image of [card.referenceImage,...card.options.map(o=>o.image)]){
       assert.match(image,/^assets\/preschool\/[a-z0-9-]+\.svg$/);
       assert.match(await readFile(new URL(image,site),'utf8'),/^<svg/);
     }
+  }
+});
+
+test('picture bank contains five tasks for each relational skill and replay minimizes repeats',()=>{
+  for(const skill of ['food-relation','home-relation','missing-part','one-to-one','pattern','before-after']){
+    assert.equal(cards.filter(c=>c.skill===skill).length,5);
+  }
+  for(const stage of [1,2,3]){
+    const first=newRound(cards,'math','preschool',stage,{},()=>.2);
+    const snapshot=[...first.cardIds];
+    const next=newRound(cards,'math','preschool',stage,selectionHistory(first),()=>.7);
+    assert.equal(next.cardIds.filter(id=>!snapshot.includes(id)).length,4);
+    assert.notDeepEqual(next.cardIds,snapshot);
+    assert.ok(!snapshot.includes(next.cardIds[0]));
+    assert.deepEqual(first.cardIds,snapshot);
   }
 });
 

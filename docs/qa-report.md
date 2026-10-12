@@ -25,3 +25,10 @@ Ages four and five now use 30 picture tasks in three progressive stages. The exi
 Fresh start now clears the active player and teacher and opens a fresh player form with no selected name. Previous profiles and results are preserved. Empty names are rejected before advancing.
 
 Validation: 32 automated checks pass, including all existing tests and new picture asset, age routing, nine teacher/stage round combinations, guided correction and storage checks. Browser flows completed all three preschool stages, age-four and age-five onboarding, picture help, two-error correction, fresh-start name entry and saved-card reload. Picture rounds fit 320x568 and 640x360 without scrolling. Physical mobile hardware remains untested.
+
+## Release 1.4.1 — Relational scenes and randomized replay
+Replaced all 30 preschool matching tasks with six groups of five: animal/food, animal/home, missing parts, one-item-per-plate quantities, alternating patterns and before/after natural changes. Scene images differ from all answer assets. All assets are local vectors. The existing two/three-choice progression, no-audio behavior and gentle correction remain.
+
+New rounds are randomized for all players and age bands. Sampling now uses all available unseen cards before filling from the previous round when a small pool makes repetition unavoidable. A fresh card leads the round whenever available. Saved unfinished rounds retain their draw when resumed. The former preschool question IDs were retired so unfinished obsolete rounds recover safely while saved profile results remain.
+
+Automated verification: 33 checks, including all previous tests, six relational skill groups, image assets and minimum-repeat replay across preschool stages; older-age randomized replay checks remain. Browser verification covered a completed relational round, all image loading, resumed draw and portrait/landscape layout. Physical mobile devices remain untested.
