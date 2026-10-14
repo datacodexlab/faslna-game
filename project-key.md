@@ -43,3 +43,7 @@ The final delivery archive contains only site contents. Source documentation and
 
 - site/assets/preschool/relation-*.svg and scene-*.svg: relational choice illustrations and question scenes.
 - plans/04-plan-relational-pictures.md: approved redesign and random replay review.
+
+- `site/scripts/celebration.js`: two-press selection state and ten local victory canvas effects.
+- `tests/celebration.test.mjs`: selection confirmation and random effect rotation checks.
+- `plans/05-plan-celebrations.md`: approved release 1.5.0 scope.

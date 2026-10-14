@@ -1,5 +1,6 @@
 import {effectiveBand, progressKey, stageUnlocked, newRound, selectionHistory, revealHint, answerRound, advanceRound, completeStage, totalStars, recoverSavedRounds, SUBJECTS} from "./game.js";
 import {createStore, AVATARS} from "./storage.js";
+import {celebrate, stopCelebration, selectAnswer} from "./celebration.js";
 import {playEncouragement} from "./audio.js";
 
 const app = document.querySelector("#app");
@@ -18,6 +19,7 @@ window.addEventListener("appinstalled",()=>{deferredInstall=null;document.queryS
 let cards;
 let store;
 let screen = "welcome";
+let pendingAnswer = null;
 let resultRound = null;
 let roundError = false;
 let recoveredRound = false;
@@ -80,6 +82,7 @@ function updateProfile(changes) {
 }
 
 function navigate(next) {
+  pendingAnswer=null;stopCelebration();
   if (next==="help" && screen!=="help") helpPage=0;
   screen = next;
   render();
@@ -347,13 +350,16 @@ function renderRound() {
     node("div", {class:`progress-line step-${round.index}`,role:"progressbar","aria-valuemin":"0","aria-valuemax":"6","aria-valuenow":String(round.index),"aria-label":t("cardProgress",{current:round.index+1})},node("span")),
     node("div", {class:"eyebrow",text:t(round.band==="preschool"?"preschoolLevel":card.kind==="social"?"social":round.subject)}),
     node("h1", {class:"question-prompt",text:card.prompt}),
-    node("h2", {class:"section-title",text:t("chooseAnswer")}));
+    node("h2", {class:"section-title",text:t("chooseAnswerTwice")}));
   if (round.band === "preschool") {
     root.classList.add("preschool-round");
     question.append(node("img", {class:"picture-reference",src:card.referenceImage,alt:card.referenceAlt,width:"200",height:"130"}));
   }
   const choices=node("div", {class:"choices"});
-  card.options.forEach((option,index)=>choices.append(node("button", {type:"button",class:`choice ${(round.resolved || (round.band==="preschool" && round.hintUsed))&&option.id===card.answerId?"correct":""} ${!round.resolved&&round.wrongIds.includes(option.id)?"wrong":""}`,disabled:round.resolved||round.wrongIds.includes(option.id)?"":null,onclick:()=>{
+  card.options.forEach((option,index)=>choices.append(node("button", {type:"button",class:`choice ${(round.resolved || (round.band==="preschool" && round.hintUsed))&&option.id===card.answerId?"correct":""} ${round.wrongIds.includes(option.id)?"wrong":""} ${pendingAnswer===option.id?"pending":""}`,"aria-pressed":pendingAnswer===option.id?"true":"false",disabled:round.resolved||round.wrongIds.includes(option.id)?"":null,onclick:()=>{
+    const selection=selectAnswer(pendingAnswer,option.id);
+    pendingAnswer=selection.pending;
+    if(!selection.confirmed) {render();document.querySelector(".choice.pending")?.focus({preventScroll:true});say(t("confirmAnswer"));return;}
     const next=answerRound(activeProfile().round,card,option.id);
     updateProfile({round:next});if(next.resolved && round.band!=="preschool") void playEncouragement(state().settings.soundEnabled);render();
     say(next.livesLeft === 0 ? t("gameOverTitle") : next.resolved?t("correct"):t("tryAgain"));
@@ -441,6 +447,7 @@ function finishRound() {
   resultRound=round;
   updateProfile({progress:completeStage(profile.progress,round),round:null});
   navigate("result");
+  celebrate(state().settings.reducedMotion);
 }
 
 function renderResult() {

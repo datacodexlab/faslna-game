@@ -49,3 +49,10 @@ Replaced all 30 preschool matching tasks with six groups of five: animal/food, a
 New rounds are randomized for all players and age bands. Sampling now uses all available unseen cards before filling from the previous round when a small pool makes repetition unavoidable. A fresh card leads the round whenever available. Saved unfinished rounds retain their draw when resumed. The former preschool question IDs were retired so unfinished obsolete rounds recover safely while saved profile results remain.
 
 Automated verification: 33 checks, including all previous tests, six relational skill groups, image assets and minimum-repeat replay across preschool stages; older-age randomized replay checks remain. Browser verification covered a completed relational round, all image loading, resumed draw and portrait/landscape layout. Physical mobile devices remain untested.
+
+## Release 1.5.0 — Confirmed choices and victory celebrations
+User approved ten lightweight randomized victory effects and two-press answer confirmation on 2026-10-14. First press selects an option in yellow without scoring or spending lives; pressing that option again submits it. Selecting another option replaces the pending choice. Correct answers are green and wrong answers red, including wrong choices after guided preschool resolution. Pending choices are transient and cleared on navigation. Saved round schema is unchanged.
+
+Ten local canvas effects rotate randomly without immediate repeats: stars, rockets, confetti, balloons, fireworks, bubbles, rainbow, butterflies, starburst and trophy. Effects last three seconds, never intercept clicks, clean up on navigation and use a static two-second composition for reduced motion. No dependencies or additional audio.
+
+Validation: 35 automated checks passed. Browser verified yellow selection with unchanged score, confirmed wrong red, correct green, saved preschool round completion and result flow. Portrait 320x568 stayed within viewport. Physical device testing remains outstanding.

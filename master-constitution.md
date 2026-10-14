@@ -1,6 +1,6 @@
 # Faslna Project Constitution
 
-Version: 1.4.1 | Approved scope: 2026-10-11 | Mobile renewal amendment: 2026-10-12
+Version: 1.5.0 | Approved scope: 2026-10-11 | Mobile renewal amendment: 2026-10-12
 
 ## Purpose
 A cheerful Egyptian Arabic educational mobile web game for ages 4–14. Learning, cooperation and reciprocal respect are the goals. This is general learning, not a curriculum certification or treatment.
@@ -18,7 +18,7 @@ All Arabic strings belong in site/locales/*.json; source code and comments are E
 Three subjects, three age bands, three stages, six cards per round. The expanded local bank targets 270 academic and 45 social cards. Names and teachers customize presentation; teacher subject selects academic content. Random selection avoids the preceding round's cards when the pool allows. Progress and selected cards are browser-local; no cross-device sync or leaderboards. Scores never label intelligence or moral worth.
 
 ## Versioning
-Semantic versioning. Every released code change updates the visible application version and changelog. Current target release is 1.2.2.
+Semantic versioning. Every released code change updates the visible application version and changelog. Current release is 1.5.0.
 
 ## Round limits
 Each new round snapshots budgets by its actual band: young five lives/three hints, middle three/two, older two/one. Wrong answers consume one life; zero lives ends the round. Hints are never silently granted after a mistake. Reloading preserves counters and the question draw. A failed round awards no completion, badge or permanent stars. Stage restart redraws that stage with fresh counters; home restart begins stage one after confirmation, preserving historical best results and other players.
@@ -42,3 +42,6 @@ Replaced all 30 preschool matching tasks with six groups of five: animal/food, a
 New rounds are randomized for all players and age bands. Sampling now uses all available unseen cards before filling from the previous round when a small pool makes repetition unavoidable. A fresh card leads the round whenever available. Saved unfinished rounds retain their draw when resumed. The former preschool question IDs were retired so unfinished obsolete rounds recover safely while saved profile results remain.
 
 Automated verification: 33 checks, including all previous tests, six relational skill groups, image assets and minimum-repeat replay across preschool stages; older-age randomized replay checks remain. Browser verification covered a completed relational round, all image loading, resumed draw and portrait/landscape layout. Physical mobile devices remain untested.
+
+## Approved interaction amendment — 2026-10-14
+Answers require selection then confirmation on the same option. Victory effects remain local, bounded, nonblocking and respectful of reduced-motion preferences.
