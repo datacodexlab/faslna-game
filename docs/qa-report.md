@@ -42,3 +42,7 @@ Validation: 35 automated checks passed. Browser verified yellow selection with u
 
 ## Release 1.5.1 — Immediate celebration visibility
 Distributed moving particles across the viewport from the first frame instead of starting all particles outside one edge. Radial bursts start at a visible radius; rainbow arcs clamp radius on very small viewports. Browser reproduced a real six-card completion and observed a rendered bubbles canvas and visible bubbles in the result screenshot. Celebrations remain triggered by round completion.
+
+## Release 1.5.2 — Answer and round celebration timing
+User clarified celebrations must run after each confirmed correct answer and three consecutive random effects after a completed round. Each effect excludes its immediate predecessor. Wrong answers and automatic preschool correction do not trigger answer celebrations. Navigation cancels current animation and queued effects. No scoring or storage changes.
+Validation: 36 automated checks passed, including one answer effect, three queued round effects, no immediate repeat and cancellation on navigation. Browser observed answer bubbles and consecutive round butterflies/fireworks at 320x568 without overflow.

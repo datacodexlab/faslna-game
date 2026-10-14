@@ -1,6 +1,6 @@
 import {effectiveBand, progressKey, stageUnlocked, newRound, selectionHistory, revealHint, answerRound, advanceRound, completeStage, totalStars, recoverSavedRounds, SUBJECTS} from "./game.js";
 import {createStore, AVATARS} from "./storage.js";
-import {celebrate, stopCelebration, selectAnswer} from "./celebration.js";
+import {celebrate, stopCelebration, selectAnswer, celebrationCount} from "./celebration.js";
 import {playEncouragement} from "./audio.js";
 
 const app = document.querySelector("#app");
@@ -362,6 +362,7 @@ function renderRound() {
     if(!selection.confirmed) {render();document.querySelector(".choice.pending")?.focus({preventScroll:true});say(t("confirmAnswer"));return;}
     const next=answerRound(activeProfile().round,card,option.id);
     updateProfile({round:next});if(next.resolved && round.band!=="preschool") void playEncouragement(state().settings.soundEnabled);render();
+    if(option.id===card.answerId && next.resolved) celebrate(state().settings.reducedMotion,celebrationCount("answer"));
     say(next.livesLeft === 0 ? t("gameOverTitle") : next.resolved?t("correct"):t("tryAgain"));
     if (next.livesLeft === 0) app.focus({preventScroll:true});
     document.querySelector(".feedback")?.focus({preventScroll:true});
@@ -447,7 +448,7 @@ function finishRound() {
   resultRound=round;
   updateProfile({progress:completeStage(profile.progress,round),round:null});
   navigate("result");
-  celebrate(state().settings.reducedMotion);
+  celebrate(state().settings.reducedMotion,celebrationCount("round"));
 }
 
 function renderResult() {

@@ -1,6 +1,7 @@
 export const EFFECTS = ['stars','rockets','confetti','balloons','fireworks','bubbles','rainbow','butterflies','starburst','trophy'];
 let previous = -1;
 let cleanup = null;
+let sequenceTimer = 0;
 export function selectAnswer(pending, id) {
   return pending === id ? {pending:null,confirmed:true} : {pending:id,confirmed:false};
 }
@@ -8,9 +9,19 @@ export function nextEffect(last, random = Math.random) {
   const offset = Math.floor(random() * (EFFECTS.length - (last < 0 ? 0 : 1)));
   return last >= 0 && offset >= last ? offset + 1 : offset;
 }
-export function stopCelebration() { cleanup?.();cleanup=null; }
-export function celebrate(reduced = false) {
+export function celebrationCount(event) { return event === 'round' ? 3 : 1; }
+export function stopCelebration() { clearTimeout(sequenceTimer);sequenceTimer=0;cleanup?.();cleanup=null; }
+export function celebrate(reduced = false, count = 1) {
   stopCelebration();
+  let remaining=Math.min(3,Math.max(1,count));
+  const next=()=>{
+    playCelebration(reduced);
+    if(--remaining>0) sequenceTimer=setTimeout(next,3100);
+  };
+  next();
+}
+function playCelebration(reduced) {
+  cleanup?.();cleanup=null;
   previous=nextEffect(previous);
   const effect=EFFECTS[previous];
   const canvas=document.createElement('canvas');
@@ -59,7 +70,7 @@ export function celebrate(reduced = false) {
       ctx.restore();
     });
     if(!quiet&&t<3) frame=requestAnimationFrame(draw);
-    else timer=setTimeout(stopCelebration,quiet?2000:0);
+    else timer=setTimeout(()=>{cleanup?.();cleanup=null;},quiet?2000:0);
   }
   frame=requestAnimationFrame(draw);
 }
