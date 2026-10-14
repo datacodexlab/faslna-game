@@ -56,3 +56,6 @@ User approved ten lightweight randomized victory effects and two-press answer co
 Ten local canvas effects rotate randomly without immediate repeats: stars, rockets, confetti, balloons, fireworks, bubbles, rainbow, butterflies, starburst and trophy. Effects last three seconds, never intercept clicks, clean up on navigation and use a static two-second composition for reduced motion. No dependencies or additional audio.
 
 Validation: 35 automated checks passed. Browser verified yellow selection with unchanged score, confirmed wrong red, correct green, saved preschool round completion and result flow. Portrait 320x568 stayed within viewport. Physical device testing remains outstanding.
+
+## Release 1.5.1 — Immediate celebration visibility
+Distributed moving particles across the viewport from the first frame instead of starting all particles outside one edge. Radial bursts start at a visible radius; rainbow arcs clamp radius on very small viewports. Browser reproduced a real six-card completion and observed a rendered bubbles canvas and visible bubbles in the result screenshot. Celebrations remain triggered by round completion.

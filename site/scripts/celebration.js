@@ -34,7 +34,7 @@ export function celebrate(reduced = false) {
     ctx.clearRect(0,0,w,h);
     ctx.globalAlpha=quiet?1:Math.min(1,(3-t)*2);
     if(effect==='rainbow') {
-      colors.forEach((color,i)=>{ctx.strokeStyle=color;ctx.lineWidth=12;ctx.beginPath();ctx.arc(w/2,h*.7,Math.min(w*.42,h*.5)-i*13,Math.PI,2*Math.PI);ctx.stroke();});
+      colors.forEach((color,i)=>{ctx.strokeStyle=color;ctx.lineWidth=12;ctx.beginPath();ctx.arc(w/2,h*.7,Math.max(4,Math.min(w*.42,h*.5)-i*13),Math.PI,2*Math.PI);ctx.stroke();});
     }
     if(effect==='trophy') {
       ctx.fillStyle='#ffc43d';ctx.strokeStyle='#bd7b09';ctx.lineWidth=5;
@@ -44,10 +44,10 @@ export function celebrate(reduced = false) {
       ctx.fillRect(x-5,y+55,10,25);ctx.fillRect(x-28,y+80,56,10);
     }
     particles.forEach((p,i)=>{
-      const age=Math.max(0,t-p.delay),rise=(age*.42)%1;
+      const age=Math.max(0,t-p.delay),rise=(p.y/h+age*.42)%1;
       let x=p.x+Math.sin(age*3+p.phase)*18,y=-30+rise*(h+70);
       if(['balloons','bubbles','butterflies','rockets'].includes(effect)) y=h+30-rise*(h+100);
-      if(['fireworks','starburst'].includes(effect)){const angle=i*Math.PI*2/particles.length,r=(age*.5%1)*Math.min(w,h)*.65;x=w/2+Math.cos(angle)*r;y=h*.4+Math.sin(angle)*r;}
+      if(['fireworks','starburst'].includes(effect)){const angle=i*Math.PI*2/particles.length,r=(.12+age*.5%1)*Math.min(w,h)*.65;x=w/2+Math.cos(angle)*r;y=h*.4+Math.sin(angle)*r;}
       if(quiet){x=p.x;y=p.y;}
       ctx.save();ctx.translate(x,y);ctx.fillStyle=p.color;ctx.strokeStyle=p.color;ctx.lineWidth=2;
       if(effect==='bubbles'){ctx.beginPath();ctx.arc(0,0,p.size,0,Math.PI*2);ctx.stroke();}
