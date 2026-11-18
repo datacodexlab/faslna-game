@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1 — Forced update button (2026-11-19)
+- Added a "حدّث اللعبة" button on the welcome screen and in the map menu. It reloads the game with a cache-busting version query so the installed app fetches the latest release immediately.
+- No progress or storage changes.
+
 ## 1.6.0 — Trial stages 4-5 for age 4 (2026-11-19)
 - Added two trial preschool stages: stage 4 "حديقة الألوان" (6 colour-match cards) and stage 5 "عالم الأشكال والعد" (6 shape and counting cards), for a total of 42 picture cards.
 - Added 12 bright SVG scenes and new option art: orange/pink/purple colour circles and numbers 1-4.

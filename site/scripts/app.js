@@ -169,6 +169,12 @@ function showInstallInvite(manual = false) {
   document.body.append(dialog);dialog.showModal();
 }
 
+function forceUpdate() {
+  const url = new URL(window.location.href);
+  url.searchParams.set("v", String(Date.now()));
+  window.location.href = url.toString();
+}
+
 function renderWelcome() {
   const hero = node("section", {class:"hero screen"},
     node("div", {class:"eyebrow",text:t("brand")}),
@@ -182,6 +188,7 @@ function renderWelcome() {
       button(t("howToPlay"), () => navigate("help"))),
     node("div", {class:"actions center"},button(t("restartAdventure"),restartAdventure,"accent"),soundButton()));
   if (!isInstalled()) hero.append(button(t("installGame"),()=>showInstallInvite(true),"secondary",{id:"install-button"}));
+  hero.append(button(t("updateGame"),forceUpdate,"secondary",{id:"update-button"}));
   app.append(hero);
 }
 
@@ -310,7 +317,8 @@ function renderMap() {
 
 function renderMapOptions() {
   app.append(node("div", {class:"screen"},back("map"),heading(t("mapMenu")),panel(
-    actionRow(button(t("changePlayer"),()=>navigate("players"),"primary"),button(t("changeTeacher"),()=>navigate("teachers")),button(t("helpSettings"),()=>navigate("help"))))));
+    actionRow(button(t("changePlayer"),()=>navigate("players"),"primary"),button(t("changeTeacher"),()=>navigate("teachers")),button(t("helpSettings"),()=>navigate("help"))),
+    actionRow(button(t("updateGame"),forceUpdate,"secondary")))));
 }
 
 function renderDifficulty() {
