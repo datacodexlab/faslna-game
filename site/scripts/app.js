@@ -38,14 +38,27 @@ function startConfirmTimer(optionId, onConfirm) {
 let resultRound = null;
 let roundError = false;
 let recoveredRound = false;
-let playerStep = 0;
-let playerPage = 0;
 let teacherPage = 0;
 let mapStep = 0;
 let helpPage = 0;
 let roundView = "prompt";
 let choiceIndex = 0;
-let playerDraft = {namePreset: "", customName: "", age: 6, avatar: AVATARS[0]};
+const SUBJECT_TEACHER = { math: "teacher-math", arabic: "teacher-arabic", science: "teacher-science" };
+let setupDraft = null;
+
+function presetDefault(name) { return ui.presetPlayerDefaults[name]; }
+
+function initSetupDraft() {
+  const profile = activeProfile();
+  const name = profile && ui.presetPlayers.includes(profile.name) ? profile.name : ui.presetPlayers[0];
+  const saved = state().profiles.find(p => p.name === name);
+  setupDraft = {
+    name,
+    age: saved?.age ?? presetDefault(name).age,
+    avatar: saved?.avatar ?? presetDefault(name).avatar,
+    subject: activeTeacher()?.subject ?? "math"
+  };
+}
 
 function node(tag, props = {}, ...children) {
   const element = document.createElement(tag);
@@ -105,6 +118,7 @@ function updateProfile(changes) {
 function navigate(next) {
   pendingAnswer=null;clearConfirmTimer();stopCelebration();
   if (next==="help" && screen!=="help") helpPage=0;
+  if (next==="setup") initSetupDraft();
   screen = next;
   render();
   app.focus({preventScroll:true});
@@ -138,8 +152,7 @@ function render() {
   recoveryNotice.hidden = !recoveredRound;
   document.body.classList.toggle("reduce-motion", state().settings.reducedMotion);
   if (screen === "welcome") renderWelcome();
-  else if (screen === "players") renderPlayers();
-  else if (screen === "new-player") renderNewPlayer();
+  else if (screen === "setup") renderSetup();
   else if (screen === "teachers") renderTeachers();
   else if (screen === "new-teacher") renderNewTeacher();
   else if (screen === "map") renderMap();
@@ -152,18 +165,17 @@ function render() {
 }
 
 function restartAdventure() {
-  if (!activeProfile()) {playerStep=0;playerDraft={namePreset:"",customName:"",age:4,avatar:AVATARS[0]};navigate("new-player");return;}
+  if (!activeProfile()) {navigate("setup");return;}
   navigate("restart-confirm");
 }
 
 function renderRestartConfirm() {
   const profile=activeProfile();
-  if (!profile) {navigate("new-player");return;}
+  if (!profile) {navigate("setup");return;}
   app.append(node("section", {class:"screen panel"},heading(t("restartConfirmTitle")),node("p", {class:"lead",text:t("restartConfirmBody",{name:profile.name})}),
     actionRow(button(t("cancel"),()=>navigate("welcome")),button(t("confirmRestart"),()=>{
       save({...state(),activeProfileId:null,activeTeacherId:null});
-      playerStep=0;playerDraft={namePreset:"",customName:"",age:4,avatar:AVATARS[0]};
-      navigate("new-player");
+      navigate("setup");
     },"primary"))));
 }
 
@@ -205,72 +217,63 @@ function renderWelcome() {
     node("img", {class:"illustration",src:"assets/classroom.svg",alt:""}),
     node("p", {class:"muted",text:t("welcomeNote")}),
     node("div", {class:"actions center"},
-      button(activeProfile() ? t("resume") : t("start"), () => navigate(activeProfile() ? "map" : "players"), "primary"),
-      button(t("howToPlay"), () => navigate("help"))),
+      button(activeProfile() ? t("resume") : t("start"), () => navigate(activeProfile() ? "map" : "setup"), "primary"),
+      button(t("howToPlay"), () => navigate("help")),
+      ...(activeProfile() ? [button(t("changePlayer"), () => navigate("setup"), "secondary")] : [])),
     node("div", {class:"actions center"},button(t("restartAdventure"),restartAdventure,"accent"),soundButton()));
-  if (state().profiles.length) {
-    const quickPick = node("div", {class:"grid profile-grid"});
-    for (const profile of state().profiles) quickPick.append(node("button", {type:"button",class:"select-card",onclick:() => {save({...state(),activeProfileId:profile.id}); navigate("map");}},
-      avatarImage(profile.avatar),
-      node("strong", {text:profile.name}),
-      node("span", {class:"muted",text:`${profile.age}`})));
-    hero.append(node("h2", {class:"section-title",text:t("savedPlayers")}), quickPick);
-  }
   if (!isInstalled()) hero.append(button(t("installGame"),()=>showInstallInvite(true),"secondary",{id:"install-button"}));
   hero.append(button(t("updateGame"),forceUpdate,"secondary",{id:"update-button"}));
   app.append(hero);
 }
 
-function renderPlayers() {
-  const section = node("div", {class:"screen"}, back("welcome"), heading(t("choosePlayer")));
-  if (state().profiles.length) {
-    const grid = node("div", {class:"grid profile-grid"});
-    for (const profile of state().profiles) {
-      grid.append(node("button", {type:"button",class:"select-card",onclick:() => {save({...state(),activeProfileId:profile.id}); navigate("map");}},
-        avatarImage(profile.avatar),
-        node("strong", {text:profile.name}),
-        node("span", {class:"muted",text:`${profile.age}`})));
-    }
-    section.append(node("h2", {class:"section-title",text:t("savedPlayers")}), grid);
+function renderSetup() {
+  const draft = setupDraft;
+  const panelNode = node("div", {class:"panel"});
+  const grid = node("div", {class:"grid profile-grid"});
+  for (const name of ui.presetPlayers) {
+    const saved = state().profiles.find(p => p.name === name);
+    const avatar = name === draft.name ? draft.avatar : (saved?.avatar ?? presetDefault(name).avatar);
+    const age = name === draft.name ? draft.age : (saved?.age ?? presetDefault(name).age);
+    grid.append(node("button", {type:"button",class:`select-card ${name === draft.name ? "is-selected" : ""}`,"aria-pressed":name === draft.name,onclick:() => {
+      draft.name = name;
+      draft.age = saved?.age ?? presetDefault(name).age;
+      draft.avatar = saved?.avatar ?? presetDefault(name).avatar;
+      render();
+    }}, avatarImage(avatar), node("strong", {text:name}), node("span", {class:"muted",text:String(age)})));
   }
-  section.append(actionRow(button(t("newPlayer"), () => {playerStep=0;playerDraft={namePreset:ui.presetPlayers[0],customName:"",age:6,avatar:AVATARS[0]};navigate("new-player");}, "primary")));
-  app.append(section);
-}
-
-function renderNewPlayer() {
-  let chosenName = playerDraft.namePreset || "";
-  let chosenAvatar = playerDraft.avatar;
-  const error = node("p", {class:"muted",role:"alert"});
-  const nameInput = node("input", {id:"player-name",type:"text",maxlength:"20",autocomplete:"nickname",placeholder:t("namePlaceholder"),value:playerDraft.customName});
-  const nameChips = node("div", {class:"chip-row"});
-  ui.presetPlayers.forEach(name => nameChips.append(node("button", {type:"button",class:"chip","aria-pressed":!playerDraft.customName && name === chosenName,onclick:() => {
-    chosenName = name; playerDraft.namePreset=name;playerDraft.customName="";nameInput.value = "";
-    nameChips.querySelectorAll("button").forEach(item => item.setAttribute("aria-pressed",String(item.textContent === name)));
-  }}, name)));
-  nameInput.addEventListener("input", () => {playerDraft.customName=nameInput.value;if (nameInput.value.trim()) {chosenName = ""; nameChips.querySelectorAll("button").forEach(item => item.setAttribute("aria-pressed","false"));}});
-  const ageInput = node("select", {id:"player-age"});
-  for (let age=4;age<=14;age++) ageInput.append(node("option", {value:age,text:String(age)}));
-  ageInput.value=String(playerDraft.age);
-  ageInput.addEventListener("change",()=>{playerDraft.age=Number(ageInput.value);});
+  panelNode.append(node("div", {class:"section-title",text:t("presetNames")}), grid);
+  const stepper = node("div", {class:"age-stepper"},
+    button("▲", () => {draft.age=Math.min(14,draft.age+1);render();}, "accent", {"aria-label":t("ageUp")}),
+    node("span", {}, node("span", {class:"age-num",text:String(draft.age)}), node("span", {class:"muted",text:` ${t(draft.age >= 11 ? "yearSingular" : "yearPlural")}`})),
+    button("▼", () => {draft.age=Math.max(4,draft.age-1);render();}, "accent", {"aria-label":t("ageDown")}));
+  panelNode.append(node("div", {class:"section-title",text:t("ageStepper")}), stepper);
   const avatarGrid = node("div", {class:"grid profile-grid"});
-  for (const avatar of AVATARS) avatarGrid.append(node("button", {type:"button",class:`avatar-choice ${avatar === chosenAvatar ? "is-selected" : ""}`,"aria-pressed":avatar === chosenAvatar,onclick:() => {
-    chosenAvatar = avatar;playerDraft.avatar=avatar;
-    avatarGrid.querySelectorAll("button").forEach(item => {item.classList.toggle("is-selected",item.dataset.avatar === avatar);item.setAttribute("aria-pressed",String(item.dataset.avatar === avatar));});
-  },"data-avatar":avatar}, avatarImage(avatar), node("div", {text:t(`avatar${avatar[0].toUpperCase()}${avatar.slice(1)}`)})));
-  const create = () => {
-    const name = (playerDraft.customName.trim() || playerDraft.namePreset || chosenName).replace(/\s+/g," ");
-    if (!name || [...name].length > 20) {error.textContent=t("nameRequired");return;}
-    if (state().profiles.length >= 50) {error.textContent=t("playerLimit");return;}
-    const profile = {id:crypto.randomUUID(),name,age:Number(ageInput.value),avatar:chosenAvatar,difficulty:"auto",progress:{},history:{},round:null};
-    save({...state(),profiles:[...state().profiles,profile],activeProfileId:profile.id});
+  for (const avatar of AVATARS) avatarGrid.append(node("button", {type:"button",class:`avatar-choice ${avatar === draft.avatar ? "is-selected" : ""}`,"aria-pressed":avatar === draft.avatar,onclick:() => {draft.avatar=avatar;render();},"data-avatar":avatar}, avatarImage(avatar), node("div", {text:t(`avatar${avatar[0].toUpperCase()}${avatar.slice(1)}`)})));
+  panelNode.append(node("div", {class:"section-title",text:t("avatarLabel")}), avatarGrid);
+  if (draft.age >= 6) {
+    const chips = node("div", {class:"chip-row"});
+    for (const subject of SUBJECTS) chips.append(node("button", {type:"button",class:"chip","aria-pressed":draft.subject === subject,onclick:() => {draft.subject=subject;render();}}, t(subject)));
+    panelNode.append(node("div", {class:"section-title",text:t("subjectLabel")}), chips);
+  }
+  const error = node("p", {class:"muted",role:"alert"});
+  panelNode.append(error, actionRow(button(t("next"), () => {
+    const existing = state().profiles.find(p => p.name === draft.name);
+    if (!existing && state().profiles.length >= 50) {error.textContent=t("playerLimit");return;}
+    const nextState = {...state()};
+    if (existing) {
+      nextState.profiles = nextState.profiles.map(p => p.id === existing.id ? {...p, age:draft.age, avatar:draft.avatar} : p);
+      nextState.activeProfileId = existing.id;
+    } else {
+      const profile = {id:crypto.randomUUID(),name:draft.name,age:draft.age,avatar:draft.avatar,difficulty:"auto",progress:{},history:{},round:null};
+      nextState.profiles = [...nextState.profiles, profile];
+      nextState.activeProfileId = profile.id;
+    }
+    nextState.activeTeacherId = draft.age >= 6 ? SUBJECT_TEACHER[draft.subject] : ui.presetTeachers[0].id;
+    save(nextState);
+    setupDraft = null;
     navigate("map");
-  };
-  app.append(node("div", {class:"screen"},back("players"),heading(t("newPlayer")),panel(
-    node("div", {class:"section-title",text:t("presetNames")}),nameChips,
-    node("div", {class:"field"},node("label", {for:"player-name",text:t("customName")}),nameInput),
-    node("div", {class:"field"},node("label", {for:"player-age",text:t("ageLabel")}),ageInput),
-    node("div", {class:"section-title",text:t("avatarLabel")}),avatarGrid,error,
-    actionRow(button(t("createPlayer"),create,"primary")))));
+  }, "primary")));
+  app.append(node("div", {class:"screen"}, back("welcome"), heading(t("choosePlayer")), panelNode));
 }
 
 function renderTeachers() {
@@ -305,7 +308,7 @@ function renderNewTeacher() {
 
 function renderMap() {
   const profile=activeProfile(), teacher=ensureTeacher();
-  if (!profile) {navigate("players");return;}
+  if (!profile) {navigate("setup");return;}
   const band=effectiveBand(profile.age,profile.difficulty);
   const root=node("div", {class:"screen"},heading(t("mapTitle"),t("mapGreeting",{name:profile.name})));
   if (roundError) root.append(node("div", {class:"notice",role:"alert",text:t("contentError")}));
@@ -342,13 +345,13 @@ function renderMap() {
 
 function renderMapOptions() {
   app.append(node("div", {class:"screen"},back("map"),heading(t("mapMenu")),panel(
-    actionRow(button(t("changePlayer"),()=>navigate("players"),"primary"),button(t("changeTeacher"),()=>navigate("teachers")),button(t("helpSettings"),()=>navigate("help"))),
+    actionRow(button(t("changePlayer"),()=>navigate("setup"),"primary"),button(t("changeTeacher"),()=>navigate("teachers")),button(t("helpSettings"),()=>navigate("help"))),
     actionRow(button(t("updateGame"),forceUpdate,"secondary")))));
 }
 
 function renderDifficulty() {
   const profile=activeProfile();
-  if (!profile) {navigate("players");return;}
+  if (!profile) {navigate("setup");return;}
   if (profile.age<=5) {app.append(node("div", {class:"screen"},back("map"),heading(t("preschoolLevel")),panel(node("p", {text:t("preschoolIntro")}))));return;}
   const diff=node("div", {class:"chip-row"});
   for (const value of ["auto","easier","harder"]) diff.append(node("button", {type:"button",class:"chip","aria-pressed":profile.difficulty===value,onclick:() => {updateProfile({difficulty:value});render();}},t(`difficulty${value[0].toUpperCase()}${value.slice(1)}`)));
@@ -480,7 +483,7 @@ function renderGameOver(round) {
     node("p", {class:"lead",text:t("gameOverBody")}),node("p", {text:t("gameOverScore",{score:round.score})}),
     actionRow(button(t("retryStage"),()=>{
       startRound(round.subject,round.band,round.stage,round.teacherId);
-    },"primary"),button(t("newPlayerRound"),()=>{updateProfile({round:null});playerStep=0;playerPage=0;navigate("players");}),button(t("backToMap"),clearRound))));
+    },"primary"),button(t("newPlayerRound"),()=>{updateProfile({round:null});navigate("setup");}),button(t("backToMap"),clearRound))));
 }
 
 function finishRound() {
@@ -502,7 +505,7 @@ function renderResult() {
     node("div", {class:"result-score",text:`${round.score}/12`}),
     node("p", {class:"lead",text:t("resultLead",{score:round.score})}),
     node("p", {text:t("resultBest",{score:best})}),
-    node("div", {class:"actions center"},button(t("replayRound"),()=>startRound(round.subject,round.band,round.stage,round.teacherId),"primary"),button(t("newPlayerRound"),()=>{playerStep=0;playerPage=0;navigate("players");}),round.stage<(round.band==="preschool"?5:3)?button(t("nextStage"),()=>{
+    node("div", {class:"actions center"},button(t("replayRound"),()=>startRound(round.subject,round.band,round.stage,round.teacherId),"primary"),button(t("newPlayerRound"),()=>{navigate("setup");}),round.stage<(round.band==="preschool"?5:3)?button(t("nextStage"),()=>{
       const teacher=activeTeacher();
       if (teacher?.subject===round.subject) startRound(round.subject,round.band,round.stage+1);
       else navigate("map");
