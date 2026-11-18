@@ -1,14 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {ageBand,effectiveBand,newRound,answerRound,advanceRound,completeStage,savedRoundMatchesContent,selectionHistory} from '../site/scripts/game.js';
+import {ageBand,effectiveBand,newRound,answerRound,advanceRound,completeStage,savedRoundMatchesContent,selectionHistory,progressKey,stageUnlocked} from '../site/scripts/game.js';
 import {createStore,freshState,validateState} from '../site/scripts/storage.js';
 const site=new URL('../site/',import.meta.url);
 const {cards}=JSON.parse(await readFile(new URL('locales/ar-preschool.json',site),'utf8'));
 
-test('thirty local picture tasks progress from two to three choices with complete image assets',async()=>{
-  assert.equal(cards.length,30);assert.equal(new Set(cards.map(c=>c.id)).size,30);
+test('forty-two local picture tasks progress from two to three choices with complete image assets',async()=>{
+  assert.equal(cards.length,42);assert.equal(new Set(cards.map(c=>c.id)).size,42);
   for(const stage of [1,2,3])assert.equal(cards.filter(c=>c.stage===stage).length,10);
+  for(const stage of [4,5])assert.equal(cards.filter(c=>c.stage===stage).length,6);
   for(const card of cards){
     assert.equal(card.options.length,card.stage===1?2:3);
     assert.equal(new Set(card.options.map(o=>o.image)).size,card.options.length);
@@ -26,6 +27,8 @@ test('picture bank contains five tasks for each relational skill and replay mini
   for(const skill of ['food-relation','home-relation','missing-part','one-to-one','pattern','before-after']){
     assert.equal(cards.filter(c=>c.skill===skill).length,5);
   }
+  assert.equal(cards.filter(c=>c.skill==='color-match').length,6);
+  assert.equal(cards.filter(c=>c.skill==='shape-count').length,6);
   for(const stage of [1,2,3]){
     const first=newRound(cards,'math','preschool',stage,{},()=>.2);
     const snapshot=[...first.cardIds];
@@ -40,7 +43,7 @@ test('picture bank contains five tasks for each relational skill and replay mini
 test('ages four and five cannot shift into reading content and every teacher can serve every picture stage',()=>{
   for(const age of [4,5])for(const difficulty of ['auto','easier','harder'])assert.equal(effectiveBand(age,difficulty),'preschool');
   assert.equal(ageBand(6),'young');
-  for(const subject of ['math','arabic','science'])for(const stage of [1,2,3]){
+  for(const subject of ['math','arabic','science'])for(const stage of [1,2,3,4,5]){
     let round=newRound(cards,subject,'preschool',stage);
     assert.equal(savedRoundMatchesContent(round,cards),true);
     assert.equal(selectionHistory(round).academic.length,6);
@@ -64,4 +67,18 @@ test('picture mistakes give visual completion after two errors without spending 
   assert.equal(validateState(state),true);
   let value;const storage={getItem:()=>value,setItem:(_,v)=>{value=v;},removeItem:()=>{value=null;}};
   createStore(storage).save(state);assert.deepEqual(createStore(storage).get(),state);
+});
+
+test('trial stages 4-5 unlock only for preschool and serve six distinct cards',()=>{
+  assert.equal(progressKey('math','preschool',4),'math:preschool:4');
+  assert.equal(progressKey('math','preschool',5),'math:preschool:5');
+  assert.throws(()=>progressKey('math','young',4));
+  assert.equal(stageUnlocked({},'math','preschool',4),false);
+  assert.equal(stageUnlocked({'math:preschool:3':{completed:true,best:8}},'math','preschool',4),true);
+  assert.equal(stageUnlocked({'math:preschool:4':{completed:true,best:8}},'math','preschool',5),true);
+  for(const stage of [4,5]){
+    const round=newRound(cards,'math','preschool',stage);
+    assert.equal(new Set(round.cardIds).size,6);
+    assert.ok(round.cardIds.every(id=>cards.find(c=>c.id===id).stage===stage));
+  }
 });

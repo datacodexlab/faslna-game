@@ -290,19 +290,21 @@ function renderMap() {
     root.append(node("div", {class:"notice"},node("p", {text:t(profile.round.livesLeft === 0 ? "gameOverBody" : "resumeRound")}),button(t(profile.round.livesLeft === 0 ? "reviewRound" : "continueRound"),()=>navigate("round"),"primary")),
       actionRow(button(t("mapMenu"),()=>navigate("map-options"))));app.append(root);return;
   }
+  const totalStages=band==="preschool"?5:3;
+  mapStep=Math.max(0,Math.min(mapStep,totalStages-1));
   const stages=node("div", {class:"map-path section"});
   for (let stage=mapStep+1;stage<=mapStep+1;stage++) {
     const key=progressKey(teacher.subject,band,stage);
     const saved=profile.progress[key];
     const unlocked=stageUnlocked(profile.progress,teacher.subject,band,stage);
-    const title=t(["stageOne","stageTwo","stageThree"][stage-1]);
+    const title=t(["stageOne","stageTwo","stageThree","stageFour","stageFive"][stage-1]);
     stages.append(node("article", {class:`stage-card ${unlocked?"":"locked"}`},
       node("div", {class:"stage-num","aria-hidden":"true",text:String(stage)}),
       node("div", {},node("h2", {text:title}),node("p", {class:"muted",text:saved?.completed?t("stageDone"):unlocked?t("stageReady"):t("stageLocked")}),
-        saved?.completed?node("div", {},node("div", {class:"stage-stars",text:t("bestScore",{score:saved.best})}),node("span", {class:"badge",text:t(["badgeOne","badgeTwo","badgeThree"][stage-1])})):null,
+        saved?.completed?node("div", {},node("div", {class:"stage-stars",text:t("bestScore",{score:saved.best})}),node("span", {class:"badge",text:t(["badgeOne","badgeTwo","badgeThree","badgeFour","badgeFive"][stage-1])})):null,
         unlocked?button(saved?.completed?t("replayStage"):t("playStage"),()=>startRound(teacher.subject,band,stage),stage===1?"primary":"accent",profile.round?{disabled:"",title:t("finishRoundFirst")}:{}):null)));
   }
-  root.append(stages,pageControls(()=>{mapStep--;render();},()=>{mapStep++;render();},mapStep,3),actionRow(button(t("mapMenu"),()=>navigate("map-options"))));
+  root.append(stages,pageControls(()=>{mapStep--;render();},()=>{mapStep++;render();},mapStep,totalStages),actionRow(button(t("mapMenu"),()=>navigate("map-options"))));
   app.append(root);
 }
 
@@ -456,11 +458,11 @@ function renderResult() {
   const round=resultRound;
   const best=activeProfile().progress[progressKey(round.subject,round.band,round.stage)].best;
   app.append(node("div", {class:"screen result-card"},node("div", {class:"stars-large","aria-hidden":"true",text:"★ ★ ★"}),heading(t("resultTitle")),
-    node("div", {class:"badge",text:t("badgeEarned",{badge:t(["badgeOne","badgeTwo","badgeThree"][round.stage-1])})}),
+    node("div", {class:"badge",text:t("badgeEarned",{badge:t(["badgeOne","badgeTwo","badgeThree","badgeFour","badgeFive"][round.stage-1])})}),
     node("div", {class:"result-score",text:`${round.score}/12`}),
     node("p", {class:"lead",text:t("resultLead",{score:round.score})}),
     node("p", {text:t("resultBest",{score:best})}),
-    node("div", {class:"actions center"},button(t("replayRound"),()=>startRound(round.subject,round.band,round.stage,round.teacherId),"primary"),button(t("newPlayerRound"),()=>{playerStep=0;playerPage=0;navigate("players");}),round.stage<3?button(t("nextStage"),()=>{
+    node("div", {class:"actions center"},button(t("replayRound"),()=>startRound(round.subject,round.band,round.stage,round.teacherId),"primary"),button(t("newPlayerRound"),()=>{playerStep=0;playerPage=0;navigate("players");}),round.stage<(round.band==="preschool"?5:3)?button(t("nextStage"),()=>{
       const teacher=activeTeacher();
       if (teacher?.subject===round.subject) startRound(round.subject,round.band,round.stage+1);
       else navigate("map");

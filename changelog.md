@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0 — Trial stages 4-5 for age 4 (2026-11-19)
+- Added two trial preschool stages: stage 4 "حديقة الألوان" (6 colour-match cards) and stage 5 "عالم الأشكال والعد" (6 shape and counting cards), for a total of 42 picture cards.
+- Added 12 bright SVG scenes and new option art: orange/pink/purple colour circles and numbers 1-4.
+- Preschool stages now unlock 1-5; older age bands stay at 3 stages. Bright gradient and warm borders on preschool rounds.
+- Trial only: verify with a 4-year-old before expanding the bank further.
+
 ## 1.1.0 — 2026-10-12
 - Added three lives and two hint reveals per round, with visible counters.
 - A third wrong answer ends the round without granting completion or permanent rewards.

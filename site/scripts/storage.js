@@ -10,16 +10,16 @@ export function freshState() {
 }
 
 function validHistory(history) {
-  return history === undefined || (history && typeof history === "object" && !Array.isArray(history) && Object.entries(history).every(([key, value]) => /^(math|arabic|science):(preschool|young|middle|older):[123]$/.test(key) && value && [value.academic,value.social].every(list => Array.isArray(list) && list.every(id => typeof id === "string"))));
+  return history === undefined || (history && typeof history === "object" && !Array.isArray(history) && Object.entries(history).every(([key, value]) => /^(math|arabic|science):(preschool|young|middle|older):[1-5]$/.test(key) && value && [value.academic,value.social].every(list => Array.isArray(list) && list.every(id => typeof id === "string"))));
 }
 
 function validRound(round) {
   if (round && (!Number.isInteger(round.maxLives) || !Number.isInteger(round.maxHints) || round.maxLives < 2 || round.maxLives > 5 || round.maxHints < 1 || round.maxHints > 3 || !Number.isInteger(round.livesLeft) || round.livesLeft < 0 || round.livesLeft > round.maxLives || !Number.isInteger(round.hintsLeft) || round.hintsLeft < 0 || round.hintsLeft > round.maxHints)) return false;
-  return round === null || (round && typeof round === "object" && SUBJECTS.includes(round.subject) && BANDS.includes(round.band) && [1,2,3].includes(round.stage) && (round.teacherId === undefined || typeof round.teacherId === "string") && Array.isArray(round.cardIds) && round.cardIds.length === 6 && round.cardIds.every(id => typeof id === "string") && Number.isInteger(round.index) && round.index >= 0 && round.index <= 6 && Number.isInteger(round.score) && round.score >= 0 && round.score <= 12 && Array.isArray(round.wrongIds) && round.wrongIds.every(id => typeof id === "string") && typeof round.hintUsed === "boolean" && typeof round.resolved === "boolean" && (round.selectedId === null || typeof round.selectedId === "string"));
+  return round === null || (round && typeof round === "object" && SUBJECTS.includes(round.subject) && BANDS.includes(round.band) && [1,2,3,4,5].includes(round.stage) && (round.band === "preschool" || [1,2,3].includes(round.stage)) && (round.teacherId === undefined || typeof round.teacherId === "string") && Array.isArray(round.cardIds) && round.cardIds.length === 6 && round.cardIds.every(id => typeof id === "string") && Number.isInteger(round.index) && round.index >= 0 && round.index <= 6 && Number.isInteger(round.score) && round.score >= 0 && round.score <= 12 && Array.isArray(round.wrongIds) && round.wrongIds.every(id => typeof id === "string") && typeof round.hintUsed === "boolean" && typeof round.resolved === "boolean" && (round.selectedId === null || typeof round.selectedId === "string"));
 }
 
 function validProgress(progress) {
-  return progress && typeof progress === "object" && !Array.isArray(progress) && Object.entries(progress).every(([key, value]) => /^(math|arabic|science):(preschool|young|middle|older):[123]$/.test(key) && value && typeof value.completed === "boolean" && Number.isInteger(value.best) && value.best >= 0 && value.best <= 12);
+  return progress && typeof progress === "object" && !Array.isArray(progress) && Object.entries(progress).every(([key, value]) => /^(math|arabic|science):(preschool|young|middle|older):[1-5]$/.test(key) && value && typeof value.completed === "boolean" && Number.isInteger(value.best) && value.best >= 0 && value.best <= 12);
 }
 
 export function validateState(state) {

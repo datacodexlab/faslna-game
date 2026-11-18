@@ -44,3 +44,11 @@ body{min-height:100dvh}.page-shell{height:100dvh;min-height:0;display:flex;flex-
 .choice.pending,.choice.pending:hover:not(:disabled){background:#fff0a6;border-color:#ad7400;box-shadow:0 0 0 2px #e9b52c}
 .choice.correct:disabled{background:#d9f7dd;border-color:#23773a;opacity:1}.choice.wrong:disabled{background:#ffe0df;border-color:#b63131;opacity:1}
 .celebration-layer{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100;overflow:hidden}
+
+/* Trial stages 4-5: bright colours for preschool */
+.stage-card:nth-child(4) .stage-num{background:#f9a8d4;transform:rotate(5deg)}
+.stage-card:nth-child(5) .stage-num{background:#c4b5fd;transform:rotate(-6deg)}
+.preschool-round .picture-reference{border-color:#f59e0b;background:#fffbeb}
+.preschool-round .question-card{background:linear-gradient(180deg,#fffdf8 0%,#fef9c3 55%,#dcfce7 100%)}
+.preschool-round .choice{border-color:#f59e0b}
+.preschool-round .choice:hover:not(:disabled){border-color:#ea580c;background:#fff7ed}

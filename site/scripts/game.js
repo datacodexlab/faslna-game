@@ -18,7 +18,8 @@ export function effectiveBand(age, difficulty = "auto") {
 }
 
 export function progressKey(subject, band, stage) {
-  if (!SUBJECTS.includes(subject) || ![...BANDS,"preschool"].includes(band) || ![1, 2, 3].includes(stage)) throw new Error("Invalid progress key");
+  const validStages = band === "preschool" ? [1, 2, 3, 4, 5] : [1, 2, 3];
+  if (!SUBJECTS.includes(subject) || ![...BANDS,"preschool"].includes(band) || !validStages.includes(stage)) throw new Error("Invalid progress key");
   return `${subject}:${band}:${stage}`;
 }
 

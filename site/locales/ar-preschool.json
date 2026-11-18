@@ -880,6 +880,378 @@
       "answerId": "a",
       "hint": "فكّر إيه اللي بيحصل بعد كده في الطبيعة.",
       "explanation": "برافو! الصورة الجاية هي فراشة."
+    },
+    {
+      "id": "preschool-color-4-01",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "color-match",
+      "prompt": "التفاحة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-apple.svg",
+      "referenceAlt": "التفاحة دي لونها إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "أحمر",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "أزرق",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "أصفر",
+          "image": "assets/preschool/circle-yellow.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على لون التفاحة كويس.",
+      "explanation": "شاطر! التفاحة حمرا."
+    },
+    {
+      "id": "preschool-color-4-02",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "color-match",
+      "prompt": "البحر ده لونه إيه؟",
+      "referenceImage": "assets/preschool/scene-color-sea.svg",
+      "referenceAlt": "البحر ده لونه إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "أحمر",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "أزرق",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "أخضر",
+          "image": "assets/preschool/circle-green.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "لون الميه في الصورة إيه؟",
+      "explanation": "شاطر! البحر أزرق."
+    },
+    {
+      "id": "preschool-color-4-03",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "color-match",
+      "prompt": "الشمس دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-sun.svg",
+      "referenceAlt": "الشمس دي لونها إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "أزرق",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "أصفر",
+          "image": "assets/preschool/circle-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "أحمر",
+          "image": "assets/preschool/circle-red.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "الشمس بتنور بلون إيه؟",
+      "explanation": "شاطر! الشمس صفرا."
+    },
+    {
+      "id": "preschool-color-4-04",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "color-match",
+      "prompt": "العشب ده لونه إيه؟",
+      "referenceImage": "assets/preschool/scene-color-grass.svg",
+      "referenceAlt": "العشب ده لونه إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "أخضر",
+          "image": "assets/preschool/circle-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "وردي",
+          "image": "assets/preschool/circle-pink.svg"
+        },
+        {
+          "id": "c",
+          "text": "برتقالي",
+          "image": "assets/preschool/circle-orange.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "لون الزرع في الصورة إيه؟",
+      "explanation": "شاطر! العشب أخضر."
+    },
+    {
+      "id": "preschool-color-4-05",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "color-match",
+      "prompt": "الوردة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-flower.svg",
+      "referenceAlt": "الوردة دي لونها إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "أصفر",
+          "image": "assets/preschool/circle-yellow.svg"
+        },
+        {
+          "id": "b",
+          "text": "أحمر",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "بنفسجي",
+          "image": "assets/preschool/circle-purple.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "لون الوردة في الصورة إيه؟",
+      "explanation": "شاطر! الوردة بنفسجي."
+    },
+    {
+      "id": "preschool-color-4-06",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "color-match",
+      "prompt": "البالونة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-balloon.svg",
+      "referenceAlt": "البالونة دي لونها إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "برتقالي",
+          "image": "assets/preschool/circle-orange.svg"
+        },
+        {
+          "id": "b",
+          "text": "أزرق",
+          "image": "assets/preschool/circle-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "وردي",
+          "image": "assets/preschool/circle-pink.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "بص على لون البالونة.",
+      "explanation": "شاطر! البالونة برتقالي."
+    },
+    {
+      "id": "preschool-shape-5-01",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 5,
+      "skill": "shape-count",
+      "prompt": "كام نجمة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-stars.svg",
+      "referenceAlt": "كام نجمة في الصورة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "2",
+          "image": "assets/preschool/number-2.svg"
+        },
+        {
+          "id": "b",
+          "text": "3",
+          "image": "assets/preschool/number-3.svg"
+        },
+        {
+          "id": "c",
+          "text": "1",
+          "image": "assets/preschool/number-1.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "عد النجوم واحدة واحدة.",
+      "explanation": "شاطر! في نجمتين."
+    },
+    {
+      "id": "preschool-shape-5-02",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 5,
+      "skill": "shape-count",
+      "prompt": "كام تفاحة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-apples.svg",
+      "referenceAlt": "كام تفاحة في الصورة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "1",
+          "image": "assets/preschool/number-1.svg"
+        },
+        {
+          "id": "b",
+          "text": "2",
+          "image": "assets/preschool/number-2.svg"
+        },
+        {
+          "id": "c",
+          "text": "3",
+          "image": "assets/preschool/number-3.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "عد التفاح واحدة واحدة.",
+      "explanation": "شاطر! في 3 تفاحات."
+    },
+    {
+      "id": "preschool-shape-5-03",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 5,
+      "skill": "shape-count",
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-triangle.svg",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "مربع",
+          "image": "assets/preschool/square-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "عد أضلاع الشكل.",
+      "explanation": "شاطر! ده مثلث."
+    },
+    {
+      "id": "preschool-shape-5-04",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 5,
+      "skill": "shape-count",
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-square.svg",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "مربع",
+          "image": "assets/preschool/square-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-green.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "الشكل ده ليه 4 أضلاع متساوية.",
+      "explanation": "شاطر! ده مربع."
+    },
+    {
+      "id": "preschool-shape-5-05",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 5,
+      "skill": "shape-count",
+      "prompt": "كام سمكة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-fish.svg",
+      "referenceAlt": "كام سمكة في الصورة؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "3",
+          "image": "assets/preschool/number-3.svg"
+        },
+        {
+          "id": "b",
+          "text": "4",
+          "image": "assets/preschool/number-4.svg"
+        },
+        {
+          "id": "c",
+          "text": "2",
+          "image": "assets/preschool/number-2.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "عد السمك واحدة واحدة.",
+      "explanation": "شاطر! في 4 سمكات."
+    },
+    {
+      "id": "preschool-shape-5-06",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 5,
+      "skill": "shape-count",
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-circle.svg",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مثلث",
+          "image": "assets/preschool/triangle-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "دايرة",
+          "image": "assets/preschool/circle-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "مربع",
+          "image": "assets/preschool/square-green.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "الشكل ده مدور ومفيهوش أضلاع.",
+      "explanation": "شاطر! دي دايرة."
     }
   ]
 }
