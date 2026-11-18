@@ -30,8 +30,7 @@ function startConfirmTimer(optionId, onConfirm) {
   let secondsLeft = 3;
   countdownTimer = setInterval(() => {
     secondsLeft -= 1;
-    const current = document.querySelector(".choice.pending .countdown-badge");
-    if (current) current.textContent = String(Math.max(secondsLeft, 0));
+    if (badge && badge.isConnected) badge.textContent = String(Math.max(secondsLeft, 0));
     if (secondsLeft <= 0) clearInterval(countdownTimer);
   }, 1000);
   confirmTimer = setTimeout(() => { if (pendingAnswer === optionId) onConfirm(); }, 3000);
@@ -385,6 +384,7 @@ function renderRound() {
     question.append(node("img", {class:"picture-reference",src:card.referenceImage,alt:card.referenceAlt,width:"200",height:"130"}));
   }
   const confirmChoice=(optionId)=>{
+    pendingAnswer=null;
     clearConfirmTimer();
     const next=answerRound(activeProfile().round,card,optionId);
     updateProfile({round:next});if(next.resolved && round.band!=="preschool") void playEncouragement(state().settings.soundEnabled);render();
