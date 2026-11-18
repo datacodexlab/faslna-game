@@ -78,6 +78,12 @@ function state() { return store.get(); }
 function activeProfile() { return state().profiles.find(profile => profile.id === state().activeProfileId); }
 function allTeachers() { return [...ui.presetTeachers, ...state().teachers]; }
 function activeTeacher() { return allTeachers().find(teacher => teacher.id === state().activeTeacherId); }
+function ensureTeacher() {
+  if (activeTeacher()) return activeTeacher();
+  const fallback = ui.presetTeachers[0];
+  save({...state(), activeTeacherId: fallback.id});
+  return fallback;
+}
 function avatarImage(id) { return node("img", {class:"avatar-img",src:`assets/avatar-${id}.svg`,alt:"",width:"56",height:"56"}); }
 function soundButton() { return button(t(state().settings.soundEnabled ? "muteSound" : "enableSound"), () => {save({...state(),settings:{...state().settings,soundEnabled:!state().settings.soundEnabled}});render();},"secondary"); }
 function pageControls(previous, next, current, total) { return node("div", {class:"pager"},button(t("previous"),previous,"secondary",current===0?{disabled:""}:{}),node("span", {class:"pill",text:t("pageCount",{current:current+1,total})}),button(t("next"),next,"primary",current===total-1?{disabled:""}:{})); }
@@ -199,9 +205,17 @@ function renderWelcome() {
     node("img", {class:"illustration",src:"assets/classroom.svg",alt:""}),
     node("p", {class:"muted",text:t("welcomeNote")}),
     node("div", {class:"actions center"},
-      button(activeProfile() ? t("resume") : t("start"), () => navigate(activeProfile() ? (activeTeacher() ? "map" : "teachers") : "players"), "primary"),
+      button(activeProfile() ? t("resume") : t("start"), () => navigate(activeProfile() ? "map" : "players"), "primary"),
       button(t("howToPlay"), () => navigate("help"))),
     node("div", {class:"actions center"},button(t("restartAdventure"),restartAdventure,"accent"),soundButton()));
+  if (state().profiles.length) {
+    const quickPick = node("div", {class:"grid profile-grid"});
+    for (const profile of state().profiles) quickPick.append(node("button", {type:"button",class:"select-card",onclick:() => {save({...state(),activeProfileId:profile.id}); navigate("map");}},
+      avatarImage(profile.avatar),
+      node("strong", {text:profile.name}),
+      node("span", {class:"muted",text:`${profile.age}`})));
+    hero.append(node("h2", {class:"section-title",text:t("savedPlayers")}), quickPick);
+  }
   if (!isInstalled()) hero.append(button(t("installGame"),()=>showInstallInvite(true),"secondary",{id:"install-button"}));
   hero.append(button(t("updateGame"),forceUpdate,"secondary",{id:"update-button"}));
   app.append(hero);
@@ -211,17 +225,13 @@ function renderPlayers() {
   const section = node("div", {class:"screen"}, back("welcome"), heading(t("choosePlayer")));
   if (state().profiles.length) {
     const grid = node("div", {class:"grid profile-grid"});
-    const profiles=state().profiles;
-    const maxPage=Math.max(0,Math.ceil(profiles.length/2)-1);
-    playerPage=Math.min(playerPage,maxPage);
-    for (const profile of profiles.slice(playerPage*2,playerPage*2+2)) {
-      grid.append(node("button", {type:"button",class:"select-card",onclick:() => {save({...state(),activeProfileId:profile.id}); navigate(activeTeacher() ? "map" : "teachers");}},
+    for (const profile of state().profiles) {
+      grid.append(node("button", {type:"button",class:"select-card",onclick:() => {save({...state(),activeProfileId:profile.id}); navigate("map");}},
         avatarImage(profile.avatar),
         node("strong", {text:profile.name}),
         node("span", {class:"muted",text:`${profile.age}`})));
     }
     section.append(node("h2", {class:"section-title",text:t("savedPlayers")}), grid);
-    if (maxPage) section.append(pageControls(()=>{playerPage--;render();},()=>{playerPage++;render();},playerPage,maxPage+1));
   }
   section.append(actionRow(button(t("newPlayer"), () => {playerStep=0;playerDraft={namePreset:ui.presetPlayers[0],customName:"",age:6,avatar:AVATARS[0]};navigate("new-player");}, "primary")));
   app.append(section);
@@ -249,20 +259,18 @@ function renderNewPlayer() {
   },"data-avatar":avatar}, avatarImage(avatar), node("div", {text:t(`avatar${avatar[0].toUpperCase()}${avatar.slice(1)}`)})));
   const create = () => {
     const name = (playerDraft.customName.trim() || playerDraft.namePreset || chosenName).replace(/\s+/g," ");
-    if (!name || [...name].length > 20) {error.textContent=t("nameRequired");playerStep=0;render();return;}
+    if (!name || [...name].length > 20) {error.textContent=t("nameRequired");return;}
     if (state().profiles.length >= 50) {error.textContent=t("playerLimit");return;}
-    const profile = {id:crypto.randomUUID(),name,age:playerDraft.age,avatar:chosenAvatar,difficulty:"auto",progress:{},history:{},round:null};
+    const profile = {id:crypto.randomUUID(),name,age:Number(ageInput.value),avatar:chosenAvatar,difficulty:"auto",progress:{},history:{},round:null};
     save({...state(),profiles:[...state().profiles,profile],activeProfileId:profile.id});
-    navigate(activeTeacher() ? "map" : "teachers");
+    navigate("map");
   };
-  const first = node("div", {class:"screen"},back("players"),heading(t("newPlayer")),panel(
+  app.append(node("div", {class:"screen"},back("players"),heading(t("newPlayer")),panel(
     node("div", {class:"section-title",text:t("presetNames")}),nameChips,
     node("div", {class:"field"},node("label", {for:"player-name",text:t("customName")}),nameInput),
     node("div", {class:"field"},node("label", {for:"player-age",text:t("ageLabel")}),ageInput),
-    actionRow(button(t("next"),()=>{if (!(playerDraft.customName.trim() || chosenName)) {error.textContent=t("nameRequired");first.querySelector(".panel").append(error);return;}playerDraft.age=Number(ageInput.value);playerStep=1;render();},"primary"))));
-  const second = node("div", {class:"screen"},node("div", {class:"back-row"},button(t("back"),()=>{playerStep=0;render();})),heading(t("avatarLabel")),panel(avatarGrid,error,
-    actionRow(button(t("previous"),()=>{playerStep=0;render();}),button(t("createPlayer"),create,"primary"))));
-  app.append(playerStep===0?first:second);
+    node("div", {class:"section-title",text:t("avatarLabel")}),avatarGrid,error,
+    actionRow(button(t("createPlayer"),create,"primary")))));
 }
 
 function renderTeachers() {
@@ -296,9 +304,8 @@ function renderNewTeacher() {
 }
 
 function renderMap() {
-  const profile=activeProfile(), teacher=activeTeacher();
+  const profile=activeProfile(), teacher=ensureTeacher();
   if (!profile) {navigate("players");return;}
-  if (!teacher) {navigate("teachers");return;}
   const band=effectiveBand(profile.age,profile.difficulty);
   const root=node("div", {class:"screen"},heading(t("mapTitle"),t("mapGreeting",{name:profile.name})));
   if (roundError) root.append(node("div", {class:"notice",role:"alert",text:t("contentError")}));
