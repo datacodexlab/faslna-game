@@ -20,6 +20,22 @@ let cards;
 let store;
 let screen = "welcome";
 let pendingAnswer = null;
+let confirmTimer = 0;
+let countdownTimer = 0;
+function clearConfirmTimer() { clearTimeout(confirmTimer); clearInterval(countdownTimer); confirmTimer = 0; countdownTimer = 0; }
+function startConfirmTimer(optionId, onConfirm) {
+  clearConfirmTimer();
+  const badge = document.querySelector(".choice.pending .countdown-badge");
+  if (badge) badge.textContent = "3";
+  let secondsLeft = 3;
+  countdownTimer = setInterval(() => {
+    secondsLeft -= 1;
+    const current = document.querySelector(".choice.pending .countdown-badge");
+    if (current) current.textContent = String(Math.max(secondsLeft, 0));
+    if (secondsLeft <= 0) clearInterval(countdownTimer);
+  }, 1000);
+  confirmTimer = setTimeout(() => { if (pendingAnswer === optionId) onConfirm(); }, 3000);
+}
 let resultRound = null;
 let roundError = false;
 let recoveredRound = false;
@@ -82,7 +98,7 @@ function updateProfile(changes) {
 }
 
 function navigate(next) {
-  pendingAnswer=null;stopCelebration();
+  pendingAnswer=null;clearConfirmTimer();stopCelebration();
   if (next==="help" && screen!=="help") helpPage=0;
   screen = next;
   render();
@@ -368,20 +384,26 @@ function renderRound() {
     root.classList.add("preschool-round");
     question.append(node("img", {class:"picture-reference",src:card.referenceImage,alt:card.referenceAlt,width:"200",height:"130"}));
   }
-  const choices=node("div", {class:"choices"});
-  card.options.forEach((option,index)=>choices.append(node("button", {type:"button",class:`choice ${(round.resolved || (round.band==="preschool" && round.hintUsed))&&option.id===card.answerId?"correct":""} ${round.wrongIds.includes(option.id)?"wrong":""} ${pendingAnswer===option.id?"pending":""}`,"aria-pressed":pendingAnswer===option.id?"true":"false",disabled:round.resolved||round.wrongIds.includes(option.id)?"":null,onclick:()=>{
-    const selection=selectAnswer(pendingAnswer,option.id);
-    pendingAnswer=selection.pending;
-    if(!selection.confirmed) {render();document.querySelector(".choice.pending")?.focus({preventScroll:true});say(t("confirmAnswer"));return;}
-    const next=answerRound(activeProfile().round,card,option.id);
+  const confirmChoice=(optionId)=>{
+    clearConfirmTimer();
+    const next=answerRound(activeProfile().round,card,optionId);
     updateProfile({round:next});if(next.resolved && round.band!=="preschool") void playEncouragement(state().settings.soundEnabled);render();
-    if(option.id===card.answerId && next.resolved) celebrate(state().settings.reducedMotion,celebrationCount("answer"));
+    if(optionId===card.answerId && next.resolved) celebrate(state().settings.reducedMotion,celebrationCount("answer"));
     say(next.livesLeft === 0 ? t("gameOverTitle") : next.resolved?t("correct"):t("tryAgain"));
     if (next.livesLeft === 0) app.focus({preventScroll:true});
     document.querySelector(".feedback")?.focus({preventScroll:true});
-  }},...(round.band==="preschool"?[node("img", {src:option.image,alt:option.text,width:"200",height:"130"})]:[node("span", {class:"choice-marker","aria-hidden":"true",text:String(index+1)}),node("span", {text:option.text})]))));
+  };
+  const choices=node("div", {class:"choices"});
+  card.options.forEach((option,index)=>choices.append(node("button", {type:"button",class:`choice ${(round.resolved || (round.band==="preschool" && round.hintUsed))&&option.id===card.answerId?"correct":""} ${round.wrongIds.includes(option.id)?"wrong":""} ${pendingAnswer===option.id?"pending":""}`,"aria-pressed":pendingAnswer===option.id?"true":"false",disabled:round.resolved||round.wrongIds.includes(option.id)?"":null,onclick:()=>{
+    clearConfirmTimer();
+    const selection=selectAnswer(pendingAnswer,option.id);
+    pendingAnswer=selection.pending;
+    if(!selection.confirmed) {render();document.querySelector(".choice.pending")?.focus({preventScroll:true});say(t("confirmAnswer"));startConfirmTimer(option.id,()=>confirmChoice(option.id));return;}
+    confirmChoice(option.id);
+  }},...(round.band==="preschool"?[node("img", {src:option.image,alt:option.text,width:"200",height:"130"}),node("span", {class:"choice-label","aria-hidden":"true",text:option.text})]:[node("span", {class:"choice-marker","aria-hidden":"true",text:String(index+1)}),node("span", {text:option.text})]),pendingAnswer===option.id?node("span", {class:"countdown-badge","aria-label":t("autoConfirm",{seconds:3}),text:"3"}):null)));
   question.append(choices);
   if (!round.resolved && !round.hintUsed) question.append(actionRow(button(t("askHint"),()=>{
+    clearConfirmTimer();
     updateProfile({round:revealHint(activeProfile().round)});render();
     say(t("hintTitle"));document.querySelector(".feedback")?.focus({preventScroll:true});
   },"secondary",round.hintsLeft === 0 ? {disabled:""} : {})));

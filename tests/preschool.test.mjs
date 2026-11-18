@@ -85,3 +85,24 @@ test('trial stages 4-5 unlock only for preschool and serve six distinct cards',(
     assert.ok(round.cardIds.every(id=>cards.find(c=>c.id===id).stage===stage));
   }
 });
+
+test('stage 5 choices are pictures: counting uses groups, shapes use real objects',async()=>{
+  const stage5=cards.filter(c=>c.stage===5);
+  assert.equal(stage5.length,6);
+  for(const card of stage5){
+    for(const option of card.options){
+      assert.ok(!option.image.includes('number-'),`${card.id} ${option.id} must not be a bare number badge`);
+      assert.ok(!option.image.includes('triangle-')&&!option.image.includes('square-')&&!option.image.includes('circle-'),`${card.id} ${option.id} must not be a bare shape`);
+      assert.match(option.image,/^assets\/preschool\/(group-(star|apple|fish)-[0-9]|option-(pizza|gift|ball))\.svg$/);
+      await readFile(new URL(option.image,site),'utf8');
+    }
+  }
+  const ui=JSON.parse(await readFile(new URL('locales/ar-ui.json',site),'utf8'));
+  assert.ok(ui.autoConfirm.includes('{seconds}'));
+  assert.ok(ui.chooseAnswerTwice.includes('3'));
+  const app=await readFile(new URL('scripts/app.js',site),'utf8');
+  assert.ok(app.includes('startConfirmTimer'));
+  assert.ok(app.includes('3000'));
+  assert.ok(app.includes('countdown-badge'));
+  assert.ok(app.includes('choice-label'));
+});

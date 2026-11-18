@@ -1081,17 +1081,17 @@
         {
           "id": "a",
           "text": "2",
-          "image": "assets/preschool/number-2.svg"
+          "image": "assets/preschool/group-star-2.svg"
         },
         {
           "id": "b",
           "text": "3",
-          "image": "assets/preschool/number-3.svg"
+          "image": "assets/preschool/group-star-3.svg"
         },
         {
           "id": "c",
           "text": "1",
-          "image": "assets/preschool/number-1.svg"
+          "image": "assets/preschool/group-star-1.svg"
         }
       ],
       "answerId": "a",
@@ -1112,17 +1112,17 @@
         {
           "id": "a",
           "text": "1",
-          "image": "assets/preschool/number-1.svg"
+          "image": "assets/preschool/group-apple-1.svg"
         },
         {
           "id": "b",
           "text": "2",
-          "image": "assets/preschool/number-2.svg"
+          "image": "assets/preschool/group-apple-2.svg"
         },
         {
           "id": "c",
           "text": "3",
-          "image": "assets/preschool/number-3.svg"
+          "image": "assets/preschool/group-apple-3.svg"
         }
       ],
       "answerId": "c",
@@ -1143,17 +1143,17 @@
         {
           "id": "a",
           "text": "مثلث",
-          "image": "assets/preschool/triangle-red.svg"
+          "image": "assets/preschool/option-pizza.svg"
         },
         {
           "id": "b",
           "text": "مربع",
-          "image": "assets/preschool/square-yellow.svg"
+          "image": "assets/preschool/option-gift.svg"
         },
         {
           "id": "c",
           "text": "دايرة",
-          "image": "assets/preschool/circle-blue.svg"
+          "image": "assets/preschool/option-ball.svg"
         }
       ],
       "answerId": "a",
@@ -1174,17 +1174,17 @@
         {
           "id": "a",
           "text": "دايرة",
-          "image": "assets/preschool/circle-red.svg"
+          "image": "assets/preschool/option-ball.svg"
         },
         {
           "id": "b",
           "text": "مربع",
-          "image": "assets/preschool/square-blue.svg"
+          "image": "assets/preschool/option-gift.svg"
         },
         {
           "id": "c",
           "text": "مثلث",
-          "image": "assets/preschool/triangle-green.svg"
+          "image": "assets/preschool/option-pizza.svg"
         }
       ],
       "answerId": "b",
@@ -1205,17 +1205,17 @@
         {
           "id": "a",
           "text": "3",
-          "image": "assets/preschool/number-3.svg"
+          "image": "assets/preschool/group-fish-3.svg"
         },
         {
           "id": "b",
           "text": "4",
-          "image": "assets/preschool/number-4.svg"
+          "image": "assets/preschool/group-fish-4.svg"
         },
         {
           "id": "c",
           "text": "2",
-          "image": "assets/preschool/number-2.svg"
+          "image": "assets/preschool/group-fish-2.svg"
         }
       ],
       "answerId": "b",
@@ -1236,17 +1236,17 @@
         {
           "id": "a",
           "text": "مثلث",
-          "image": "assets/preschool/triangle-red.svg"
+          "image": "assets/preschool/option-pizza.svg"
         },
         {
           "id": "b",
           "text": "دايرة",
-          "image": "assets/preschool/circle-yellow.svg"
+          "image": "assets/preschool/option-ball.svg"
         },
         {
           "id": "c",
           "text": "مربع",
-          "image": "assets/preschool/square-green.svg"
+          "image": "assets/preschool/option-gift.svg"
         }
       ],
       "answerId": "b",
