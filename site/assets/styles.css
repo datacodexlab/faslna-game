@@ -58,3 +58,4 @@ body{min-height:100dvh}.page-shell{height:100dvh;min-height:0;display:flex;flex-
 .countdown-badge{position:absolute;top:4px;inset-inline-start:4px;width:30px;height:30px;border-radius:50%;background:#ad7400;color:#fff;display:grid;place-items:center;font-weight:900;font-size:1rem;box-shadow:0 0 0 2px #fff}
 .age-stepper{display:flex;align-items:center;justify-content:center;gap:.7rem;margin:.5rem 0}
 .age-stepper .age-num{font-size:2rem;font-weight:900;min-width:2.6rem;text-align:center}
+.player-photo{display:block;width:120px;height:160px;object-fit:cover;border-radius:14px;margin:0 auto .35rem}

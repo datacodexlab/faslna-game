@@ -98,6 +98,7 @@ function ensureTeacher() {
   return fallback;
 }
 function avatarImage(id) { return node("img", {class:"avatar-img",src:`assets/avatar-${id}.svg`,alt:"",width:"56",height:"56"}); }
+function playerPhoto(name) { return node("img", {class:"player-photo",src:presetDefault(name).photo,alt:"",width:"120",height:"160"}); }
 function soundButton() { return button(t(state().settings.soundEnabled ? "muteSound" : "enableSound"), () => {save({...state(),settings:{...state().settings,soundEnabled:!state().settings.soundEnabled}});render();},"secondary"); }
 function pageControls(previous, next, current, total) { return node("div", {class:"pager"},button(t("previous"),previous,"secondary",current===0?{disabled:""}:{}),node("span", {class:"pill",text:t("pageCount",{current:current+1,total})}),button(t("next"),next,"primary",current===total-1?{disabled:""}:{})); }
 
@@ -232,14 +233,13 @@ function renderSetup() {
   const grid = node("div", {class:"grid profile-grid"});
   for (const name of ui.presetPlayers) {
     const saved = state().profiles.find(p => p.name === name);
-    const avatar = name === draft.name ? draft.avatar : (saved?.avatar ?? presetDefault(name).avatar);
     const age = name === draft.name ? draft.age : (saved?.age ?? presetDefault(name).age);
     grid.append(node("button", {type:"button",class:`select-card ${name === draft.name ? "is-selected" : ""}`,"aria-pressed":name === draft.name,onclick:() => {
       draft.name = name;
       draft.age = saved?.age ?? presetDefault(name).age;
       draft.avatar = saved?.avatar ?? presetDefault(name).avatar;
       render();
-    }}, avatarImage(avatar), node("strong", {text:name}), node("span", {class:"muted",text:String(age)})));
+    }}, playerPhoto(name), node("strong", {text:name}), node("span", {class:"muted",text:String(age)})));
   }
   panelNode.append(node("div", {class:"section-title",text:t("presetNames")}), grid);
   const stepper = node("div", {class:"age-stepper"},
