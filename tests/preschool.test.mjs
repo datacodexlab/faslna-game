@@ -73,7 +73,10 @@ test('trial stages 4-5 unlock only for preschool and serve six distinct cards',(
   assert.equal(progressKey('math','preschool',4),'math:preschool:4');
   assert.equal(progressKey('math','preschool',5),'math:preschool:5');
   assert.throws(()=>progressKey('math','young',4));
-  assert.equal(stageUnlocked({},'math','preschool',4),false);
+  assert.equal(stageUnlocked({},'math','preschool',1),true);
+  assert.equal(stageUnlocked({},'math','preschool',4),true);
+  assert.equal(stageUnlocked({},'math','preschool',5),true);
+  assert.equal(stageUnlocked({},'math','young',2),false);
   assert.equal(stageUnlocked({'math:preschool:3':{completed:true,best:8}},'math','preschool',4),true);
   assert.equal(stageUnlocked({'math:preschool:4':{completed:true,best:8}},'math','preschool',5),true);
   for(const stage of [4,5]){

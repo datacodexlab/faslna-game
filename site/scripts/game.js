@@ -24,6 +24,7 @@ export function progressKey(subject, band, stage) {
 }
 
 export function stageUnlocked(progress, subject, band, stage) {
+  if (band === "preschool") return true;
   if (stage === 1) return true;
   return progress?.[progressKey(subject, band, stage - 1)]?.completed === true;
 }

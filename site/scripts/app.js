@@ -298,9 +298,11 @@ function renderMap() {
       actionRow(button(t("mapMenu"),()=>navigate("map-options"))));app.append(root);return;
   }
   const totalStages=band==="preschool"?5:3;
+  const firstStage=band==="preschool"?1:mapStep+1;
+  const lastStage=band==="preschool"?totalStages:mapStep+1;
   mapStep=Math.max(0,Math.min(mapStep,totalStages-1));
   const stages=node("div", {class:"map-path section"});
-  for (let stage=mapStep+1;stage<=mapStep+1;stage++) {
+  for (let stage=firstStage;stage<=lastStage;stage++) {
     const key=progressKey(teacher.subject,band,stage);
     const saved=profile.progress[key];
     const unlocked=stageUnlocked(profile.progress,teacher.subject,band,stage);
@@ -311,7 +313,8 @@ function renderMap() {
         saved?.completed?node("div", {},node("div", {class:"stage-stars",text:t("bestScore",{score:saved.best})}),node("span", {class:"badge",text:t(["badgeOne","badgeTwo","badgeThree","badgeFour","badgeFive"][stage-1])})):null,
         unlocked?button(saved?.completed?t("replayStage"):t("playStage"),()=>startRound(teacher.subject,band,stage),stage===1?"primary":"accent",profile.round?{disabled:"",title:t("finishRoundFirst")}:{}):null)));
   }
-  root.append(stages,pageControls(()=>{mapStep--;render();},()=>{mapStep++;render();},mapStep,totalStages),actionRow(button(t("mapMenu"),()=>navigate("map-options"))));
+  if (band==="preschool") root.append(stages,actionRow(button(t("mapMenu"),()=>navigate("map-options"))));
+  else root.append(stages,pageControls(()=>{mapStep--;render();},()=>{mapStep++;render();},mapStep,totalStages),actionRow(button(t("mapMenu"),()=>navigate("map-options"))));
   app.append(root);
 }
 

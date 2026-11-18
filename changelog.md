@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.2 — All preschool stages open from the start (2026-11-19)
+- Ages 4-5: all five picture stages are unlocked from the start, and the map shows all five stage cards on one screen instead of one stage at a time with a pager.
+- Older age bands keep sequential unlocking and the one-stage map.
+- Stars, badges and best scores still track per stage as before.
+
 ## 1.6.1 — Forced update button (2026-11-19)
 - Added a "حدّث اللعبة" button on the welcome screen and in the map menu. It reloads the game with a cache-busting version query so the installed app fetches the latest release immediately.
 - No progress or storage changes.
