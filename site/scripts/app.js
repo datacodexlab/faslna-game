@@ -54,7 +54,7 @@ function initSetupDraft() {
   const saved = state().profiles.find(p => p.name === name);
   setupDraft = {
     name,
-    age: saved?.age ?? presetDefault(name).age,
+    age: presetDefault(name).age,
     avatar: saved?.avatar ?? presetDefault(name).avatar,
     subject: activeTeacher()?.subject ?? "math"
   };
@@ -233,10 +233,10 @@ function renderSetup() {
   const grid = node("div", {class:"grid profile-grid"});
   for (const name of ui.presetPlayers) {
     const saved = state().profiles.find(p => p.name === name);
-    const age = name === draft.name ? draft.age : (saved?.age ?? presetDefault(name).age);
+    const age = name === draft.name ? draft.age : presetDefault(name).age;
     grid.append(node("button", {type:"button",class:`select-card ${name === draft.name ? "is-selected" : ""}`,"aria-pressed":name === draft.name,onclick:() => {
       draft.name = name;
-      draft.age = saved?.age ?? presetDefault(name).age;
+      draft.age = presetDefault(name).age;
       draft.avatar = saved?.avatar ?? presetDefault(name).avatar;
       render();
     }}, playerPhoto(name), node("strong", {text:name}), node("span", {class:"muted",text:String(age)})));
@@ -273,7 +273,7 @@ function renderSetup() {
     setupDraft = null;
     navigate("map");
   }, "primary")));
-  app.append(node("div", {class:"screen"}, back("welcome"), heading(t("choosePlayer")), panelNode));
+  app.append(node("div", {class:"screen setup-screen"}, back("welcome"), heading(t("choosePlayer")), panelNode));
 }
 
 function renderTeachers() {

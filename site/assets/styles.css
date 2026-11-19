@@ -59,3 +59,14 @@ body{min-height:100dvh}.page-shell{height:100dvh;min-height:0;display:flex;flex-
 .age-stepper{display:flex;align-items:center;justify-content:center;gap:.7rem;margin:.5rem 0}
 .age-stepper .age-num{font-size:2rem;font-weight:900;min-width:2.6rem;text-align:center}
 .player-photo{display:block;width:120px;height:160px;object-fit:cover;border-radius:14px;margin:0 auto .35rem}
+.setup-screen .panel{padding:.6rem}
+.setup-screen h1{font-size:1.25rem;margin:.05rem 0 .25rem}
+.setup-screen .section-title{margin:0 0 .15rem;font-size:.95rem}
+.setup-screen .grid{gap:.35rem}
+.setup-screen .select-card{min-height:0;padding:.35rem}
+.setup-screen .player-photo{width:84px;height:112px;margin:0 auto .2rem}
+.setup-screen .age-stepper{margin:.15rem 0}
+.setup-screen .age-stepper .age-num{font-size:1.5rem;min-width:2rem}
+.setup-screen .avatar-choice{min-height:64px;padding:.2rem}
+.setup-screen .avatar-choice .avatar-img{width:40px;height:40px}
+.setup-screen .actions{margin-top:.5rem}
