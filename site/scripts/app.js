@@ -319,8 +319,11 @@ function renderMap() {
     node("span", {class:"pill",text:t("starCount",{count:totalStars(profile.progress)})})));
   root.append(actionRow(button(t("difficulty"),()=>navigate("difficulty"))));
   if (profile.round) {
-    root.append(node("div", {class:"notice"},node("p", {text:t(profile.round.livesLeft === 0 ? "gameOverBody" : "resumeRound")}),button(t(profile.round.livesLeft === 0 ? "reviewRound" : "continueRound"),()=>navigate("round"),"primary")),
-      actionRow(button(t("mapMenu"),()=>navigate("map-options"))));app.append(root);return;
+    root.append(node("div", {class:"notice"},
+      node("p", {text:t(profile.round.livesLeft === 0 ? "gameOverBody" : "resumeRound")}),
+      actionRow(
+        button(t(profile.round.livesLeft === 0 ? "reviewRound" : "continueRound"),()=>navigate("round"),"primary"),
+        button(t("abandonRound"),()=>{updateProfile({round:null});render();},"secondary"))));
   }
   const totalStages=band==="preschool"?5:3;
   const firstStage=band==="preschool"?1:mapStep+1;
