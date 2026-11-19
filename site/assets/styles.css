@@ -70,3 +70,10 @@ body{min-height:100dvh}.page-shell{height:100dvh;min-height:0;display:flex;flex-
 .setup-screen .avatar-choice{min-height:64px;padding:.2rem}
 .setup-screen .avatar-choice .avatar-img{width:40px;height:40px}
 .setup-screen .actions{margin-top:.5rem}
+@media(max-width:700px){
+.setup-screen .setup-players{grid-template-columns:repeat(3,minmax(0,1fr))}
+.setup-screen .setup-avatars{grid-template-columns:repeat(4,minmax(0,1fr))}
+.setup-screen .player-photo{width:72px;height:96px}
+.setup-screen .select-card strong{display:inline}
+.setup-screen .avatar-choice{font-size:.85rem}
+}

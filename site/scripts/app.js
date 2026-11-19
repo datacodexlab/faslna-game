@@ -230,7 +230,7 @@ function renderWelcome() {
 function renderSetup() {
   const draft = setupDraft;
   const panelNode = node("div", {class:"panel"});
-  const grid = node("div", {class:"grid profile-grid"});
+  const grid = node("div", {class:"grid profile-grid setup-players"});
   for (const name of ui.presetPlayers) {
     const saved = state().profiles.find(p => p.name === name);
     const age = name === draft.name ? draft.age : presetDefault(name).age;
@@ -239,7 +239,7 @@ function renderSetup() {
       draft.age = presetDefault(name).age;
       draft.avatar = saved?.avatar ?? presetDefault(name).avatar;
       render();
-    }}, playerPhoto(name), node("strong", {text:name}), node("span", {class:"muted",text:String(age)})));
+    }}, playerPhoto(name), node("div", {}, node("strong", {text:name}), node("span", {class:"muted",text:` ${age}`}))));
   }
   panelNode.append(node("div", {class:"section-title",text:t("presetNames")}), grid);
   const stepper = node("div", {class:"age-stepper"},
@@ -247,7 +247,7 @@ function renderSetup() {
     node("span", {}, node("span", {class:"age-num",text:String(draft.age)}), node("span", {class:"muted",text:` ${t(draft.age >= 11 ? "yearSingular" : "yearPlural")}`})),
     button("▼", () => {draft.age=Math.max(4,draft.age-1);render();}, "accent", {"aria-label":t("ageDown")}));
   panelNode.append(node("div", {class:"section-title",text:t("ageStepper")}), stepper);
-  const avatarGrid = node("div", {class:"grid profile-grid"});
+  const avatarGrid = node("div", {class:"grid profile-grid setup-avatars"});
   for (const avatar of AVATARS) avatarGrid.append(node("button", {type:"button",class:`avatar-choice ${avatar === draft.avatar ? "is-selected" : ""}`,"aria-pressed":avatar === draft.avatar,onclick:() => {draft.avatar=avatar;render();},"data-avatar":avatar}, avatarImage(avatar), node("div", {text:t(`avatar${avatar[0].toUpperCase()}${avatar.slice(1)}`)})));
   panelNode.append(node("div", {class:"section-title",text:t("avatarLabel")}), avatarGrid);
   if (draft.age >= 6) {
