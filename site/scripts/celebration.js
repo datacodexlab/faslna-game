@@ -22,7 +22,7 @@ export function celebrate(reduced = false, count = 1, soundEnabled = true) {
   next();
 }
 export function makeBurst(x, y, color) {
-  return {x, y, age:0, color, parts:Array.from({length:12},(_,i)=>({angle:i*Math.PI/6, dist:26+Math.random()*22, size:4+Math.random()*4}))};
+  return {x, y, age:0, color, parts:Array.from({length:16},(_,i)=>({angle:i*Math.PI/8, dist:30+Math.random()*30, size:5+Math.random()*4}))};
 }
 function playCelebration(reduced, soundEnabled) {
   cleanup?.();cleanup=null;
@@ -36,7 +36,7 @@ function playCelebration(reduced, soundEnabled) {
   const w=window.innerWidth,h=window.innerHeight,dpr=Math.min(window.devicePixelRatio||1,2);
   canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);
   const colors=['#f4b824','#ed6488','#0f9186','#588be5','#a56bdd','#ef8739'];
-  const particles=Array.from({length:effect==='rockets'?10:effect==='balloons'?20:64},(_,i)=>({x:Math.random()*w,y:Math.random()*h,size:8+Math.random()*15,delay:Math.random()*.4,color:colors[i%colors.length],phase:Math.random()*Math.PI*2}));
+  const particles=Array.from({length:effect==='rockets'?18:effect==='balloons'?20:64},(_,i)=>({x:Math.random()*w,y:Math.random()*h,size:8+Math.random()*15,delay:Math.random()*.4,color:colors[i%colors.length],phase:Math.random()*Math.PI*2}));
   const quiet=reduced||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const bursts=[];
   const rings=[];
@@ -54,8 +54,8 @@ function playCelebration(reduced, soundEnabled) {
   function star(x,y,r) {
     ctx.beginPath();for(let i=0;i<10;i++){const a=i*Math.PI/5-Math.PI/2,rr=i%2?r*.45:r;ctx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr);}ctx.closePath();ctx.fill();
   }
-  function sparkle4(x,y,r,alpha) {
-    ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle='#fff';
+  function sparkle4(x,y,r,alpha,color='#fff') {
+    ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle=color;
     ctx.beginPath();ctx.moveTo(x,y-r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.quadraticCurveTo(x,y,x,y+r);ctx.quadraticCurveTo(x,y,x-r,y);ctx.quadraticCurveTo(x,y,x,y-r);ctx.fill();
     ctx.restore();
   }
@@ -90,20 +90,21 @@ function playCelebration(reduced, soundEnabled) {
     for(let i=bursts.length-1;i>=0;i--) {
       const burst=bursts[i];
       if(!quiet) burst.age+=dt;
-      const alpha=Math.max(0,1-burst.age/.6);
-      for(const part of burst.parts) {
+      const alpha=Math.max(0,1-burst.age/1);
+      for(let j=0;j<burst.parts.length;j++) {
+        const part=burst.parts[j];
         const d=part.dist*(quiet?1:burst.age*90);
-        sparkle4(burst.x+Math.cos(part.angle)*d,burst.y+Math.sin(part.angle)*d,part.size,alpha);
+        sparkle4(burst.x+Math.cos(part.angle)*d,burst.y+Math.sin(part.angle)*d,part.size,alpha,j%2?'#fff':burst.color);
       }
-      if(burst.age>=.6) bursts.splice(i,1);
+      if(burst.age>=1) bursts.splice(i,1);
     }
     for(let i=rings.length-1;i>=0;i--) {
       const ring=rings[i];
       if(!quiet) ring.age+=dt;
-      const progress=Math.min(1,ring.age/.5);
+      const progress=Math.min(1,ring.age/.8);
       ctx.save();ctx.globalAlpha=(1-progress)*.8;ctx.strokeStyle='#fff';ctx.lineWidth=3;
       ctx.beginPath();ctx.arc(ring.x,ring.y,6+progress*30,0,Math.PI*2);ctx.stroke();ctx.restore();
-      if(ring.age>=.5) rings.splice(i,1);
+      if(ring.age>=.8) rings.splice(i,1);
     }
     ctx.globalAlpha=1;
   }
