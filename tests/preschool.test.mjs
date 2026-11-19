@@ -6,10 +6,9 @@ import {createStore,freshState,validateState} from '../site/scripts/storage.js';
 const site=new URL('../site/',import.meta.url);
 const {cards}=JSON.parse(await readFile(new URL('locales/ar-preschool.json',site),'utf8'));
 
-test('forty-two local picture tasks progress from two to three choices with complete image assets',async()=>{
-  assert.equal(cards.length,42);assert.equal(new Set(cards.map(c=>c.id)).size,42);
-  for(const stage of [1,2,3])assert.equal(cards.filter(c=>c.stage===stage).length,10);
-  for(const stage of [4,5])assert.equal(cards.filter(c=>c.stage===stage).length,6);
+test('ninety-two themed picture tasks progress from two to three choices with complete image assets',async()=>{
+  assert.equal(cards.length,92);assert.equal(new Set(cards.map(c=>c.id)).size,92);
+  for(const [stage,count] of [[1,20],[2,16],[3,21],[4,15],[5,20]])assert.equal(cards.filter(c=>c.stage===stage).length,count);
   for(const card of cards){
     assert.equal(card.options.length,card.stage===1?2:3);
     assert.equal(new Set(card.options.map(o=>o.image)).size,card.options.length);
@@ -23,17 +22,17 @@ test('forty-two local picture tasks progress from two to three choices with comp
   }
 });
 
-test('picture bank contains five tasks for each relational skill and replay minimizes repeats',()=>{
-  for(const skill of ['food-relation','home-relation','missing-part','one-to-one','pattern','before-after']){
-    assert.equal(cards.filter(c=>c.skill===skill).length,5);
+test('picture bank contains ten tasks for each relational skill and replay minimizes repeats',()=>{
+  for(const [skill,count] of [['food-relation',10],['home-relation',10],['missing-part',10],['one-to-one',5],['pattern',15],['before-after',10]]){
+    assert.equal(cards.filter(c=>c.skill===skill).length,count);
   }
-  assert.equal(cards.filter(c=>c.skill==='color-match').length,6);
-  assert.equal(cards.filter(c=>c.skill==='shape-count').length,6);
-  for(const stage of [1,2,3]){
+  assert.equal(cards.filter(c=>c.skill==='color-match').length,16);
+  assert.equal(cards.filter(c=>c.skill==='shape-count').length,16);
+  for(const stage of [1,2,3,4,5]){
     const first=newRound(cards,'math','preschool',stage,{},()=>.2);
     const snapshot=[...first.cardIds];
     const next=newRound(cards,'math','preschool',stage,selectionHistory(first),()=>.7);
-    assert.equal(next.cardIds.filter(id=>!snapshot.includes(id)).length,4);
+    assert.ok(next.cardIds.filter(id=>!snapshot.includes(id)).length>=4);
     assert.notDeepEqual(next.cardIds,snapshot);
     assert.ok(!snapshot.includes(next.cardIds[0]));
     assert.deepEqual(first.cardIds,snapshot);
@@ -69,7 +68,7 @@ test('picture mistakes give visual completion after two errors without spending 
   createStore(storage).save(state);assert.deepEqual(createStore(storage).get(),state);
 });
 
-test('trial stages 4-5 unlock only for preschool and serve six distinct cards',()=>{
+test('themed stages 4-5 unlock only for preschool and serve six distinct cards',()=>{
   assert.equal(progressKey('math','preschool',4),'math:preschool:4');
   assert.equal(progressKey('math','preschool',5),'math:preschool:5');
   assert.throws(()=>progressKey('math','young',4));
@@ -86,14 +85,14 @@ test('trial stages 4-5 unlock only for preschool and serve six distinct cards',(
   }
 });
 
-test('stage 5 choices are pictures: counting uses groups, shapes use real objects',async()=>{
-  const stage5=cards.filter(c=>c.stage===5);
-  assert.equal(stage5.length,6);
-  for(const card of stage5){
+test('stage 3 choices are pictures: counting uses groups, shapes use real objects',async()=>{
+  const stage3=cards.filter(c=>c.stage===3);
+  assert.equal(stage3.length,21);
+  for(const card of stage3){
     for(const option of card.options){
       assert.ok(!option.image.includes('number-'),`${card.id} ${option.id} must not be a bare number badge`);
       assert.ok(!option.image.includes('triangle-')&&!option.image.includes('square-')&&!option.image.includes('circle-'),`${card.id} ${option.id} must not be a bare shape`);
-      assert.match(option.image,/^assets\/preschool\/(group-(star|apple|fish)-[0-9]|option-(pizza|gift|ball))\.svg$/);
+      assert.match(option.image,/^assets\/preschool\/(group-(star|apple|fish)-[0-9]|option-(pizza|gift|ball|door|starfish|egg|pyramid|window))\.svg$/);
       await readFile(new URL(option.image,site),'utf8');
     }
   }

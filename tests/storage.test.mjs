@@ -27,6 +27,16 @@ test("older saved rounds gain limits without losing players or completed progres
   assert.deepEqual(store.get().profiles[0].progress,progress);
 });
 
+test("pre-theme preschool progress is cleared on load while older-band progress survives",()=>{
+  const preschoolRound={subject:"math",band:"preschool",stage:4,cardIds:["a","b","c","d","e","f"],index:0,score:0,wrongIds:[],hintUsed:false,resolved:false,selectedId:null,maxLives:5,maxHints:3,hintsLeft:3,livesLeft:5};
+  const oldState={schemaVersion:1,teachers:[],settings:{reducedMotion:false,soundEnabled:true},activeTeacherId:null,profiles:[{...profile,age:4,progress:{"math:preschool:4":{completed:true,best:8},"math:young:1":{completed:true,best:6}},history:{"math:preschool:4":{academic:["a"],social:[]}},round:preschoolRound}],activeProfileId:"p1"};
+  const store=createStore({getItem:()=>JSON.stringify(oldState),setItem(){},removeItem(){}});
+  assert.equal(store.get().preschoolThemeVersion,2);
+  assert.deepEqual(store.get().profiles[0].progress,{"math:young:1":{completed:true,best:6}});
+  assert.deepEqual(store.get().profiles[0].history,{});
+  assert.equal(store.get().profiles[0].round,null);
+});
+
 test("preset teacher selection persists and reloads",()=>{
   const values=new Map();
   const storage={getItem:key=>values.get(key)??null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)};

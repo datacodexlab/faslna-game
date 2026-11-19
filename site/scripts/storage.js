@@ -6,7 +6,7 @@ const BANDS = ["preschool", "young", "middle", "older"];
 const PRESET_TEACHER_IDS = ["teacher-math", "teacher-arabic", "teacher-science", "teacher-ragab"];
 
 export function freshState() {
-  return {schemaVersion: 1, profiles: [], teachers: [], activeProfileId: null, activeTeacherId: null, settings: {reducedMotion: false, soundEnabled: true}};
+  return {schemaVersion: 1, preschoolThemeVersion: 2, profiles: [], teachers: [], activeProfileId: null, activeTeacherId: null, settings: {reducedMotion: false, soundEnabled: true}};
 }
 
 function validHistory(history) {
@@ -47,6 +47,15 @@ export function createStore(storage) {
           const round = profile.round;
           return {...profile, round: {...round, maxLives: round.maxLives ?? 3, maxHints: round.maxHints ?? 2, livesLeft: round.livesLeft ?? Math.max(0, 3 - (round.wrongIds?.length || 0)), hintsLeft: round.hintsLeft ?? (round.hintUsed ? 1 : 2)}};
         });
+      }
+      if (parsed && typeof parsed === "object" && parsed.preschoolThemeVersion !== 2) {
+        parsed.preschoolThemeVersion = 2;
+        for (const profile of Array.isArray(parsed.profiles) ? parsed.profiles : []) {
+          if (!profile || typeof profile !== "object") continue;
+          if (profile.progress) for (const key of Object.keys(profile.progress)) if (key.includes(":preschool:")) delete profile.progress[key];
+          if (profile.history) for (const key of Object.keys(profile.history)) if (key.includes(":preschool:")) delete profile.history[key];
+          if (profile.round?.band === "preschool") profile.round = null;
+        }
       }
       if (validateState(parsed)) state = parsed;
       else persistent = false;

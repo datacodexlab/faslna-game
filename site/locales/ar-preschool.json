@@ -162,7 +162,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 1,
+      "stage": 5,
       "skill": "missing-part",
       "prompt": "إيه الناقص في العربية؟",
       "referenceImage": "assets/preschool/scene-missing-wheel.svg",
@@ -177,6 +177,11 @@
           "id": "b",
           "text": "عجلة",
           "image": "assets/preschool/relation-wheel.svg"
+        },
+        {
+          "id": "c",
+          "text": "مقبض",
+          "image": "assets/preschool/relation-handle.svg"
         }
       ],
       "answerId": "b",
@@ -188,7 +193,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 1,
+      "stage": 5,
       "skill": "missing-part",
       "prompt": "إيه الناقص في البيت؟",
       "referenceImage": "assets/preschool/scene-missing-roof.svg",
@@ -203,6 +208,11 @@
           "id": "b",
           "text": "عجلة",
           "image": "assets/preschool/relation-wheel.svg"
+        },
+        {
+          "id": "c",
+          "text": "مقبض",
+          "image": "assets/preschool/relation-handle.svg"
         }
       ],
       "answerId": "a",
@@ -214,7 +224,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 1,
+      "stage": 3,
       "skill": "one-to-one",
       "prompt": "تفاحة لكل طبق. نختار أنهي مجموعة؟",
       "referenceImage": "assets/preschool/scene-plates-1.svg",
@@ -229,6 +239,11 @@
           "id": "b",
           "text": "2 تفاحات",
           "image": "assets/preschool/group-apple-2.svg"
+        },
+        {
+          "id": "c",
+          "text": "3 تفاحات",
+          "image": "assets/preschool/group-apple-3.svg"
         }
       ],
       "answerId": "a",
@@ -240,7 +255,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 1,
+      "stage": 3,
       "skill": "one-to-one",
       "prompt": "تفاحة لكل طبق. نختار أنهي مجموعة؟",
       "referenceImage": "assets/preschool/scene-plates-2.svg",
@@ -255,6 +270,11 @@
           "id": "b",
           "text": "2 تفاحات",
           "image": "assets/preschool/group-apple-2.svg"
+        },
+        {
+          "id": "c",
+          "text": "3 تفاحات",
+          "image": "assets/preschool/group-apple-3.svg"
         }
       ],
       "answerId": "b",
@@ -266,7 +286,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 1,
       "skill": "food-relation",
       "prompt": "نحط إيه للـقرد في الطبق؟",
       "referenceImage": "assets/preschool/scene-feed-monkey.svg",
@@ -279,16 +299,11 @@
         },
         {
           "id": "b",
-          "text": "سمكة",
-          "image": "assets/preschool/relation-fish.svg"
-        },
-        {
-          "id": "c",
           "text": "موزة",
           "image": "assets/preschool/relation-banana.svg"
         }
       ],
-      "answerId": "c",
+      "answerId": "b",
       "hint": "فكّر في الأكل اللي الحيوان ده معروف إنه بيحبه.",
       "explanation": "شاطر! القرد بيأكل موزة."
     },
@@ -297,7 +312,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 1,
       "skill": "food-relation",
       "prompt": "نحط إيه للـعصفور في الطبق؟",
       "referenceImage": "assets/preschool/scene-feed-bird.svg",
@@ -312,11 +327,6 @@
           "id": "b",
           "text": "حبوب",
           "image": "assets/preschool/relation-seeds.svg"
-        },
-        {
-          "id": "c",
-          "text": "جزرة",
-          "image": "assets/preschool/relation-carrot.svg"
         }
       ],
       "answerId": "b",
@@ -328,7 +338,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 1,
       "skill": "home-relation",
       "prompt": "النحلة مكانه فين؟",
       "referenceImage": "assets/preschool/scene-home-bee.svg",
@@ -341,11 +351,6 @@
         },
         {
           "id": "b",
-          "text": "بحر",
-          "image": "assets/preschool/relation-sea.svg"
-        },
-        {
-          "id": "c",
           "text": "عش",
           "image": "assets/preschool/relation-nest.svg"
         }
@@ -359,7 +364,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 1,
       "skill": "home-relation",
       "prompt": "الأرنب مكانه فين؟",
       "referenceImage": "assets/preschool/scene-home-rabbit.svg",
@@ -367,21 +372,16 @@
       "options": [
         {
           "id": "a",
-          "text": "بحر",
-          "image": "assets/preschool/relation-sea.svg"
-        },
-        {
-          "id": "b",
           "text": "عش",
           "image": "assets/preschool/relation-nest.svg"
         },
         {
-          "id": "c",
+          "id": "b",
           "text": "جحر",
           "image": "assets/preschool/relation-burrow.svg"
         }
       ],
-      "answerId": "c",
+      "answerId": "b",
       "hint": "دور على المكان المناسب للحيوان، مش على صورته.",
       "explanation": "تمام! ده جحر مناسب للـأرنب."
     },
@@ -390,7 +390,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 5,
       "skill": "missing-part",
       "prompt": "إيه الناقص في الوردة؟",
       "referenceImage": "assets/preschool/scene-missing-flower-center.svg",
@@ -421,7 +421,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 5,
       "skill": "missing-part",
       "prompt": "إيه الناقص في الشمسية؟",
       "referenceImage": "assets/preschool/scene-missing-handle.svg",
@@ -452,7 +452,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 3,
       "skill": "one-to-one",
       "prompt": "تفاحة لكل طبق. نختار أنهي مجموعة؟",
       "referenceImage": "assets/preschool/scene-plates-3.svg",
@@ -483,7 +483,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 3,
       "skill": "one-to-one",
       "prompt": "تفاحة لكل طبق. نختار أنهي مجموعة؟",
       "referenceImage": "assets/preschool/scene-plates-4.svg",
@@ -514,7 +514,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 4,
       "skill": "pattern",
       "prompt": "كمّل الترتيب رقم 1: مكان علامة السؤال.",
       "referenceImage": "assets/preschool/pattern-circle-red-circle-blue.svg",
@@ -545,7 +545,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 2,
+      "stage": 4,
       "skill": "pattern",
       "prompt": "كمّل الترتيب رقم 2: مكان علامة السؤال.",
       "referenceImage": "assets/preschool/pattern-square-yellow-triangle-green.svg",
@@ -576,7 +576,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 5,
       "skill": "missing-part",
       "prompt": "إيه الناقص في الوش؟",
       "referenceImage": "assets/preschool/scene-missing-eye.svg",
@@ -638,7 +638,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 4,
       "skill": "pattern",
       "prompt": "كمّل الترتيب رقم 3: مكان علامة السؤال.",
       "referenceImage": "assets/preschool/pattern-star-yellow-heart-red.svg",
@@ -669,7 +669,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 4,
       "skill": "pattern",
       "prompt": "كمّل الترتيب رقم 4: مكان علامة السؤال.",
       "referenceImage": "assets/preschool/pattern-apple-red-fish-blue.svg",
@@ -700,7 +700,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 4,
       "skill": "pattern",
       "prompt": "جزرة، موزة، جزرة… وبعدها إيه؟",
       "referenceImage": "assets/preschool/scene-pattern-food.svg",
@@ -731,7 +731,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 5,
       "skill": "before-after",
       "prompt": "إيه اللي ممكن يطلع من البذرة؟",
       "referenceImage": "assets/preschool/scene-before-sprout.svg",
@@ -762,7 +762,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 5,
       "skill": "before-after",
       "prompt": "إيه اللي يطلع من بيضة الفرخة؟",
       "referenceImage": "assets/preschool/scene-before-chick.svg",
@@ -793,7 +793,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 5,
       "skill": "before-after",
       "prompt": "الشمس سخّنت التلج. هيبقى إيه؟",
       "referenceImage": "assets/preschool/scene-before-puddle.svg",
@@ -824,7 +824,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 5,
       "skill": "before-after",
       "prompt": "السحابة مليانة مطر. هينزل منها إيه؟",
       "referenceImage": "assets/preschool/scene-before-rain.svg",
@@ -855,7 +855,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 3,
+      "stage": 5,
       "skill": "before-after",
       "prompt": "اليرقة بتكبر وتتغيّر. ممكن تبقى إيه؟",
       "referenceImage": "assets/preschool/scene-before-butterfly.svg",
@@ -886,7 +886,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 4,
+      "stage": 2,
       "skill": "color-match",
       "prompt": "التفاحة دي لونها إيه؟",
       "referenceImage": "assets/preschool/scene-color-apple.svg",
@@ -917,7 +917,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 4,
+      "stage": 2,
       "skill": "color-match",
       "prompt": "البحر ده لونه إيه؟",
       "referenceImage": "assets/preschool/scene-color-sea.svg",
@@ -948,7 +948,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 4,
+      "stage": 2,
       "skill": "color-match",
       "prompt": "الشمس دي لونها إيه؟",
       "referenceImage": "assets/preschool/scene-color-sun.svg",
@@ -979,7 +979,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 4,
+      "stage": 2,
       "skill": "color-match",
       "prompt": "العشب ده لونه إيه؟",
       "referenceImage": "assets/preschool/scene-color-grass.svg",
@@ -1010,7 +1010,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 4,
+      "stage": 2,
       "skill": "color-match",
       "prompt": "الوردة دي لونها إيه؟",
       "referenceImage": "assets/preschool/scene-color-flower.svg",
@@ -1041,7 +1041,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 4,
+      "stage": 2,
       "skill": "color-match",
       "prompt": "البالونة دي لونها إيه؟",
       "referenceImage": "assets/preschool/scene-color-balloon.svg",
@@ -1072,7 +1072,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 5,
+      "stage": 3,
       "skill": "shape-count",
       "prompt": "كام نجمة في الصورة؟",
       "referenceImage": "assets/preschool/scene-count-stars.svg",
@@ -1103,7 +1103,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 5,
+      "stage": 3,
       "skill": "shape-count",
       "prompt": "كام تفاحة في الصورة؟",
       "referenceImage": "assets/preschool/scene-count-apples.svg",
@@ -1134,7 +1134,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 5,
+      "stage": 3,
       "skill": "shape-count",
       "prompt": "الشكل ده اسمه إيه؟",
       "referenceImage": "assets/preschool/scene-shape-triangle.svg",
@@ -1165,7 +1165,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 5,
+      "stage": 3,
       "skill": "shape-count",
       "prompt": "الشكل ده اسمه إيه؟",
       "referenceImage": "assets/preschool/scene-shape-square.svg",
@@ -1196,7 +1196,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 5,
+      "stage": 3,
       "skill": "shape-count",
       "prompt": "كام سمكة في الصورة؟",
       "referenceImage": "assets/preschool/scene-count-fish.svg",
@@ -1227,7 +1227,7 @@
       "kind": "picture",
       "band": "preschool",
       "subject": "pictures",
-      "stage": 5,
+      "stage": 3,
       "skill": "shape-count",
       "prompt": "الشكل ده اسمه إيه؟",
       "referenceImage": "assets/preschool/scene-shape-circle.svg",
@@ -1252,6 +1252,1506 @@
       "answerId": "b",
       "hint": "الشكل ده مدور ومفيهوش أضلاع.",
       "explanation": "شاطر! دي دايرة."
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! الحصان بيأكل عشب.",
+      "hint": "فكّر في الأكل اللي الحيوان ده معروف إنه بيحبه.",
+      "id": "preschool-animals-1-01",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-grass.svg",
+          "text": "عشب"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-carrot.svg",
+          "text": "جزرة"
+        }
+      ],
+      "prompt": "نحط إيه للـحصان في الطبق؟",
+      "referenceAlt": "نحط إيه للـحصان في الطبق؟",
+      "referenceImage": "assets/preschool/scene-feed-horse.svg",
+      "skill": "food-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! الأسد بيأكل لحمة.",
+      "hint": "فكّر في الأكل اللي الحيوان ده معروف إنه بيحبه.",
+      "id": "preschool-animals-1-02",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-banana.svg",
+          "text": "موزة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-meat.svg",
+          "text": "لحمة"
+        }
+      ],
+      "prompt": "نحط إيه للـأسد في الطبق؟",
+      "referenceAlt": "نحط إيه للـأسد في الطبق؟",
+      "referenceImage": "assets/preschool/scene-feed-lion.svg",
+      "skill": "food-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! البطة بيأكل حبوب.",
+      "hint": "فكّر في الأكل اللي الحيوان ده معروف إنه بيحبه.",
+      "id": "preschool-animals-1-03",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-fish.svg",
+          "text": "سمكة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-seeds.svg",
+          "text": "حبوب"
+        }
+      ],
+      "prompt": "نحط إيه للـبطة في الطبق؟",
+      "referenceAlt": "نحط إيه للـبطة في الطبق؟",
+      "referenceImage": "assets/preschool/scene-feed-duck.svg",
+      "skill": "food-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! الفيل بيأكل موزة.",
+      "hint": "فكّر في الأكل اللي الحيوان ده معروف إنه بيحبه.",
+      "id": "preschool-animals-1-04",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-banana.svg",
+          "text": "موزة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-fish.svg",
+          "text": "سمكة"
+        }
+      ],
+      "prompt": "نحط إيه للـفيل في الطبق؟",
+      "referenceAlt": "نحط إيه للـفيل في الطبق؟",
+      "referenceImage": "assets/preschool/scene-feed-elephant.svg",
+      "skill": "food-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! الكتكوت بيأكل حبوب.",
+      "hint": "فكّر في الأكل اللي الحيوان ده معروف إنه بيحبه.",
+      "id": "preschool-animals-1-05",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-seeds.svg",
+          "text": "حبوب"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-carrot.svg",
+          "text": "جزرة"
+        }
+      ],
+      "prompt": "نحط إيه للـكتكوت في الطبق؟",
+      "referenceAlt": "نحط إيه للـكتكوت في الطبق؟",
+      "referenceImage": "assets/preschool/scene-feed-chick.svg",
+      "skill": "food-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "تمام! ده إسطبل مناسب للـحصان.",
+      "hint": "دور على المكان المناسب للحيوان، مش على صورته.",
+      "id": "preschool-animals-1-06",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-stable.svg",
+          "text": "إسطبل"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-nest.svg",
+          "text": "عش"
+        }
+      ],
+      "prompt": "الحصان مكانه فين؟",
+      "referenceAlt": "الحصان مكانه فين؟",
+      "referenceImage": "assets/preschool/scene-home-horse.svg",
+      "skill": "home-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "تمام! ده كهف مناسب للـأسد.",
+      "hint": "دور على المكان المناسب للحيوان، مش على صورته.",
+      "id": "preschool-animals-1-07",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-hive.svg",
+          "text": "خلية نحل"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-cave.svg",
+          "text": "كهف"
+        }
+      ],
+      "prompt": "الأسد مكانه فين؟",
+      "referenceAlt": "الأسد مكانه فين؟",
+      "referenceImage": "assets/preschool/scene-home-lion.svg",
+      "skill": "home-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "تمام! ده بركة مناسب للـبطة.",
+      "hint": "دور على المكان المناسب للحيوان، مش على صورته.",
+      "id": "preschool-animals-1-08",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-pond.svg",
+          "text": "بركة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-burrow.svg",
+          "text": "جحر"
+        }
+      ],
+      "prompt": "البطة مكانها فين؟",
+      "referenceAlt": "البطة مكانها فين؟",
+      "referenceImage": "assets/preschool/scene-home-duck.svg",
+      "skill": "home-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "تمام! ده بركة مناسب للـسلحفاة.",
+      "hint": "دور على المكان المناسب للحيوان، مش على صورته.",
+      "id": "preschool-animals-1-09",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-kennel.svg",
+          "text": "بيت كلب"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-pond.svg",
+          "text": "بركة"
+        }
+      ],
+      "prompt": "السلحفاة مكانها فين؟",
+      "referenceAlt": "السلحفاة مكانها فين؟",
+      "referenceImage": "assets/preschool/scene-home-turtle.svg",
+      "skill": "home-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "تمام! ده غابة مناسب للـفيل.",
+      "hint": "دور على المكان المناسب للحيوان، مش على صورته.",
+      "id": "preschool-animals-1-10",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-forest.svg",
+          "text": "غابة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-sea.svg",
+          "text": "بحر"
+        }
+      ],
+      "prompt": "الفيل مكانه فين؟",
+      "referenceAlt": "الفيل مكانه فين؟",
+      "referenceImage": "assets/preschool/scene-home-elephant.svg",
+      "skill": "home-relation",
+      "stage": 1,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! الموزة صفرا.",
+      "hint": "بص على لون الموزة كويس.",
+      "id": "preschool-color-2-01",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-yellow.svg",
+          "text": "أصفر"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-red.svg",
+          "text": "أحمر"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-green.svg",
+          "text": "أخضر"
+        }
+      ],
+      "prompt": "الموزة دي لونها إيه؟",
+      "referenceAlt": "الموزة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-banana.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! البرتقالة برتقالي.",
+      "hint": "لون البرتقالة إيه؟",
+      "id": "preschool-color-2-02",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-red.svg",
+          "text": "أحمر"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-orange.svg",
+          "text": "برتقالي"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-yellow.svg",
+          "text": "أصفر"
+        }
+      ],
+      "prompt": "البرتقالة دي لونها إيه؟",
+      "referenceAlt": "البرتقالة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-orange.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! العنب بنفسجي.",
+      "hint": "بص على لون العنب كويس.",
+      "id": "preschool-color-2-03",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-blue.svg",
+          "text": "أزرق"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-red.svg",
+          "text": "أحمر"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-purple.svg",
+          "text": "بنفسجي"
+        }
+      ],
+      "prompt": "العنب ده لونه إيه؟",
+      "referenceAlt": "العنب ده لونه إيه؟",
+      "referenceImage": "assets/preschool/scene-color-grapes.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! الفراولة حمرا.",
+      "hint": "لون الفراولة إيه؟",
+      "id": "preschool-color-2-04",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-pink.svg",
+          "text": "وردي"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-red.svg",
+          "text": "أحمر"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-orange.svg",
+          "text": "برتقالي"
+        }
+      ],
+      "prompt": "الفراولة دي لونها إيه؟",
+      "referenceAlt": "الفراولة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-strawberry.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! الباذنجان بنفسجي.",
+      "hint": "بص على لون الباذنجان كويس.",
+      "id": "preschool-color-2-05",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-purple.svg",
+          "text": "بنفسجي"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-green.svg",
+          "text": "أخضر"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-blue.svg",
+          "text": "أزرق"
+        }
+      ],
+      "prompt": "الباذنجان ده لونه إيه؟",
+      "referenceAlt": "الباذنجان ده لونه إيه؟",
+      "referenceImage": "assets/preschool/scene-color-eggplant.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! الليمونة صفرا.",
+      "hint": "لون الليمونة إيه؟",
+      "id": "preschool-color-2-06",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-green.svg",
+          "text": "أخضر"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-orange.svg",
+          "text": "برتقالي"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-yellow.svg",
+          "text": "أصفر"
+        }
+      ],
+      "prompt": "الليمونة دي لونها إيه؟",
+      "referenceAlt": "الليمونة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-lemon.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! الطماطم حمرا.",
+      "hint": "بص على لون الطماطم كويس.",
+      "id": "preschool-color-2-07",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-orange.svg",
+          "text": "برتقالي"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-red.svg",
+          "text": "أحمر"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-green.svg",
+          "text": "أخضر"
+        }
+      ],
+      "prompt": "الطماطم دي لونها إيه؟",
+      "referenceAlt": "الطماطم دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-tomato.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! السما زرقا.",
+      "hint": "بص على لون السما فوق.",
+      "id": "preschool-color-2-08",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-blue.svg",
+          "text": "أزرق"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-white.svg",
+          "text": "أبيض"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-yellow.svg",
+          "text": "أصفر"
+        }
+      ],
+      "prompt": "السما دي لونها إيه؟",
+      "referenceAlt": "السما دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-sky.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! الشجرة خضرا.",
+      "hint": "لون الشجرة في الصورة إيه؟",
+      "id": "preschool-color-2-09",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-yellow.svg",
+          "text": "أصفر"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-blue.svg",
+          "text": "أزرق"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-green.svg",
+          "text": "أخضر"
+        }
+      ],
+      "prompt": "الشجرة دي لونها إيه؟",
+      "referenceAlt": "الشجرة دي لونها إيه؟",
+      "referenceImage": "assets/preschool/scene-color-tree.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! اللبن أبيض.",
+      "hint": "لون اللبن في الكوباية إيه؟",
+      "id": "preschool-color-2-10",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/circle-yellow.svg",
+          "text": "أصفر"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/circle-white.svg",
+          "text": "أبيض"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/circle-blue.svg",
+          "text": "أزرق"
+        }
+      ],
+      "prompt": "اللبن ده لونه إيه؟",
+      "referenceAlt": "اللبن ده لونه إيه؟",
+      "referenceImage": "assets/preschool/scene-color-milk.svg",
+      "skill": "color-match",
+      "stage": 2,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! في 4 نجوم.",
+      "hint": "عد النجوم واحدة واحدة.",
+      "id": "preschool-shape-3-01",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/group-star-3.svg",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/group-star-4.svg",
+          "text": "4"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/group-star-5.svg",
+          "text": "5"
+        }
+      ],
+      "prompt": "كام نجمة في الصورة؟",
+      "referenceAlt": "كام نجمة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-stars-4.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! في 5 تفاحات.",
+      "hint": "عد التفاح واحدة واحدة.",
+      "id": "preschool-shape-3-02",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/group-apple-3.svg",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/group-apple-4.svg",
+          "text": "4"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/group-apple-5.svg",
+          "text": "5"
+        }
+      ],
+      "prompt": "كام تفاحة في الصورة؟",
+      "referenceAlt": "كام تفاحة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-apples-5.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! في سمكتين.",
+      "hint": "عد السمك واحدة واحدة.",
+      "id": "preschool-shape-3-03",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/group-fish-2.svg",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/group-fish-3.svg",
+          "text": "3"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/group-fish-4.svg",
+          "text": "4"
+        }
+      ],
+      "prompt": "كام سمكة في الصورة؟",
+      "referenceAlt": "كام سمكة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-fish-2.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! في نجمة واحدة.",
+      "hint": "عد النجوم واحدة واحدة.",
+      "id": "preschool-shape-3-04",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/group-star-2.svg",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/group-star-1.svg",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/group-star-3.svg",
+          "text": "3"
+        }
+      ],
+      "prompt": "كام نجمة في الصورة؟",
+      "referenceAlt": "كام نجمة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-stars-1.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! في 3 تفاحات.",
+      "hint": "عد التفاح واحدة واحدة.",
+      "id": "preschool-shape-3-05",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/group-apple-4.svg",
+          "text": "4"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/group-apple-2.svg",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/group-apple-3.svg",
+          "text": "3"
+        }
+      ],
+      "prompt": "كام تفاحة في الصورة؟",
+      "referenceAlt": "كام تفاحة في الصورة؟",
+      "referenceImage": "assets/preschool/scene-count-apples-3.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! ده مستطيل.",
+      "hint": "الشكل ده أطول من عرضه.",
+      "id": "preschool-shape-3-06",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/option-door.svg",
+          "text": "مستطيل"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/option-ball.svg",
+          "text": "دايرة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/option-pizza.svg",
+          "text": "مثلث"
+        }
+      ],
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-rectangle.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! دي نجمة.",
+      "hint": "الشكل ده ليه 5 رؤوس.",
+      "id": "preschool-shape-3-07",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/option-gift.svg",
+          "text": "مربع"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/option-ball.svg",
+          "text": "دايرة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/option-starfish.svg",
+          "text": "نجمة"
+        }
+      ],
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-star.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "شاطر! ده بيضاوي.",
+      "hint": "الشكل ده مدور بس مطوّل.",
+      "id": "preschool-shape-3-08",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/option-pizza.svg",
+          "text": "مثلث"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/option-egg.svg",
+          "text": "بيضاوي"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/option-gift.svg",
+          "text": "مربع"
+        }
+      ],
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-oval.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "شاطر! ده مثلث.",
+      "hint": "عد أضلاع الشكل.",
+      "id": "preschool-shape-3-09",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/option-pyramid.svg",
+          "text": "مثلث"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/option-ball.svg",
+          "text": "دايرة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/option-gift.svg",
+          "text": "مربع"
+        }
+      ],
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-pyramid.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "شاطر! ده مربع.",
+      "hint": "الشكل ده ليه 4 أضلاع متساوية.",
+      "id": "preschool-shape-3-10",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/option-pizza.svg",
+          "text": "مثلث"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/option-ball.svg",
+          "text": "دايرة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/option-window.svg",
+          "text": "مربع"
+        }
+      ],
+      "prompt": "الشكل ده اسمه إيه؟",
+      "referenceAlt": "الشكل ده اسمه إيه؟",
+      "referenceImage": "assets/preschool/scene-shape-window.svg",
+      "skill": "shape-count",
+      "stage": 3,
+      "subject": "pictures"
+    },
+    {
+      "id": "preschool-pattern-4-01",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-circle-red-circle-yellow.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "دايرة صفرا",
+          "image": "assets/preschool/circle-yellow.svg"
+        },
+        {
+          "id": "b",
+          "text": "دايرة حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "دايرة زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "الترتيب ماشي: الأولى، التانية، الأولى… مين بعدها؟",
+      "explanation": "حلو! الصورة دي بتكمل الترتيب اللي بيتكرر."
+    },
+    {
+      "id": "preschool-pattern-4-02",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-square-green-triangle-red.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مربع أخضر",
+          "image": "assets/preschool/square-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث أحمر",
+          "image": "assets/preschool/triangle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "دايرة زرقا",
+          "image": "assets/preschool/circle-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "بص على الترتيب كويس، الأولى والتانية بيتكرروا… إيه اللي ييجي بعدها؟",
+      "explanation": "شاطر! كده الترتيب بقى مظبوط وبيتكرر صح."
+    },
+    {
+      "id": "preschool-pattern-4-03",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-star-blue-star-yellow.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "نجمة زرقا",
+          "image": "assets/preschool/star-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "قلب أحمر",
+          "image": "assets/preschool/heart-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "نجمة صفرا",
+          "image": "assets/preschool/star-yellow.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "الترتيب ماشي: الأولى، التانية، الأولى… مين بعدها؟",
+      "explanation": "برافو! اخترت الصورة اللي بتكمل الترتيب."
+    },
+    {
+      "id": "preschool-pattern-4-04",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-fish-blue-apple-red.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "سمكة زرقا",
+          "image": "assets/preschool/fish-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "عربية زرقا",
+          "image": "assets/preschool/car-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "تفاحة حمرا",
+          "image": "assets/preschool/apple-red.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "خلي بالك من الترتيب، الصورة اللي بعدها إيه؟",
+      "explanation": "حلو! الصورة دي بتكمل الترتيب اللي بيتكرر."
+    },
+    {
+      "id": "preschool-pattern-4-05",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-flower-blue-flower-purple.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "وردة بنفسجي",
+          "image": "assets/preschool/flower-purple.svg"
+        },
+        {
+          "id": "b",
+          "text": "وردة زرقا",
+          "image": "assets/preschool/flower-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "شمس زرقا",
+          "image": "assets/preschool/sun-blue.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "الأولى والتانية بيتكرروا… إيه اللي ييجي بعدها؟",
+      "explanation": "شاطر! كده الترتيب بقى مظبوط وبيتكرر صح."
+    },
+    {
+      "id": "preschool-pattern-4-06",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-car-blue-sun-blue.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "عربية زرقا",
+          "image": "assets/preschool/car-blue.svg"
+        },
+        {
+          "id": "b",
+          "text": "شمس زرقا",
+          "image": "assets/preschool/sun-blue.svg"
+        },
+        {
+          "id": "c",
+          "text": "نجمة زرقا",
+          "image": "assets/preschool/star-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "الترتيب ماشي: الأولى، التانية، الأولى… مين بعدها؟",
+      "explanation": "برافو! اخترت الصورة اللي بتكمل الترتيب."
+    },
+    {
+      "id": "preschool-pattern-4-07",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-heart-red-heart-blue.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "قلب أحمر",
+          "image": "assets/preschool/heart-red.svg"
+        },
+        {
+          "id": "b",
+          "text": "نجمة صفرا",
+          "image": "assets/preschool/star-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "قلب أزرق",
+          "image": "assets/preschool/heart-blue.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "بص على الترتيب كويس، الأولى والتانية بيتكرروا… إيه اللي ييجي بعدها؟",
+      "explanation": "حلو! الصورة دي بتكمل الترتيب اللي بيتكرر."
+    },
+    {
+      "id": "preschool-pattern-4-08",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-triangle-green-triangle-red.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مثلث أخضر",
+          "image": "assets/preschool/triangle-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "مثلث أحمر",
+          "image": "assets/preschool/triangle-red.svg"
+        },
+        {
+          "id": "c",
+          "text": "مثلث أزرق",
+          "image": "assets/preschool/triangle-blue.svg"
+        }
+      ],
+      "answerId": "b",
+      "hint": "خلي بالك من الترتيب، الصورة اللي بعدها إيه؟",
+      "explanation": "شاطر! كده الترتيب بقى مظبوط وبيتكرر صح."
+    },
+    {
+      "id": "preschool-pattern-4-09",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-square-yellow-square-blue.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "مربع أصفر",
+          "image": "assets/preschool/square-yellow.svg"
+        },
+        {
+          "id": "b",
+          "text": "مربع أخضر",
+          "image": "assets/preschool/square-green.svg"
+        },
+        {
+          "id": "c",
+          "text": "مربع أزرق",
+          "image": "assets/preschool/square-blue.svg"
+        }
+      ],
+      "answerId": "c",
+      "hint": "الأولى والتانية بيتكرروا… إيه اللي ييجي بعدها؟",
+      "explanation": "برافو! اخترت الصورة اللي بتكمل الترتيب."
+    },
+    {
+      "id": "preschool-pattern-4-10",
+      "kind": "picture",
+      "band": "preschool",
+      "subject": "pictures",
+      "stage": 4,
+      "skill": "pattern",
+      "prompt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "referenceImage": "assets/preschool/pattern-circle-yellow-circle-green.svg",
+      "referenceAlt": "كمّل الترتيب: إيه اللي بعد علامة السؤال؟",
+      "options": [
+        {
+          "id": "a",
+          "text": "دايرة خضرا",
+          "image": "assets/preschool/circle-green.svg"
+        },
+        {
+          "id": "b",
+          "text": "دايرة صفرا",
+          "image": "assets/preschool/circle-yellow.svg"
+        },
+        {
+          "id": "c",
+          "text": "دايرة حمرا",
+          "image": "assets/preschool/circle-red.svg"
+        }
+      ],
+      "answerId": "a",
+      "hint": "الترتيب ماشي: الأولى، التانية، الأولى… مين بعدها؟",
+      "explanation": "حلو! الصورة دي بتكمل الترتيب اللي بيتكرر."
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "برافو! من بيضة البطة بتطلع بطة صغيرة.",
+      "hint": "فكّر إيه اللي بيحصل بعد كده في الطبيعة.",
+      "id": "preschool-discover-5-01",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-chick.svg",
+          "text": "كتكوت"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-duckling.svg",
+          "text": "بطة صغيرة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-sprout.svg",
+          "text": "نبات صغير"
+        }
+      ],
+      "prompt": "إيه اللي يطلع من بيضة البطة؟",
+      "referenceAlt": "إيه اللي يطلع من بيضة البطة؟",
+      "referenceImage": "assets/preschool/scene-before-duck-egg.svg",
+      "skill": "before-after",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "برافو! الشرغوف بيكبر ويبقى ضفدعة.",
+      "hint": "فكّر إيه اللي بيحصل بعد كده في الطبيعة.",
+      "id": "preschool-discover-5-02",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-butterfly.svg",
+          "text": "فراشة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-chick.svg",
+          "text": "كتكوت"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-frog.svg",
+          "text": "ضفدعة"
+        }
+      ],
+      "prompt": "الشرغوف بيكبر يبقى إيه؟",
+      "referenceAlt": "الشرغوف بيكبر يبقى إيه؟",
+      "referenceImage": "assets/preschool/scene-before-tadpole.svg",
+      "skill": "before-after",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "برافو! الميه في التلاجة بتبقى تلج.",
+      "hint": "فكّر إيه اللي بيحصل للميه لما تبرد أوي.",
+      "id": "preschool-discover-5-03",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-ice.svg",
+          "text": "تلج"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-rain.svg",
+          "text": "مطر"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-puddle.svg",
+          "text": "بركة ميه"
+        }
+      ],
+      "prompt": "الميه في التلاجة بتبقى إيه؟",
+      "referenceAlt": "الميه في التلاجة بتبقى إيه؟",
+      "referenceImage": "assets/preschool/scene-before-ice.svg",
+      "skill": "before-after",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "برافو! الكتكوت بيكبر ويبقى فرخة.",
+      "hint": "فكّر إيه اللي بيحصل بعد كده في الطبيعة.",
+      "id": "preschool-discover-5-04",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-duckling.svg",
+          "text": "بطة صغيرة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-hen.svg",
+          "text": "فرخة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-butterfly.svg",
+          "text": "فراشة"
+        }
+      ],
+      "prompt": "الكتكوت بيكبر يبقى إيه؟",
+      "referenceAlt": "الكتكوت بيكبر يبقى إيه؟",
+      "referenceImage": "assets/preschool/scene-before-chick-grow.svg",
+      "skill": "before-after",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "برافو! العجينة في الفرن بتبقى كيكة.",
+      "hint": "فكّر إيه اللي بيحصل للعجينة في الفرن.",
+      "id": "preschool-discover-5-05",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-seeds.svg",
+          "text": "حبوب"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-fish.svg",
+          "text": "سمكة"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-cake.svg",
+          "text": "كيكة"
+        }
+      ],
+      "prompt": "العجينة في الفرن بتبقى إيه؟",
+      "referenceAlt": "العجينة في الفرن بتبقى إيه؟",
+      "referenceImage": "assets/preschool/scene-before-cake.svg",
+      "skill": "before-after",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "برافو! عجلة بتكمل الصورة.",
+      "hint": "بص على المكان المنقّط، واختار القطعة اللي تكمله.",
+      "id": "preschool-discover-5-06",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-wheel.svg",
+          "text": "عجلة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-roof.svg",
+          "text": "سقف"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-handle.svg",
+          "text": "مقبض"
+        }
+      ],
+      "prompt": "إيه الناقص في العجلة؟",
+      "referenceAlt": "إيه الناقص في العجلة؟",
+      "referenceImage": "assets/preschool/scene-missing-bike-wheel.svg",
+      "skill": "missing-part",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "b",
+      "band": "preschool",
+      "explanation": "برافو! ديل بتكمل السمكة.",
+      "hint": "بص على المكان المنقّط، واختار القطعة اللي تكمله.",
+      "id": "preschool-discover-5-07",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-eye.svg",
+          "text": "عين"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-tail.svg",
+          "text": "ديل"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-wheel.svg",
+          "text": "عجلة"
+        }
+      ],
+      "prompt": "إيه الناقص في السمكة؟",
+      "referenceAlt": "إيه الناقص في السمكة؟",
+      "referenceImage": "assets/preschool/scene-missing-fish-tail.svg",
+      "skill": "missing-part",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "برافو! ورق الشجرة بيكمل الصورة.",
+      "hint": "بص على المكان المنقّط، واختار القطعة اللي تكمله.",
+      "id": "preschool-discover-5-08",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-flower-center.svg",
+          "text": "قلب وردة"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-roof.svg",
+          "text": "سقف"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-leaves.svg",
+          "text": "ورق"
+        }
+      ],
+      "prompt": "إيه الناقص في الشجرة؟",
+      "referenceAlt": "إيه الناقص في الشجرة؟",
+      "referenceImage": "assets/preschool/scene-missing-tree-leaves.svg",
+      "skill": "missing-part",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "a",
+      "band": "preschool",
+      "explanation": "برافو! ديل بتكمل القطة.",
+      "hint": "بص على المكان المنقّط، واختار القطعة اللي تكمله.",
+      "id": "preschool-discover-5-09",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-tail.svg",
+          "text": "ديل"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-eye.svg",
+          "text": "عين"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-wheel.svg",
+          "text": "عجلة"
+        }
+      ],
+      "prompt": "إيه الناقص في القطة؟",
+      "referenceAlt": "إيه الناقص في القطة؟",
+      "referenceImage": "assets/preschool/scene-missing-cat-tail.svg",
+      "skill": "missing-part",
+      "stage": 5,
+      "subject": "pictures"
+    },
+    {
+      "answerId": "c",
+      "band": "preschool",
+      "explanation": "برافو! رجل الكرسي بتكمل الصورة.",
+      "hint": "بص على المكان المنقّط، واختار القطعة اللي تكمله.",
+      "id": "preschool-discover-5-10",
+      "kind": "picture",
+      "options": [
+        {
+          "id": "a",
+          "image": "assets/preschool/relation-handle.svg",
+          "text": "مقبض"
+        },
+        {
+          "id": "b",
+          "image": "assets/preschool/relation-roof.svg",
+          "text": "سقف"
+        },
+        {
+          "id": "c",
+          "image": "assets/preschool/relation-leg.svg",
+          "text": "رجل"
+        }
+      ],
+      "prompt": "إيه الناقص في الكرسي؟",
+      "referenceAlt": "إيه الناقص في الكرسي؟",
+      "referenceImage": "assets/preschool/scene-missing-chair-leg.svg",
+      "skill": "missing-part",
+      "stage": 5,
+      "subject": "pictures"
     }
   ]
 }
