@@ -99,9 +99,13 @@ test('stage 3 choices are pictures: counting uses groups, shapes use real object
   const ui=JSON.parse(await readFile(new URL('locales/ar-ui.json',site),'utf8'));
   assert.ok(ui.autoConfirm.includes('{seconds}'));
   assert.ok(ui.chooseAnswerTwice.includes('3'));
+  assert.ok(ui.nextCardCountdown.includes('{seconds}'));
+  assert.ok(ui.resultCountdown.includes('{seconds}'));
   const app=await readFile(new URL('scripts/app.js',site),'utf8');
   assert.ok(app.includes('startConfirmTimer'));
   assert.ok(app.includes('3000'));
   assert.ok(app.includes('countdown-badge'));
   assert.ok(app.includes('choice-label'));
+  assert.ok(app.includes('nextCardTimer'));
+  assert.ok(app.includes('clearNextCardTimer'));
 });

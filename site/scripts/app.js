@@ -26,6 +26,9 @@ function clearConfirmTimer() { clearTimeout(confirmTimer); clearInterval(countdo
 let nextStageTimer = 0;
 let nextStageInterval = 0;
 function clearNextStageTimer() { clearTimeout(nextStageTimer); clearInterval(nextStageInterval); nextStageTimer = 0; nextStageInterval = 0; }
+let nextCardTimer = 0;
+let nextCardInterval = 0;
+function clearNextCardTimer() { clearTimeout(nextCardTimer); clearInterval(nextCardInterval); nextCardTimer = 0; nextCardInterval = 0; }
 function startConfirmTimer(optionId, onConfirm) {
   clearConfirmTimer();
   const badge = document.querySelector(".choice.pending .countdown-badge");
@@ -120,7 +123,7 @@ function updateProfile(changes) {
 }
 
 function navigate(next) {
-  pendingAnswer=null;clearConfirmTimer();clearNextStageTimer();stopCelebration();
+  pendingAnswer=null;clearConfirmTimer();clearNextStageTimer();clearNextCardTimer();stopCelebration();
   if (next==="help" && screen!=="help") helpPage=0;
   if (next==="setup") initSetupDraft();
   screen = next;
@@ -423,10 +426,23 @@ function renderRound() {
     updateProfile({round:revealHint(activeProfile().round)});render();
     say(t("hintTitle"));document.querySelector(".feedback")?.focus({preventScroll:true});
   },"secondary",round.hintsLeft === 0 ? {disabled:""} : {})));
-  if (round.resolved) question.append(node("div", {class:"feedback",tabindex:"-1"},node("strong", {text:t("correct")}),node("p", {},node("strong", {text:t("explanation")}),card.explanation)),actionRow(button(round.index===5?t("seeResult"):t("nextCard"),()=>{
-    const advanced=advanceRound(activeProfile().round);updateProfile({round:advanced});
-    if (advanced.index===6) finishRound(); else navigate("round");
-  },"primary")));
+  if (round.resolved) {
+    const goNext=()=>{
+      const advanced=advanceRound(activeProfile().round);updateProfile({round:advanced});
+      if (advanced.index===6) finishRound(); else navigate("round");
+    };
+    question.append(node("div", {class:"feedback",tabindex:"-1"},node("strong", {text:t("correct")}),node("p", {},node("strong", {text:t("explanation")}),card.explanation)),actionRow(button(round.index===5?t("seeResult"):t("nextCard"),goNext,"primary")));
+    const countdown=node("p", {class:"lead",text:t(round.index===5?"resultCountdown":"nextCardCountdown",{seconds:3})});
+    question.append(countdown);
+    clearNextCardTimer();
+    let secondsLeft=3;
+    nextCardInterval=setInterval(()=>{
+      secondsLeft-=1;
+      if (countdown.isConnected) countdown.textContent=t(round.index===5?"resultCountdown":"nextCardCountdown",{seconds:Math.max(secondsLeft,0)});
+      if (secondsLeft<=0) clearInterval(nextCardInterval);
+    },1000);
+    nextCardTimer=setTimeout(goNext,3000);
+  }
   else if (round.hintUsed || round.wrongIds.length) question.append(node("div", {class:"feedback try-again",tabindex:"-1"},node("strong", {text:round.wrongIds.length?t(round.band==="preschool"?"pictureTryAgain":"tryAgain"):t("hintTitle")}),round.hintUsed ? node("p", {text:card.hint}) : null));
   root.append(question);app.append(root);
 }
