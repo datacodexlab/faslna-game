@@ -23,6 +23,9 @@ let pendingAnswer = null;
 let confirmTimer = 0;
 let countdownTimer = 0;
 function clearConfirmTimer() { clearTimeout(confirmTimer); clearInterval(countdownTimer); confirmTimer = 0; countdownTimer = 0; }
+let nextStageTimer = 0;
+let nextStageInterval = 0;
+function clearNextStageTimer() { clearTimeout(nextStageTimer); clearInterval(nextStageInterval); nextStageTimer = 0; nextStageInterval = 0; }
 function startConfirmTimer(optionId, onConfirm) {
   clearConfirmTimer();
   const badge = document.querySelector(".choice.pending .countdown-badge");
@@ -117,7 +120,7 @@ function updateProfile(changes) {
 }
 
 function navigate(next) {
-  pendingAnswer=null;clearConfirmTimer();stopCelebration();
+  pendingAnswer=null;clearConfirmTimer();clearNextStageTimer();stopCelebration();
   if (next==="help" && screen!=="help") helpPage=0;
   if (next==="setup") initSetupDraft();
   screen = next;
@@ -500,19 +503,34 @@ function finishRound() {
 }
 
 function renderResult() {
+  clearNextStageTimer();
   if (!resultRound) {navigate("map");return;}
   const round=resultRound;
   const best=activeProfile().progress[progressKey(round.subject,round.band,round.stage)].best;
-  app.append(node("div", {class:"screen result-card"},node("div", {class:"stars-large","aria-hidden":"true",text:"★ ★ ★"}),heading(t("resultTitle")),
+  const hasNext=round.stage<(round.band==="preschool"?5:3);
+  const goNext=()=>{
+    const teacher=activeTeacher();
+    if (teacher?.subject===round.subject) startRound(round.subject,round.band,round.stage+1);
+    else navigate("map");
+  };
+  const root=node("div", {class:"screen result-card"},node("div", {class:"stars-large","aria-hidden":"true",text:"★ ★ ★"}),heading(t("resultTitle")),
     node("div", {class:"badge",text:t("badgeEarned",{badge:t(["badgeOne","badgeTwo","badgeThree","badgeFour","badgeFive"][round.stage-1])})}),
     node("div", {class:"result-score",text:`${round.score}/12`}),
     node("p", {class:"lead",text:t("resultLead",{score:round.score})}),
     node("p", {text:t("resultBest",{score:best})}),
-    node("div", {class:"actions center"},button(t("replayRound"),()=>startRound(round.subject,round.band,round.stage,round.teacherId),"primary"),button(t("newPlayerRound"),()=>{navigate("setup");}),round.stage<(round.band==="preschool"?5:3)?button(t("nextStage"),()=>{
-      const teacher=activeTeacher();
-      if (teacher?.subject===round.subject) startRound(round.subject,round.band,round.stage+1);
-      else navigate("map");
-    },"primary"):null,button(t("backToMap"),()=>navigate("map")))));
+    node("div", {class:"actions center"},button(t("replayRound"),()=>startRound(round.subject,round.band,round.stage,round.teacherId),"primary"),button(t("newPlayerRound"),()=>{navigate("setup");}),hasNext?button(t("nextStage"),goNext,"primary"):null,button(t("backToMap"),()=>navigate("map"))));
+  app.append(root);
+  if (hasNext) {
+    const countdown=node("p", {class:"lead",text:t("nextStageCountdown",{seconds:3})});
+    root.append(countdown);
+    let secondsLeft=3;
+    nextStageInterval=setInterval(()=>{
+      secondsLeft-=1;
+      if (countdown.isConnected) countdown.textContent=t("nextStageCountdown",{seconds:Math.max(secondsLeft,0)});
+      if (secondsLeft<=0) clearInterval(nextStageInterval);
+    },1000);
+    nextStageTimer=setTimeout(goNext,3000);
+  }
 }
 
 function renderHelp() {
