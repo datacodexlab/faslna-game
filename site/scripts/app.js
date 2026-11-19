@@ -407,7 +407,7 @@ function renderRound() {
     clearConfirmTimer();
     const next=answerRound(activeProfile().round,card,optionId);
     updateProfile({round:next});if(next.resolved && round.band!=="preschool") void playEncouragement(state().settings.soundEnabled);render();
-    if(optionId===card.answerId && next.resolved) celebrate(state().settings.reducedMotion,celebrationCount("answer"));
+    if(optionId===card.answerId && next.resolved) celebrate(state().settings.reducedMotion,celebrationCount("answer"),state().settings.soundEnabled);
     say(next.livesLeft === 0 ? t("gameOverTitle") : next.resolved?t("correct"):t("tryAgain"));
     if (next.livesLeft === 0) app.focus({preventScroll:true});
     document.querySelector(".feedback")?.focus({preventScroll:true});
@@ -515,7 +515,7 @@ function finishRound() {
   resultRound=round;
   updateProfile({progress:completeStage(profile.progress,round),round:null});
   navigate("result");
-  celebrate(state().settings.reducedMotion,celebrationCount("round"));
+  celebrate(state().settings.reducedMotion,celebrationCount("round"),state().settings.soundEnabled);
 }
 
 function renderResult() {

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {SOUND_PRESETS,nextSoundIndex,playEncouragement} from "../site/scripts/audio.js";
+import {SOUND_PRESETS,nextSoundIndex,playEncouragement,playPop} from "../site/scripts/audio.js";
 
 test("ten synthesized encouragement patterns are distinct",()=>{
   assert.equal(SOUND_PRESETS.length,10);
@@ -19,4 +19,6 @@ test("sound rotation never repeats the previous pattern",()=>{
 test("muted or unavailable audio never blocks play",async()=>{
   assert.equal(await playEncouragement(false),false);
   assert.equal(await playEncouragement(true),false);
+  assert.equal(await playPop(false),false);
+  assert.equal(await playPop(true),false);
 });

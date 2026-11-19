@@ -20,6 +20,30 @@ export function nextSoundIndex(lastIndex, random = Math.random) {
 let context;
 let lastIndex = -1;
 
+export async function playPop(enabled) {
+  if (!enabled) return false;
+  try {
+    const AudioContextClass = globalThis.AudioContext || globalThis.webkitAudioContext;
+    if (!AudioContextClass) return false;
+    context ??= new AudioContextClass();
+    if (context.state === "suspended") await context.resume();
+    const start = context.currentTime;
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.type = "triangle";
+    oscillator.frequency.setValueAtTime(620, start);
+    oscillator.frequency.exponentialRampToValueAtTime(180, start + .09);
+    gain.gain.setValueAtTime(.0001, start);
+    gain.gain.exponentialRampToValueAtTime(.18, start + .01);
+    gain.gain.exponentialRampToValueAtTime(.0001, start + .1);
+    oscillator.connect(gain).connect(context.destination);
+    oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
+    oscillator.start(start);
+    oscillator.stop(start + .1);
+    return true;
+  } catch { return false; }
+}
+
 export async function playEncouragement(enabled) {
   if (!enabled) return false;
   try {
