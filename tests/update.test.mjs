@@ -10,5 +10,5 @@ test("forced update button exists and reloads with a cache-busting version",asyn
   assert.match(app,/searchParams\.set\("v", String\(Date\.now\(\)\)\)/);
   assert.match(app,/t\("updateGame"\)/);
   const index=await readFile(new URL("index.html",site),"utf8");
-  assert.match(index,/id="app-version">1\.11\.2</);
+  assert.match(index,/id="app-version">1\.12\.0</);
 });
